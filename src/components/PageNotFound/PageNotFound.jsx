@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './PageNotFound.css';
-import Header from '../Header/Header.jsx';
-import arrow from '../../images/arrow2.png';
 
 function PageNotFound () {
 
@@ -13,26 +11,17 @@ function PageNotFound () {
   }
 
   return (
-    <>
-      <Header />
-      <section className="pageNotFound">
-        <h3 className="pageNotFound__title">404</h3>
-        <p 
-          className="pageNotFound__text" >
-            Тут пока ничего нет.
-        </p>
-        <div className="deckItem__arrow-container" onClick={goBack}>
-          <img 
-            src={arrow} 
-            alt="Стрелка назад" 
-            className='deckItem__arrow'
-          />
-            <p className="pageNotFound__text">
-              Вернитесь назад.
-            </p>
-        </div>
-      </section>
-    </>
+    <section className="pageNotFound">
+      <h3 className="pageNotFound__title">404</h3>
+      <p className="pageNotFound__text">
+        Страница не найдена
+      </p>
+      <p 
+        className="pageNotFound__text pageNotFound__link" 
+        onClick={goBack} >
+          Назад
+      </p>
+    </section>
   )
 }
 
