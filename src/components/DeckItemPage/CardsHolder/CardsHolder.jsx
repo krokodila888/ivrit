@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import './CardsHolder.css';
 import { useSelector, useDispatch } from 'react-redux';
 import arrow from '../../../images/arrow2.png';
+import arrow1 from '../../../images/repeat.svg';
 
 function CardsHolder(props) {
 
@@ -113,7 +114,7 @@ function CardsHolder(props) {
           {word()}
         </div>
         <input 
-          placeholder="Впечатайте слово" 
+          placeholder="Место для слова" 
           value={repeatingForm.word} 
           id='cardsHolderRepeatingInput'
           type="text"
@@ -121,7 +122,10 @@ function CardsHolder(props) {
           onChange={onRepeatChange}
           required
           className='cardsHolder__input'
-          autoComplete="off" />
+          autoComplete="off"
+          autocorrect="off" 
+          autocapitalize="off" 
+          spellcheck="false" />
         <div className='cardsHolder__button-block'>
           <button 
             className='cardsHolder__button'
@@ -136,16 +140,16 @@ function CardsHolder(props) {
         </div>
       </div>}
       {currentWord && currentWord !== null && currentWord.word === 'Правда все.' &&
-      <div className="deckItem__arrow-container" onClick={repeatAgain}>
+      <div className="cardsHolder__arrow-container" onClick={repeatAgain}>
         <img 
-          src={arrow} 
+          src={arrow1} 
           alt="Стрелка назад" 
-          className='deckItem__arrow'
+          className='cardsHolder__arrow1'
         />
         <p className="deckItem__text">Повторять снова</p>
       </div>}
       {
-      <div className="deckItem__arrow-container" onClick={stopRepeating}>
+      <div className="cardsHolder__arrow-container" onClick={stopRepeating}>
         <img 
           src={arrow} 
           alt="Стрелка назад" 

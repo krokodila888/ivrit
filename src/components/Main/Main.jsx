@@ -1,15 +1,19 @@
 import React from "react";
+import Header from '../Header/Header.jsx';
+import Footer from '../Footer/Footer.jsx';
 import AboutMe from './AboutMe/AboutMe.jsx';
 import './Main.css';
 
 function Main() {
 
   return (
-    <main className="main__content">
-      <section className="main__content">
+    <>
+      <Header />
+      <main className="main__content">
         <AboutMe/>
-      </section>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }  
 

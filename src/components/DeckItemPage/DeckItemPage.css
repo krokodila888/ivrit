@@ -10,7 +10,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  padding: 66px 70px 20px 70px;
+  padding: 30px 70px 20px 70px;
   max-width: 1040px;
   min-height: 300px;
   margin-right: auto;
@@ -63,6 +63,7 @@
   flex-wrap: wrap;
   align-items: center;
   width: 200px;
+  align-self: center;
 }
 
 .deckItem__arrow {
@@ -87,6 +88,7 @@
   flex-direction: row;
   width: 600px;
   align-self: center;
+  margin-bottom: 40px;
 }
 
 .deckItem__button {

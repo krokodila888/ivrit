@@ -37,7 +37,7 @@ function WordCard(props) {
         {!cardsAreVisible && 
         <>
           <p className="word">
-            {item.word}
+            {item.vocalization}
           </p>
           <p className="translation">
             {item.translation}
@@ -65,7 +65,7 @@ function WordCard(props) {
       {backIsVisible && 
       <>
         <p className="word">
-          {item.word}
+          {item.vocalization}
         </p>
         <p className="translation">
           {item.transcription}

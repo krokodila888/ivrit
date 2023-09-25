@@ -24,7 +24,11 @@ function DeckItemPage() {
     let aaa;
     if (currentDeck !== null) {
       aaa = vocabulary.filter(item => item.ruTopic.includes(currentDeck.ruTopic));
-      console.log(aaa);
+      aaa.forEach(item => item.number = Math.floor(Math.random() * 10) + 1);
+      aaa.sort(function (a, b) {
+        return a.number - b.number;
+      });
+      //console.log(aaa);
       setWords(aaa);
     }
   }, [currentDeck])

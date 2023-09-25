@@ -22,11 +22,12 @@
   margin: 5px;
   display: flex;
   flex-direction: column;
+  max-width: 280px;
 }
 
 .word {
   font-family: 'Inter', sans-serif;
-  line-height: 30px;
+  line-height: 40px;
   margin: 0;
   padding-bottom: 26px;
   padding-top: 16px;
