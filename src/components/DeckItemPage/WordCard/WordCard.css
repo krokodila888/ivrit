@@ -1,0 +1,81 @@
+@import url(../../../vendor/Railroad/stylesheet.css);
+
+@keyframes rotate {
+  from {
+    transform: rotateX(0deg);
+  }
+  to {
+    transform: rotateX(180deg);
+  }
+}
+
+.wordCard {
+  background-color: #ebecde;
+  border-radius: 20px;
+  justify-content: center;
+  border: 0.5px solid rgb(239 239 239);
+  min-width: 160px;
+  min-height: 80px;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin-bottom: 30px;
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.word {
+  font-family: 'Inter', sans-serif;
+  line-height: 30px;
+  margin: 0;
+  padding-bottom: 26px;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgb(67, 67, 67);
+  text-align: center;
+}
+
+.translation {
+  background-color: white;
+  line-height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.translation1 {
+  background-color: white;
+  line-height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.translation1:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.word__backside {
+  font-family: 'Inter', sans-serif;
+  line-height: 30px;
+  margin: 0;
+  padding-bottom: 26px;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgb(67, 67, 67);
+  text-align: center;
+}
+
+.wordCard__img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+.wordCard__img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}

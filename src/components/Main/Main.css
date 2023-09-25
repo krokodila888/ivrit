@@ -1,0 +1,8 @@
+@import url(../../vendor/Railroad/stylesheet.css);
+
+.main__content {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 262px);
+}
