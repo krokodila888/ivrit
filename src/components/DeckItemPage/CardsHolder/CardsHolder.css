@@ -223,6 +223,18 @@
   }
 }
 
+.cardsHolder__title-raw {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 520px) {
+  .cardsHolder__title-raw {
+    flex-direction: column;
+  }
+}
+
 .cardsHolder__title {
   font-family: 'Inter', sans-serif;
   font-weight: 400;
@@ -230,6 +242,22 @@
   line-height: 27px;
   margin: 0;
   padding-bottom: 23px;
+}
+
+.cardsHolder__hint {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 27px;
+  margin: 0;
+  padding-bottom: 23px;
+  color: rgb(207, 203, 203);
+}
+
+.cardsHolder__hint:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s;
 }
 
 .container {

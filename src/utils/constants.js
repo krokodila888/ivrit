@@ -20,16 +20,24 @@ export const topics = [
     enTopic: 'Questions',
   },
   {
+    ruTopic: 'Страны',
+    enTopic: 'Countries',
+  },
+    {
+    ruTopic: 'Языки',
+    enTopic: 'Languages',
+  },
+  {
     ruTopic: 'Города',
     enTopic: 'Cities',
   },
   {
-    ruTopic: 'Дни недели',
-    enTopic: 'Days of Week',
-  },
-  {
     ruTopic: 'Имена',
     enTopic: 'Names',
+  },  
+  {
+    ruTopic: 'Дни недели',
+    enTopic: 'Days of Week',
   },
   {
     ruTopic: 'Местоимения',
@@ -44,21 +52,30 @@ export const topics = [
     enTopic: 'Greetings',
   },
   {
-    ruTopic: 'Страны',
-    enTopic: 'Countries',
-  },
-  {
     ruTopic: 'Организации/Места',
     enTopic: 'Organizations',
+  },
+  {
+    ruTopic: 'Профессии',
+    enTopic: 'Professions',
   },
   {
     ruTopic: 'Числа',
     enTopic: 'Numbers',
   },
   {
+    ruTopic: 'Прилагательные',
+    enTopic: 'Adjectives',
+  },
+  {
+    ruTopic: 'Глаголы',
+    enTopic: 'Verbs',
+  },
+  {
     ruTopic: 'Разное',
     enTopic: 'Other',
   },
+
 ];
 
 export const vocabulary = [
@@ -159,6 +176,14 @@ export const vocabulary = [
     enTopic: ['Questions'],
   },
   {
+    word: 'מתי',
+    vocalization: 'מתי',
+    translation: 'Когда?',
+    transcription: 'матАй',
+    ruTopic: ['Вопросы'],
+    enTopic: ['Questions'],
+  },
+  {
     word: 'שרה',
     vocalization: 'שרה',
     translation: 'Сара',
@@ -231,6 +256,14 @@ export const vocabulary = [
     enTopic: ['Names'],
   },
   {
+    word: 'סימה',
+    vocalization: 'סימה',
+    translation: 'Сима',
+    transcription: 'Сима',
+    ruTopic: ['Имена'],
+    enTopic: ['Names'],
+  },
+  {
     word: 'אורי',
     vocalization: 'אורי',
     translation: 'Ури',
@@ -271,6 +304,14 @@ export const vocabulary = [
     enTopic: ['Names'],
   },
   {
+    word: 'ירושלים',
+    vocalization: 'ירושלים',
+    translation: 'Иерусалим',
+    transcription: 'ЕршалАим',
+    ruTopic: ['Города'],
+    enTopic: ['Cities'],
+  },
+  {
     word: 'טבריה',
     vocalization: 'טבריה',
     translation: 'Тверия',
@@ -279,18 +320,18 @@ export const vocabulary = [
     enTopic: ['Cities'],
   },
   {
-    word: 'תל-אביב',
-    vocalization: 'תל-אביב',
-    translation: 'Тель-Авив',
-    transcription: 'Тель-АвИв',
+    word: 'אילת',
+    vocalization: 'אילת',
+    translation: 'Эйлат',
+    transcription: 'Эйлат',
     ruTopic: ['Города'],
     enTopic: ['Cities'],
   },
   {
-    word: 'ירושלים',
-    vocalization: 'ירושלים',
-    translation: 'Иерусалим',
-    transcription: 'ЕршалАим',
+    word: 'תל-אביב',
+    vocalization: 'תל-אביב',
+    translation: 'Тель-Авив',
+    transcription: 'Тель-АвИв',
     ruTopic: ['Города'],
     enTopic: ['Cities'],
   },
@@ -328,7 +369,7 @@ export const vocabulary = [
   },
   {
     word: 'אוקראינה',
-    vocalization: '',
+    vocalization: 'אוקראינה',
     translation: 'Украина',
     transcription: 'УкраИнэ',
     ruTopic: ['Страны'],
@@ -365,6 +406,86 @@ export const vocabulary = [
     transcription: 'Иран',
     ruTopic: ['Страны'],
     enTopic: ['Countries'],
+  },
+  {
+    word: 'עברית',
+    vocalization: 'עברית',
+    translation: 'Иврит',
+    transcription: 'Иврит',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'רוסית',
+    vocalization: 'רוּסִית',
+    translation: 'Русский',
+    transcription: 'русИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'אנגלית',
+    vocalization: 'אַנגלִית',
+    translation: 'Английский',
+    transcription: 'англИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'צרפתית',
+    vocalization: 'צָרפָתִית',
+    translation: 'Испанский',
+    transcription: 'царфатИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'גרמנית',
+    vocalization: 'גֶרמָנִית',
+    translation: 'Немецкий',
+    transcription: 'германИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'ספרדימ',
+    vocalization: 'ספָרַדִית',
+    translation: 'Французский',
+    transcription: 'сфарадит',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'רומנית',
+    vocalization: 'רומנית',
+    translation: 'Румынский',
+    transcription: 'романит',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'ערבית',
+    vocalization: 'ערבית',
+    translation: 'Арабский',
+    transcription: 'арвИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'אמהרית',
+    vocalization: 'אמהרית',
+    translation: 'Амхарский',
+    transcription: 'ам(х)арИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
+  },
+  {
+    word: 'יפנית',
+    vocalization: 'יפנית',
+    translation: 'Японский',
+    transcription: 'яфанИт',
+    ruTopic: ['Языки'],
+    enTopic: ['Languages'],
   },
   {
     word: 'בית',
@@ -499,8 +620,8 @@ export const vocabulary = [
     vocalization: 'מורה',
     translation: 'Учительница',
     transcription: 'морА',
-    ruTopic: ['Учеба'],
-    enTopic: ['Study'],
+    ruTopic: ['Учеба', 'Профессии'],
+    enTopic: ['Study', 'Professions' ],
   },
   {
     word: 'לומד',
@@ -519,10 +640,10 @@ export const vocabulary = [
     enTopic: ['Study', 'Organizations/Places'],
   },
   {
-    word: 'כליתה',
-    vocalization: 'כליתה',
+    word: 'כיתה',
+    vocalization: 'כיתה',
     translation: 'Класс',
-    transcription: 'клитА',
+    transcription: 'китА',
     ruTopic: ['Учеба'],
     enTopic: ['Study'],
   },
@@ -567,12 +688,189 @@ export const vocabulary = [
     enTopic: ['Organizations/Places'],
   },
   {
+    word: 'מפעל',
+    vocalization: 'מפעל',
+    translation: 'Завод',
+    transcription: 'мифАль',
+    ruTopic: ['Организации/Места'],
+    enTopic: ['Organizations/Places'],
+  },
+  {
+    word: 'חנות',
+    vocalization: 'חנות',
+    translation: 'Магазин',
+    transcription: 'ханУт',
+    ruTopic: ['Организации/Места'],
+    enTopic: ['Organizations/Places'],
+  },
+  {
+    word: 'פקיד',
+    vocalization: 'פָּקִיד',
+    translation: 'Чиновник/служащий',
+    transcription: 'пакИд',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'רופא',
+    vocalization: 'רופא',
+    translation: 'Врач',
+    transcription: 'рофЭ',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'מוכרת',
+    vocalization: 'מוכרת',
+    translation: 'Продавщица',
+    transcription: 'мохэрЭт',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'מלצרית',
+    vocalization: 'מלצרית',
+    translation: 'Официантка',
+    transcription: 'мельцарИт',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'שומר',
+    vocalization: 'שומר',
+    translation: 'Охранник',
+    transcription: 'шомЭр',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'סופרת',
+    vocalization: 'סופרת',
+    translation: 'Писательница',
+    transcription: 'софЭрет',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'עיתונאי',
+    vocalization: 'עיתונאי',
+    translation: 'Журналист',
+    transcription: 'итонАи',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'מנהל',
+    vocalization: 'מנהל',
+    translation: 'Директор',
+    transcription: 'мэнаЭл',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'עבודה',
+    vocalization: 'עבודה',
+    translation: 'Работа',
+    transcription: 'аводА',
+    ruTopic: ['Профессии'],
+    enTopic: ['Professions'],
+  },
+  {
+    word: 'אפס',
+    vocalization: 'אֶפֶס',
+    translation: 'Ноль',
+    transcription: 'эфЭс',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'אחת',
+    vocalization: 'אַחַת',
+    translation: 'Один',
+    transcription: 'ахАт',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'שמיים',
+    vocalization: 'שְׁתַּיִים',
+    translation: 'Два',
+    transcription: 'штАйм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'שלוש',
+    vocalization: 'שָׁלוֹשׁ',
+    translation: 'Три',
+    transcription: 'шалОш',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'ארבע',
+    vocalization: 'אַרְבַּע',
+    translation: 'Четыре',
+    transcription: 'арбА',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'חמש',
+    vocalization: 'חָמֵשׁ',
+    translation: 'Пять',
+    transcription: 'хамЭш',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'שש',
+    vocalization: 'שֵׁשׁ',
+    translation: 'Шесть',
+    transcription: 'шеш',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'שבע',
+    vocalization: 'שֶׁבַע',
+    translation: 'Семь',
+    transcription: 'шэвА',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'שמונה',
+    vocalization: 'שְׁמוֹנֶה',
+    translation: 'Восемь',
+    transcription: 'шмони',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'תשע',
+    vocalization: 'תֵּשַׁע',
+    translation: 'Девять',
+    transcription: 'тэшА',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
+    word: 'עשר',
+    vocalization: 'עֶשֶׂר',
+    translation: 'Десять',
+    transcription: 'эсрЭ',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+  },
+  {
     word: 'אפס',
     vocalization: 'אפס',
     translation: 'Ноль',
     transcription: 'эфЭс',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 0,
   },
   {
     word: 'אחת',
@@ -581,6 +879,7 @@ export const vocabulary = [
     transcription: 'ахАт',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 1,
   },
   {
     word: 'שמיים',
@@ -589,6 +888,7 @@ export const vocabulary = [
     transcription: 'штАйм',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 2,
   },
   {
     word: 'שלוש',
@@ -597,6 +897,7 @@ export const vocabulary = [
     transcription: 'шалОш',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 3,
   },
   {
     word: 'ארבע',
@@ -605,6 +906,7 @@ export const vocabulary = [
     transcription: 'арбА',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 4,
   },
   {
     word: 'חמש',
@@ -613,6 +915,7 @@ export const vocabulary = [
     transcription: 'хамЭш',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 5,
   },
   {
     word: 'שש',
@@ -621,6 +924,7 @@ export const vocabulary = [
     transcription: 'шеш',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 6,
   },
   {
     word: 'שבע',
@@ -629,6 +933,7 @@ export const vocabulary = [
     transcription: 'шэвА',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 7,
   },
   {
     word: 'שמונה',
@@ -637,6 +942,7 @@ export const vocabulary = [
     transcription: 'шмони',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 8,
   },
   {
     word: 'תשע',
@@ -645,14 +951,169 @@ export const vocabulary = [
     transcription: 'тэшА',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 9,
   },
   {
     word: 'עשר',
-    vocalization: '',
+    vocalization: 'עשר',
     translation: 'Десять',
     transcription: 'эсрЭ',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
+    num: 10,
+},
+{
+  word: 'אחת עשרה',
+  vocalization: 'אַחַת עֶשׂרֵה',
+  translation: 'Одиннадцать',
+  transcription: 'ахАт эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 11,
+},
+{
+  word: 'שתיים עשרה',
+  vocalization: 'שְׁתֵיים עֶשׂרֵה',
+  translation: 'Двенадцать',
+  transcription: 'штэйм эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 12,
+},
+{
+  word: 'שלוש עשרה',
+  vocalization: 'שְׁלוֹשׁ עֶשׂרֵה',
+  translation: 'Тринадцать',
+  transcription: 'шлош эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 13,
+},
+{
+  word: 'ארבע עשרה',
+  vocalization: 'אַרְבַּע עֶשׂרֵה',
+  translation: 'Четырнадцать',
+  transcription: 'арбА эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 14,
+},
+{
+  word: 'חמש עשדה',
+  vocalization: 'חֲמֵשׁ עֶשׂרֵה',
+  translation: 'Пятнадцать',
+  transcription: 'хамЭш эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 15,
+},
+{
+  word: 'שש עשדה',
+  vocalization: 'שֵׁשׁ עֶשׂרֵה',
+  translation: 'Шестнадцать',
+  transcription: 'шеш эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 16,
+},
+{
+  word: 'שבע עשדה',
+  vocalization: 'שְׁבַע עֶשׂרֵה',
+  translation: 'Семнадцать',
+  transcription: 'шва эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 17,
+},
+{
+  word: 'שמונה עשדה',
+  vocalization: 'שְׁמוֹנֶה עֶשׂרֵה',
+  translation: 'Восемнадцать',
+  transcription: 'шмонЭ эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 18,
+},
+{
+  word: 'תשע עשרה',
+  vocalization: 'תְּשַׁע עֶשׂרֵה',
+  translation: 'Девятнадцать',
+  transcription: 'тша эсрЭ',
+  ruTopic: ['Числа'],
+  enTopic: ['Numbers'],
+  num: 19,
+},
+{
+    word: 'עשרים',
+    vocalization: 'עֶשְׂרִים',
+    translation: 'Двадцать',
+    transcription: 'эсрИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 20,
+},
+{
+    word: 'שלושים',
+    vocalization: 'שׁלוֹשִים',
+    translation: 'Тридцать',
+    transcription: 'шлошИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 30,
+}, 
+{
+    word: 'ארבעים',
+    vocalization: 'אַרְבָּעִים',
+    translation: 'Сорок',
+    transcription: 'арбаИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 40,
+},
+{
+    word: 'חמישים',
+    vocalization: 'חֲמִישִׁים',
+    translation: 'Пятьдесят',
+    transcription: 'хамишИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 50,
+},
+{
+    word: 'ששים',
+    vocalization: 'שִׁשִׁים',
+    translation: 'Шестьдесят',
+    transcription: 'шишИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 60,
+},
+{
+    word: 'שבעים',
+    vocalization: 'שִׁבְעִים',
+    translation: 'Семьдесят',
+    transcription: 'шивИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 70,
+},
+{
+    word: 'שמונים',
+    vocalization: 'שְׁמוֹנִים',
+    translation: 'Восемьдесят',
+    transcription: 'шмонИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 80,
+},
+{
+    word: 'משעים',
+    vocalization: 'תִּשְׁעים',
+    translation: 'Девяносто',
+    transcription: 'тишИм',
+    ruTopic: ['Числа'],
+    enTopic: ['Numbers'],
+    num: 90,
   },
   {
     word: 'מאה',
@@ -661,38 +1122,7 @@ export const vocabulary = [
     transcription: 'мЭа',
     ruTopic: ['Числа'],
     enTopic: ['Numbers'],
-  },
-  {
-    word: 'טלפון',
-    vocalization: 'טלפון',
-    translation: 'Телефон',
-    transcription: 'Тэлэфон',
-    ruTopic: ['Разное'],
-    enTopic: ['Other'],
-  },
-  {
-    word: 'עברית',
-    vocalization: 'עברית',
-    translation: 'Иврит',
-    transcription: 'Иврит',
-    ruTopic: ['Разное'],
-    enTopic: ['Other'],
-  },
-  {
-    word: 'קצת',
-    vocalization: 'קצת',
-    translation: 'Ненадолго',
-    transcription: 'Кцат',
-    ruTopic: ['Разное'],
-    enTopic: ['Other'],
-  },
-  {
-    word: 'גם',
-    vocalization: 'גם',
-    translation: 'Тоже',
-    transcription: 'гам',
-    ruTopic: ['Разное'],
-    enTopic: ['Other'],
+    num: 100,
   },
   {
     word: 'אני',
@@ -774,497 +1204,421 @@ export const vocabulary = [
     ruTopic: ['Местоимения'],
     enTopic: ['Pronouns'],
   },
-];
-
-export const decks = [
   {
-    name: 'Дни недели',
-    enName: 'Days of Week',
-    words: [
-      {
-        word: 'יום ראשון',
-        translation: 'Воскресенье (день первый)',
-        transcription: 'йом ришОн'
-      },
-      {
-        word: 'יום שני',
-        translation: 'Понедельник (день второй)',
-        transcription: 'йом шэнИ'
-      },
-      {
-        word: 'יום שלישי',
-        translation: 'Вторник (день третий)',
-        transcription: 'йом ШлишИ'
-      },
-      {
-        word: 'יום רביעי',
-        translation: 'Среда (день четвертый)',
-        transcription: 'йом рэвии'
-      },
-      {
-        word: 'יום חמישי',
-        translation: 'Четверг (день пятый)',
-        transcription: 'йом хамиши'
-      },
-      {
-        word: 'יום שישי',
-        translation: 'Пятница (день шестой)',
-        transcription: 'йом шишИ'
-      },
-      {
-        word: 'שבת',
-        translation: 'Суббота/шаббат',
-        transcription: 'шаббАт'
-      }
-    ]
+    word: 'טוב',
+    vocalization: 'טוב',
+    translation: 'Хороший',
+    transcription: 'тов',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Вопросы',
-    enName: 'Questions',
-    words: [
-      {
-        word: 'מה',
-        translation: 'Что?',
-        transcription: 'ма'
-      },
-      {
-        word: 'מי',
-        translation: 'Кто?',
-        transcription: 'ми'
-      },
-      {
-        word: 'מאין',
-        translation: 'Откуда?',
-        transcription: 'мэАйн'
-      },
-      {
-        word: 'איפה',
-        translation: 'Где?',
-        transcription: 'эйфо'
-      },
-      {
-        word: 'למה',
-        translation: 'Почему?',
-        transcription: 'ламА'
-      }
-    ]
+    word: 'זול',
+    vocalization: 'זול',
+    translation: 'Дешевый',
+    transcription: 'зол',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
+  },  
+  {
+    word: 'קטן',
+    vocalization: 'קטן',
+    translation: 'Маленький',
+    transcription: 'катАн',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Имена',
-    enName: 'Names',
-    words: [
-      {
-        word: 'שרה',
-        translation: 'Сара',
-        transcription: 'Сара'
-      },
-      {
-        word: 'יצחק',
-        translation: 'Ицхак',
-        transcription: 'ИцхАк'
-      },
-      {
-        word: 'רותי',
-        translation: 'Рути',
-        transcription: 'РУти'
-      },
-      {
-        word: 'יוסף',
-        translation: 'Иосеф',
-        transcription: 'ИОсеф'
-      }/*,
-      {
-        word: 'יוסי',
-        translation: 'Иоси',
-        transcription: 'ИОси'
-      }*/,
-      {
-        word: 'מרינה',
-        translation: 'Марина',
-        transcription: 'МарИна'
-      },
-      {
-        word: 'דינה',
-        translation: 'Дина',
-        transcription: 'ДИна'
-      },
-      {
-        word: 'דניאל',
-        translation: 'Даниэль',
-        transcription: 'Даниэль'
-      },
-      {
-        word: 'דורית',
-        translation: 'Дорит (ж.р.)',
-        transcription: 'Дорит'
-      },
-      {
-        word: 'מיכאל',
-        translation: 'Михаэль',
-        transcription: 'Михаэль'
-      },
-      {
-        word: 'אורי',
-        translation: 'Ури',
-        transcription: 'Ури'
-      },
-      {
-        word: 'רחל',
-        translation: 'Рахэль',
-        transcription: 'РахЭль'
-      },
-      {
-        word: 'ענת',
-        translation: 'Анат',
-        transcription: 'Анат'
-      },
-      {
-        word: 'גיון',
-        translation: 'Джон',
-        transcription: 'Джон'
-      },
-      {
-        word: 'בוריס',
-        translation: 'Борис',
-        transcription: 'Борис'
-      },
-    ]
+    word: 'יקר',
+    vocalization: 'יקר',
+    translation: 'Дорогой (денежно)',
+    transcription: 'йакАр',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Города',
-    enName: 'Cities',
-    words: [
-      {
-        word: 'טבריה',
-        translation: 'Тверия',
-        transcription: 'Тверия'
-      },
-      {
-        word: 'תל-אביב',
-        translation: 'Тель-Авив',
-        transcription: 'Тель-Авив'
-      },
-      {
-        word: 'ירושלים',
-        translation: 'Иерусалим',
-        transcription: 'Ершалаим'
-      },
-      {
-        word: 'חיפה',
-        translation: 'Хайфа',
-        transcription: 'Хайфа'
-      }
-    ]
+    word: 'גדול',
+    vocalization: 'גדול',
+    translation: 'Большой',
+    transcription: 'гадОль',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Страны',
-    enName: 'Countries',
-    words: [
-      {
-        word: 'ספרד',
-        translation: 'Испания',
-        transcription: 'ШпАнье'
-      },
-      {
-        word: 'אנגליה',
-        translation: 'Англия',
-        transcription: 'Эйнгланд'
-      },      {
-        word: 'רוסיה',
-        translation: 'Россия',
-        transcription: 'РУссиа'
-      },
-      {
-        word: 'אוקראינה',
-        translation: 'Украина',
-        transcription: 'УкраИнэ'
-      },
-      {
-        word: 'צרפת',
-        translation: 'Франция',
-        transcription: 'ФрАнкрайх'
-      },
-      {
-        word: 'ישראל',
-        translation: 'Израиль',
-        transcription: 'ИзрОэл'
-      },
-      {
-        word: 'עיראק',
-        translation: 'Ирак',
-        transcription: 'Ирак'
-      },
-      {
-        word: 'איראן',
-        translation: 'Иран',
-        transcription: 'Иран'
-      },
-    ]
+    word: 'יפה',
+    vocalization: 'יפה',
+    translation: 'Красивый',
+    transcription: 'йафЭ',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Адрес',
-    enName: 'Adress',
-    words: [
-      {
-        word: 'בית',
-        translation: 'Дом',
-        transcription: 'бАйт'
-      },
-      {
-        word: 'רחוב',
-        translation: 'Улица',
-        transcription: 'рэхОв'
-      },
-      {
-        word: 'דירה',
-        translation: 'Квартира',
-        transcription: 'дирА'
-      },
-      {
-        word: 'מספר',
-        translation: 'Номер',
-        transcription: 'миспАр'
-      }
-    ]
+    word: 'חשוב',
+    vocalization: 'חשוב',
+    translation: 'Важный',
+    transcription: 'хашУв',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Приветствия',
-    enName: 'Greetings',
-    words: [
-      {
-        word: 'יוֹם טוֹב',
-        translation: 'Хорошего дня',
-        transcription: 'йом тов'
-      },
-      {
-        word: 'בּוֹקֶר טוֹב',
-        translation: 'Хорошего утра',
-        transcription: 'бОкер тов'
-      },
-      {
-        word: 'עֶרֶב טוֹב',
-        translation: 'Хорошего вечера',
-        transcription: 'Эрев тов'
-      },
-      {
-        word: 'לַילָה טוֹב',
-        translation: 'Хорошей ночи',
-        transcription: 'лАйла тов'
-      },
-      {
-        word: 'סליחה',
-        translation: 'Извините',
-        transcription: 'слихА'
-      },
-      {
-        word: 'תודה רבה',
-        translation: 'Большое спасибо',
-        transcription: 'тодА рабА'
-      },
-      {
-        word: 'בבקשה',
-        translation: 'Пожалуйста',
-        transcription: 'бевакашА'
-      },
-      {
-        word: 'בְּהַצלָחָה',
-        translation: 'Успеха',
-        transcription: 'бе(h)ацлаха'
-      },
-    ]
+    word: 'מעניין',
+    vocalization: 'מעניין',
+    translation: 'Интересный',
+    transcription: 'мэанИн',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Учеба',
-    enName: 'Study',
-    words: [
-      {
-        word: 'אולפן',
-        translation: 'Ульпан',
-        transcription: 'ульпАн'
-      },
-      {
-        word: 'אוניברסיטה',
-        translation: 'Университет',
-        transcription: 'унивенситА'
-      },
-      {
-        word: 'תלמיד',
-        translation: 'Ученик',
-        transcription: 'талмИд'
-      },
-      {
-        word: 'סטודנט',
-        translation: 'Студент',
-        transcription: 'студЭнт'
-      },
-      {
-        word: '',
-        translation: 'Учительница',
-        transcription: 'морА'
-      },
-      {
-        word: 'לומד',
-        translation: 'Учиться',
-        transcription: 'ломЭд'
-      },
-      {
-        word: 'בית-ספר',
-        translation: 'Школа (дом книги)',
-        transcription: 'бЕйт сэфЭр'
-      },
-      {
-        word: 'כליתה',
-        translation: 'Класс',
-        transcription: 'клитА'
-      }
-    ]
+    word: 'נחמד',
+    vocalization: 'נחמד',
+    translation: 'Милый',
+    transcription: 'нэхмАд',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Организации',
-    enName: 'Organizations',
-    words: [
-      {
-        word: 'אולפן',
-        translation: 'Ульпан',
-        transcription: 'ульпАн'
-      },
-      {
-        word: 'אוניברסיטה',
-        translation: 'Университет',
-        transcription: 'унивенситА'
-      },
-      {
-        word: 'משטרה',
-        translation: 'Полиция',
-        transcription: 'миштарА'
-      },
-      {
-        word: 'בנק',
-        translation: 'Банк',
-        transcription: 'банк'
-      },
-      {
-        word: '',
-        translation: 'Кафе',
-        transcription: 'кафе'
-      },
-      {
-        word: 'ספרייה',
-        translation: 'Библиотека',
-        transcription: 'сфирИя'
-      },
-      {
-        word: 'מסעדה',
-        translation: 'Ресторан',
-        transcription: 'мисадА'
-      },
-      {
-        word: 'בית-ספר',
-        translation: 'Школа (дом книги)',
-        transcription: 'бЕйт сэфЭр'
-      },/*,
-      {
-        word: 'מגן דוד אדום',
-        translation: 'Скорая помощь',
-        transcription: ''
-      },
-      {
-        word: 'מכבי אש',
-        translation: 'Пожарная',
-        transcription: 'ЛомЭд'
-      }*/
-    ]
+    word: 'קצר',
+    vocalization: 'קצר',
+    translation: 'Короткий',
+    transcription: 'кацАр',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Числа',
-    enName: 'Numbers',
-    words: [
-      {
-        word: 'אפס',
-        translation: 'Ноль',
-        transcription: 'эфЭс'
-      },
-      {
-        word: 'אחת',
-        translation: 'Один',
-        transcription: 'ахАт'
-      },
-      {
-        word: 'שתיימ',
-        translation: 'Два',
-        transcription: 'штАйм'
-      },
-      {
-        word: 'שלוש',
-        translation: 'Три',
-        transcription: 'шалОш'
-      },
-      {
-        word: 'ארבע',
-        translation: 'Четыре',
-        transcription: 'арбА'
-      },
-      {
-        word: 'חמש',
-        translation: 'Пять',
-        transcription: 'хамЭш'
-      },
-      {
-        word: 'שש',
-        translation: 'Шесть',
-        transcription: 'шеш'
-      },
-      {
-        word: 'שבע',
-        translation: 'Семь',
-        transcription: 'шэвА'
-      },
-      {
-        word: 'שמונה',
-        translation: 'Восемь',
-        transcription: 'шмони'
-      },
-      {
-        word: 'תשע',
-        translation: 'Девять',
-        transcription: 'тэшА'
-      },
-      {
-        word: 'עשר',
-        translation: 'Десять',
-        transcription: 'эсрЭ'
-      },
-      {
-        word: 'מאה',
-        translation: 'Сто',
-        transcription: 'мЭа'
-      }
-    ]
+    word: 'ארוך',
+    vocalization: 'ארוך',
+    translation: 'Длинный',
+    transcription: 'арОх',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
   },
   {
-    name: 'Разное',
-    enName: 'Any other staff',
-    words: [
-      {
-        word: 'טלפון',
-        translation: 'Телефон',
-        transcription: 'Тэлэфон'
-      },
-      {
-        word: 'עברית',
-        translation: 'Иврит',
-        transcription: 'Иврит'
-      },
-      {
-        word: 'קצת',
-        translation: 'Ненадолго',
-        transcription: 'Кцат'
-      },
-      {
-        word: 'גם',
-        translation: 'Тоже',
-        transcription: 'гам'
-      },
-    ]
+    word: 'קל',
+    vocalization: 'קל',
+    translation: 'Легкий',
+    transcription: 'кал',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
+  },
+  {
+    word: 'מפורסם',
+    vocalization: 'מפורסם',
+    translation: 'Известный',
+    transcription: 'мэфурсАм',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
+  },
+  {
+    word: 'מעניין',
+    vocalization: 'מעניין',
+    translation: 'Интересный',
+    transcription: 'маниЭн',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
+  },
+  {
+    word: 'קשה',
+    vocalization: 'קשה',
+    translation: 'Трудный',
+    transcription: 'кашЭ',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
+  },
+  {
+    word: 'חדש',
+    vocalization: 'חדש',
+    translation: 'Новый',
+    transcription: 'хадАш',
+    ruTopic: ['Прилагательные'],
+    enTopic: ['Adjectives'],
+  },
+  {
+    word: 'לוֹמֵד',
+    vocalization: 'לוֹמֵד',
+    translation: '(он) учится',
+    transcription: 'ломЭд',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'עובד',
+    vocalization: 'עוֹבֵד',
+    translation: '(он) работает',
+    transcription: 'овЭд',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'מדבר',
+    vocalization: 'צדבר',
+    translation: '(он) говорит',
+    transcription: 'медабЭр',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'מצטער',
+    vocalization: 'מצטער',
+    translation: '(он) огорчается',
+    transcription: 'мицтаЭр',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'יודע',
+    vocalization: 'יודע',
+    translation: '(он) знает',
+    transcription: 'йодЭ',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'מבין',
+    vocalization: 'מבין',
+    translation: '(он) понимает',
+    transcription: 'мавИн',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'כותב',
+    vocalization: 'כותב',
+    translation: '(он) пишет',
+    transcription: 'котЭв',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'קורא',
+    vocalization: 'קורא',
+    translation: '(он) читает',
+    transcription: 'корЭ',
+    ruTopic: ['Глаголы'],
+    enTopic: ['Verbs'],
+  },
+  {
+    word: 'מטייל',
+    vocalization: 'מטייל',
+    translation: '(он) гуляет/путешествует',
+    transcription: 'митайЭл',
+    ruTopic: ['Глаголы', 'Путешествия'],
+    enTopic: ['Verbs', 'Travel'],
+  },
+  {
+    word: 'תייר',
+    vocalization: 'תייר',
+    translation: 'Турист',
+    transcription: 'таЯр',
+    ruTopic: ['Путешествия'],
+    enTopic: ['Travel'],
+  },
+  {
+    word: 'טלפון',
+    vocalization: 'טלפון',
+    translation: 'Телефон',
+    transcription: 'Тэлэфон',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'עולה חדש',
+    vocalization: 'עולה חדש',
+    translation: 'Новый репатриант',
+    transcription: 'олЕ хадАш',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'קצת',
+    vocalization: 'קצת',
+    translation: 'Ненадолго',
+    transcription: 'Кцат',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'גם',
+    vocalization: 'גם',
+    translation: 'Тоже',
+    transcription: 'гам',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'בן',
+    vocalization: 'בן',
+    translation: 'Да',
+    transcription: 'кен',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'לא',
+    vocalization: 'לא',
+    translation: 'нет',
+    transcription: 'лЁ',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'נכון',
+    vocalization: 'נכון',
+    translation: 'Верно',
+    transcription: 'нахОн',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'שולחן',
+    vocalization: 'שולחן',
+    translation: 'Стол',
+    transcription: 'шулхАн',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'תמןנה',
+    vocalization: 'תמונה',
+    translation: 'Картина',
+    transcription: 'тмунА',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'עט',
+    vocalization: 'עט',
+    translation: 'Ручка',
+    transcription: 'эт',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'עיתון',
+    vocalization: 'עימון',
+    translation: 'Газета',
+    transcription: 'итон',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'סיפור',
+    vocalization: 'סיפור',
+    translation: 'История',
+    transcription: 'сипОр',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'ספר',
+    vocalization: 'ספר',
+    translation: 'Книга',
+    transcription: 'сэфЭр',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'מכתב',
+    vocalization: 'תכתב',
+    translation: 'Письмо',
+    transcription: 'миктАв',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'תיק',
+    vocalization: 'תיק',
+    translation: 'Сумка',
+    transcription: 'тик',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'שאלה',
+    vocalization: 'שאלה',
+    translation: 'Вопрос',
+    transcription: 'шЭЭла',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'מחשב',
+    vocalization: 'מחשב',
+    translation: 'Мысль',
+    transcription: 'махашЭв',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'מחשב',
+    vocalization: 'מחשב',
+    translation: 'Компьютер',
+    transcription: 'махшЕв',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'מאוד',
+    vocalization: 'מאוד',
+    translation: 'Очень',
+    transcription: 'мэОд',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'נעים',
+    vocalization: 'נעים',
+    translation: 'Приятно',
+    transcription: 'нАйм',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'בחורה',
+    vocalization: 'בחורה',
+    translation: 'Девушка',
+    transcription: 'бахурА',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'בחור',
+    vocalization: 'בחור',
+    translation: 'Парень',
+    transcription: 'бахУр',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  
+  {
+    word: 'חופש',
+    vocalization: 'חופש',
+    translation: 'Отпуск',
+    transcription: 'хофЭш',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'רק',
+    vocalization: 'רק',
+    translation: 'Только',
+    transcription: 'рак',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'עכשיב',
+    vocalization: 'עכשיב',
+    translation: 'Сейчас',
+    transcription: 'ахшИв',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
+  },
+  {
+    word: 'הדיאלוג',
+    vocalization: 'הדיאלוג',
+    translation: 'Диалог',
+    transcription: 'диалог',
+    ruTopic: ['Разное'],
+    enTopic: ['Other'],
   },
 ];

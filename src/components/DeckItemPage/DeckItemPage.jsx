@@ -24,22 +24,18 @@ function DeckItemPage() {
     let aaa;
     if (currentDeck !== null) {
       aaa = vocabulary.filter(item => item.ruTopic.includes(currentDeck.ruTopic));
-      aaa.forEach(item => item.number = Math.floor(Math.random() * 10) + 1);
-      aaa.sort(function (a, b) {
-        return a.number - b.number;
-      });
-      //console.log(aaa);
       setWords(aaa);
     }
   }, [currentDeck])
 
-  useEffect(()=> {
-    console.log(words)
-  }, [words])
-
   function handleClick() {
     dispatch(removeCurrentDeck());
     navigate(`/`);
+  }
+
+  function handleTraunNumbersClick() {
+    dispatch(removeCurrentDeck());
+    navigate(`/numbers`);
   }
 
   function handleCloseModesClick() {
@@ -75,7 +71,13 @@ function DeckItemPage() {
               <p className="deckItem__text">На главную</p>
             </div>
           </div>
-            {wordsAreVisible && currentDeck !== null && words.length !== 0 && 
+          {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
+          <div className="decks__button-container">
+            <button className="deckItem__button" onClick={handleTraunNumbersClick}>
+              Тренировать числа
+            </button>
+          </div>}
+          {wordsAreVisible && currentDeck !== null && words.length !== 0 && 
             <div className="deckItem__words">
               {words.map((item, i) => (
                 <WordCard key={i} item={item} cardsAreVisible={cardsAreVisible}/>))

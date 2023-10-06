@@ -37,7 +37,7 @@
 }
 
 .deckItem__words {
-  padding: 60px 0px 70px 0px;
+  padding: 70px 0px 70px 0px;
   justify-content: space-between;
   position: relative;
   display: flex;
@@ -46,13 +46,14 @@
   flex-wrap: wrap;
 }
 
-.deckItem__title-container {
+.deckItem__title-container1 {
   justify-content: space-between;
   position: relative;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   max-width: 1040px;
   flex-wrap: wrap;
+  margin-bottom: 40px;
 }
 
 .deckItem__arrow-container {

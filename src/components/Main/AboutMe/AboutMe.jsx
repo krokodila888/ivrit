@@ -13,7 +13,6 @@ function AboutMe() {
   const { currentDeck } = useSelector(state => state.currentDeckReducer);
 
   function setDeck(item) {
-    console.log(item);
     dispatch(setCurrentDeck(item));
     navigate(`/topics/${item.enTopic}`);
   };

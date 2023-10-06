@@ -16,6 +16,7 @@ function CardsHolder(props) {
   const [repeatingForm, setMeaning] = useState({ word: '' });
   const [repeatedWords, setRepeatedWords] = useState([]);
   const [wordsToRepeat, setWordsToRepeat] = useState([]);
+  const [hintIsVisible, setHintIsVisible] = useState(false);
   const repeatingInput = document.getElementById('cardsHolderRepeatingInput');
 
   function startRepeating() {
@@ -23,24 +24,38 @@ function CardsHolder(props) {
     setCurrentWord(wordsToRepeat[0]);
   }
 
+  function setText(item) {
+    if (hintIsVisible) return `${item.transcription}`; else return 'Подсказка'
+  }
+
   useEffect(()=> {
-    if (words && words.length !== 0) 
-    setWordsToRepeat(words);
+    if (words && words.length !== 0) {
+      let aaa = words;
+      aaa.forEach(item => item.number = Math.floor(Math.random() * 10) + 1);
+      aaa.sort(function (a, b) {
+        return a.number - b.number;
+      });
+      setWordsToRepeat(aaa);
+    }    
   }, [words])
 
   useEffect(()=> {
     if (words && words.length !== 0 && wordsToRepeat && wordsToRepeat.length === words.length) 
     startRepeating();
-    console.log('start');
+    //console.log('start');
   }, [wordsToRepeat])
 
-  useEffect(()=> {
+  /*useEffect(()=> {
     console.log(currentWord)
-  }, [currentWord])
+  }, [currentWord])*/
 
   useEffect(()=> {
     console.log(wordsToRepeat)
   }, [wordsToRepeat])
+
+  function showHint() {
+    setHintIsVisible(true);
+  }
 
   function showTranslation() {
     setShowWord(true);
@@ -51,6 +66,7 @@ function CardsHolder(props) {
   };
 
   function stopRepeating() {
+    setHintIsVisible(false);
     setRepeatMode(false);
     setShowWord(false);
     setIsCorrect(false);
@@ -62,15 +78,21 @@ function CardsHolder(props) {
     setShowWord(false);
     setIsCorrect(false);
     setWordsToRepeat(words);
+    setHintIsVisible(false);
   }
 
   function word() {
     if (currentWord && currentWord !== null) {
     return (
     <>
-      <p className="cardsHolder__title">
-        {currentWord.translation}
-      </p>
+      <div className="cardsHolder__title-raw">
+        <p className="cardsHolder__title">
+          {currentWord.translation}
+        </p>
+        <p className="cardsHolder__hint" onClick={showHint}>
+          {setText(currentWord)}
+        </p>
+      </div>
       {showWord && 
       <>
         <p className="cardsHolder__title">
@@ -84,7 +106,7 @@ function CardsHolder(props) {
       </>}
     </>)}
   }
-
+  
   useEffect(()=> {
     if (repeatingInput && (currentWord.word === repeatingForm.word)) 
     {setIsCorrect(true);
@@ -98,11 +120,12 @@ function CardsHolder(props) {
     setRepeatedWords([...repeatedWords, currentWord]);
     setShowWord(false);
     setIsCorrect(false);
+    setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
     repeatingInput.classList.remove('cardsHolder__input_active');
     if (wordsToRepeat.length > 1) {setCurrentWord(wordsToRepeat[1]); 
     setWordsToRepeat(wordsToRepeat.slice(1));}
-    else {setCurrentWord({word: 'Правда все.', translation: 'Вы повторили все!'})}
+    else {setCurrentWord({word: 'Правда все.', translation: 'Вы повторили все!', transcription: 'Вы можете начать с начала'})}
   }
 
   return (
@@ -123,9 +146,9 @@ function CardsHolder(props) {
           required
           className='cardsHolder__input'
           autoComplete="off"
-          autocorrect="off" 
-          autocapitalize="off" 
-          spellcheck="false" />
+          autoCorrect="off" 
+          autoCapitalize="off" 
+          spellCheck="false" />
         <div className='cardsHolder__button-block'>
           <button 
             className='cardsHolder__button'

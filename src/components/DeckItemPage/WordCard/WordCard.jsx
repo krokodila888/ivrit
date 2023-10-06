@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import around from '../../../images/around.png';
 import './WordCard.css';
@@ -9,10 +9,6 @@ function WordCard(props) {
 
   const [hintIsVisible, setHintIsVisible] = useState(false);
   const [backIsVisible, setBackIsVisible] = useState(false);
-
-  useEffect(()=> {
-    console.log(cardsAreVisible)
-  }, [])
 
   function handleClick() {
     setHintIsVisible(!hintIsVisible);
