@@ -25,6 +25,9 @@ function DeckItemPage() {
     if (currentDeck !== null) {
       aaa = vocabulary.filter(item => item.ruTopic.includes(currentDeck.ruTopic));
       setWords(aaa);
+    };
+    if (currentDeck !== null && currentDeck.ruTopic === 'Все') {
+      setWords(vocabulary);
     }
   }, [currentDeck])
 
@@ -82,7 +85,8 @@ function DeckItemPage() {
               {words.map((item, i) => (
                 <WordCard key={i} item={item} cardsAreVisible={cardsAreVisible}/>))
               }
-            </div>}
+            </div>
+          }
           {!wordsAreVisible && repeatMode &&
             <CardsHolder words={words} handleCloseModesClick={handleCloseModesClick} />
           }
