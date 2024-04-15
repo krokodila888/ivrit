@@ -1,0 +1,142 @@
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 50px 48px 24px;
+  margin: 0 auto;
+  background-color: rgb(210 210 210);
+  border-top: 1px solid grey;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+@media screen and (max-width: 600px) {
+
+  .footer {
+    padding: 30px 14px;
+  }
+}
+
+.footer-wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 1040px;
+  list-style: none;
+  margin: 0;
+  flex-wrap: wrap;
+  gap: 200px;
+  padding: 0;
+}
+
+@media screen and (max-width: 1030px) {
+
+  .footer-wrap {
+    gap: 100px;
+  }
+}
+
+@media screen and (max-width: 780px) {
+
+  .footer-wrap {
+    gap: 50px;
+  }
+}
+
+@media screen and (max-width: 550px) {
+
+  .footer-wrap {
+    gap: 20px;
+  }
+}
+
+@media screen and (max-width: 460px) {
+
+  .footer-wrap {
+    flex-direction: column;
+  }
+}
+
+.footer__link {
+  line-height: 38px;
+  font-size: 36px;
+  font-weight: 400;
+  margin: 0;
+  min-width: 220px;
+}
+
+.footer__link-text {
+  cursor: pointer;
+  text-decoration: none;
+  list-style: none;
+  color: #fff;
+  display: flex;
+  padding-bottom: 20px;
+  transition: transform 0.5s ease-in-out;
+  align-items: center;
+}
+
+@media screen and (max-width: 960px) {
+
+  .footer-link-text {
+    font-size: 22px;
+    line-height: 26px;
+  }
+}
+
+@media screen and (max-width: 710px) {
+
+  .footer__link-text {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+@media screen and (max-width: 510px) {
+
+  .footer__link-text {
+    display: flex;
+    flex-direction: row;
+  }
+}
+
+@media screen and (max-width: 710px) {
+
+  .footer__link-text img {
+    padding-right: 0;
+  }
+}
+
+@media screen and (max-width: 510px) {
+
+  .footer__link-text img {
+    padding-right: 10px;
+  }
+}
+
+.footer__link:hover .footer__link-text {
+  transform: scale(1.05);
+  overflow: hidden;
+  opacity: 0.5;
+}
+
+/*.footer__link:hover .footer__link-text::after {
+  animation: countdown 2s linear 1 forwards;
+}*/
+
+@media screen and (max-width: 960px) {
+
+  .footer__link {
+    line-height: 36px;
+    font-size: 22px;
+  }
+}
+
+.footer__social-icon {
+  width: 56px;
+  height: 56px;
+  padding-right: 20px;
+  align-self: center;
+  box-sizing: content-box;
+}

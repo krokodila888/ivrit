@@ -1,0 +1,145 @@
+@import url(../../../vendor/Railroad/stylesheet.css);
+
+@keyframes rotate {
+
+  from {
+    transform: rotateX(0deg);
+  }
+
+  to {
+    transform: rotateX(180deg);
+  }
+}
+
+.wordCard {
+  background-color: #ebecde;
+  border-radius: 20px;
+  justify-content: center;
+  border: 0.5px solid rgb(239 239 239);
+  min-width: 160px;
+  min-height: 80px;
+  flex-wrap: wrap;
+  padding: 20px;
+  /*margin-bottom: 30px;*/
+  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  max-width: 280px;
+}
+
+.word {
+  font-family: Inter, sans-serif;
+  line-height: 40px;
+  margin: 0;
+  padding-bottom: 26px;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgb(67 67 67);
+  text-align: center;
+}
+
+.text {
+  font-family: Inter, sans-serif;
+  line-height: 20px;
+  margin: 0;
+  padding-bottom: 6px;
+  padding-top: 6px;
+  font-weight: 500;
+  font-size: 15px;
+  color: rgb(153 148 148);
+  text-align: center;
+}
+
+.text:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 0.5s;
+}
+
+.translation {
+  background-color: white;
+  line-height: 40px;
+  border-radius: 10px;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 0 3px;
+}
+
+.translation1 {
+  background-color: white;
+  line-height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.translation2:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.word__backside {
+  font-family: Inter, sans-serif;
+  line-height: 30px;
+  margin: 0;
+  padding-bottom: 26px;
+  padding-top: 16px;
+  font-weight: 600;
+  font-size: 38px;
+  color: rgb(67 67 67);
+  text-align: center;
+}
+
+.wordCard__img {
+  width: 60px;
+  height: 60px;
+  margin: 0 auto;
+}
+
+.wordCard__img:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+
+@media screen and (max-width: 490px) {
+
+  .word {
+    line-height: 20px;
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+
+  .word {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+
+  .translation {
+    font-size: 14px;
+    line-height: 26px;
+    margin: 6px 0;
+  }
+}
+
+@media screen and (max-width: 490px) {
+
+  .wordCard {
+    min-width: 120px;
+  }
+}
+
+@media screen and (max-width: 390px) {
+
+  .wordCard {
+    max-width: 120px;
+    padding: 6px;
+    margin: 3px;
+  }
+}
