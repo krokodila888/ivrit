@@ -21,26 +21,19 @@ function App() {
   useEffect(()=> {
     let aa;
     let aaa;
-    //console.log(window.location.pathname.slice(8));
     const adress = window.location.pathname.slice(8);
     const firstPos = adress.indexOf('/');
-    /*console.log(firstPos);
-    console.log(window.location.pathname.slice(9 + firstPos));
-    console.log(window.location.pathname.substr(8, firstPos));*/
     if (firstPos !== -1) {
       aa = topics.filter(item => item.enTopic === window.location.pathname.substr(8, firstPos));
       aaa = verbs.filter(item => item.enTranslation === window.location.pathname.slice(9 + firstPos));
-      //console.log(aaa);
     }
     else {
       aa = topics.filter(item => item.enTopic === window.location.pathname.slice(8));
     };
-    //console.log(aa);
     if (aa !== undefined && aa) {
       dispatch(setCurrentDeck(aa[0]));
     };
     if (aaa !== undefined && aaa) {
-      //console.log(aaa[0]);
       dispatch(setCurrentWord(aaa[0]));
     };
     if (aa && aaa && aa.length !== 0 && aaa.length === 0) {
