@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import './CardsHolder.css';
 import { useSelector, useDispatch } from 'react-redux';
 import arrow from '../../../images/arrow2.png';
-import arrow1 from '../../../images/repeat.svg';
+import arrow1 from '../../../images/repeat.png';
 
 function CardsHolder(props) {
 
