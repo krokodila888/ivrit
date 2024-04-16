@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import around from '../../../images/around.png';
+import around from '../../images/around.png';
 import './WordCard.css';
-import { setCurrentWord} from '../../../services/actions/currentDeck.js';
+import { setCurrentWord} from '../../services/actions/currentDeck.js';
 
 function WordCard(props) {
 

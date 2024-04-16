@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Header from '../Header/Header.jsx';
-import Footer from '../Footer/Footer.jsx';
+import Header from '../../components/Header/Header.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
+import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx";
+import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx"; 
 import './NumbersTrainPage.css';
 import { vocabulary } from "../../utils/constants.js";
 import arrow from '../../images/arrow2.png';
 import { removeCurrentDeck, setCurrentDeck } from '../../services/actions/currentDeck.js';
-import TitleContainer from "../TitleContainer/TitleContainer.jsx"; 
+
 
 function NumbersTrainPage() {
 
@@ -184,51 +186,40 @@ function NumbersTrainPage() {
       <Header />
       <main className="numbersTraining__content">
         <div className="numbersTraining__section">
-        <TitleContainer 
+          <TitleContainer 
             handleClick={handleClick}
           />
-        <div className='cardsHolder__form'>
-          <div>
-            {word()}
+          <div className='cardsHolder__form'>
+            <div>
+              {word()}
+            </div>
+            <input 
+              placeholder="Место для слова" 
+              value={repeatingForm.word} 
+              id='cardsHolderRepeatingNumInput'
+              type="text"
+              name="word" 
+              onChange={onRepeatChange}
+              required
+              className='cardsHolder__input'
+              autoComplete="off"
+              autoCorrect="off" 
+              autoCapitalize="off" 
+              spellCheck="false" />
+            <div className='cardsHolder__button-block'>
+              <button 
+                className='cardsHolder__button'
+                onClick={showTranslation}>
+                  Показать ответ
+              </button>
+              <button 
+                className='cardsHolder__button'
+                onClick={nextWord1}>
+                  Следующее число
+              </button>
+            </div>
           </div>
-          <input 
-            placeholder="Место для слова" 
-            value={repeatingForm.word} 
-            id='cardsHolderRepeatingNumInput'
-            type="text"
-            name="word" 
-            onChange={onRepeatChange}
-            required
-            className='cardsHolder__input'
-            autoComplete="off"
-            autoCorrect="off" 
-            autoCapitalize="off" 
-            spellCheck="false" />
-          <div className='cardsHolder__button-block'>
-            <button 
-              className='cardsHolder__button'
-              onClick={showTranslation}>
-                Показать ответ
-            </button>
-            <button 
-              className='cardsHolder__button'
-              onClick={nextWord1}>
-                Следующее число
-            </button>
-          </div>
-        </div>
-        <div 
-          className="deckItem__arrow-container" 
-          onClick={handleCloseModesClick}>
-          <img 
-            src={arrow} 
-            alt="Стрелка назад" 
-            className='deckItem__arrow'
-          />
-          <p className="numbersTraining__text">
-            Назад к теме
-          </p>
-        </div>
+          <BackToTopic handleCloseModesClick={handleCloseModesClick} />
         </div>
       </main>
       <Footer />

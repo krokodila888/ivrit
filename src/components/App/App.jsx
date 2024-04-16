@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
-import Main from '../Main/Main.jsx';
-import PageNotFound from '../PageNotFound/PageNotFound.jsx';
-import DeckItemPage from '../DeckItemPage/DeckItemPage.jsx';
-import WordItemPage from '../WordItemPage/WordItemPage.jsx';
-import NumbersTrainPage from '../NumbersTrainPage/NumbersTrainPage.jsx';
+import Main from '../../pages/Main/Main.jsx';
+import PageNotFound from '../../pages/PageNotFound/PageNotFound.jsx';
+import DeckItemPage from '../../pages/DeckItemPage/DeckItemPage.jsx';
+import WordItemPage from '../../pages/WordItemPage/WordItemPage.jsx';
+import NumbersTrainPage from '../../pages/NumbersTrainPage/NumbersTrainPage.jsx';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import Header from '../Header/Header.jsx';
-import Footer from '../Footer/Footer.jsx';
+import Header from '../../components/Header/Header.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import photo from '../../images/photo1.jpg';
-import { topics, topicsForRender, partsOfSpeach } from '../../utils/constants';
+import { topics, topicsForRender, partsOfSpeach } from '../../utils/constants.js';
 import { setCurrentDeck } from '../../services/actions/currentDeck.js';
 import './Main.css';
 

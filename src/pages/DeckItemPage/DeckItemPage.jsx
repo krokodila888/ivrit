@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header/Header.jsx';
-import Footer from '../Footer/Footer.jsx';
-import CardsHolder from './CardsHolder/CardsHolder.jsx';
+import Header from '../../components/Header/Header.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
+import CardsHolder from '../../components/CardsHolder/CardsHolder.jsx';
+import PageNotFound from '../../pages/PageNotFound/PageNotFound.jsx';
+import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx"; 
+import WordCard from '../../components/WordCard/WordCard.jsx';
+import SearchingForm from "../../components/SearchingForm/SearchingForm.jsx";
+import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
 import './DeckItemPage.css';
-import WordCard from './WordCard/WordCard.jsx';
 import { vocabulary } from "../../utils/constants.js";
-import arrow from '../../images/arrow2.png';
-import magnifier from '../../images/magn.png';
 import { removeCurrentDeck } from '../../services/actions/currentDeck.js';
-import PageNotFound from '../PageNotFound/PageNotFound.jsx';
-import TitleContainer from "../TitleContainer/TitleContainer.jsx"; 
 
 function DeckItemPage() {
 
@@ -89,7 +89,7 @@ function DeckItemPage() {
     navigate(`/`);
   }
 
-  function handleTraunNumbersClick() {
+  function handleTrainNumbersClick() {
     dispatch(removeCurrentDeck());
     navigate(`/numbers`);
   }
@@ -119,33 +119,27 @@ function DeckItemPage() {
           />
           {wordsAreVisible && !cardsAreVisible &&
           <div className="decks__button-container">
-            <button className="deckItem__train-button" onClick={handleCardsModeClick}>
+            <button 
+              className="deckItem__train-button" 
+              onClick={handleCardsModeClick}>
               Учить карточки
               </button>
-            <button className="deckItem__train-button" onClick={handleRepeatModeClick}>
+            <button 
+              className="deckItem__train-button" 
+              onClick={handleRepeatModeClick}>
               Печатать слова
             </button>
             {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
-            <button className="deckItem__train-button" onClick={handleTraunNumbersClick}>
+            <button 
+              className="deckItem__train-button" 
+              onClick={handleTrainNumbersClick}>
               Тренировать числа
             </button>
             }
           </div>
           }
           {wordsAreVisible && !cardsAreVisible && !repeatMode &&
-            <form className="searchForm__form">
-              <div className="searchForm__input-container">
-                <input 
-                  className="searchForm__input" 
-                  type="name" 
-                  name="search" 
-                  id="search" 
-                  placeholder="Введите слово" 
-                  required 
-                  onChange={e => setSearch(e.target.value)}/>
-                  <img className="searchForm__img" src={magnifier} alt="Лупа"></img>
-                </div>
-            </form>
+          <SearchingForm setSearch={setSearch} />
           }
           {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords !== 0 &&
             <div className="deckItem__words">
@@ -155,17 +149,12 @@ function DeckItemPage() {
             </div>
           }
           {!wordsAreVisible && repeatMode &&
-            <CardsHolder words={words} handleCloseModesClick={handleCloseModesClick} />
+            <CardsHolder 
+              words={words} 
+              handleCloseModesClick={handleCloseModesClick} />
           }
           {!repeatMode && cardsAreVisible && 
-            <div className="deckItem__arrow-container" onClick={handleCloseModesClick}>
-              <img 
-                src={arrow} 
-                alt="Стрелка назад" 
-                className='deckItem__arrow'
-              />
-              <p className="deckItem__text">Назад к теме</p>
-            </div>
+            <BackToTopic handleCloseModesClick={handleCloseModesClick} />
           }
         </section>
       </main>
@@ -177,89 +166,3 @@ function DeckItemPage() {
 }  
 
 export default DeckItemPage;
-
-
-/*
-    <> {(!currentDeck || currentDeck === null || currentDeck === undefined) ? <PageNotFound /> : <>
-      <Header />
-      <main className="deckItem__content">
-        <section className="deckItem__section">
-          <div className="deckItem__title-container">
-            {currentDeck && currentDeck !== null &&
-            <>
-              <h1 className="deckItem__title">
-              Слова по теме: {currentDeck.ruTopic}
-            </h1>
-            <div className="deckItem__arrow-container-top" onClick={handleClick}>
-              <img 
-                src={arrow} 
-                alt="Стрелка назад" 
-                className='deckItem__arrow'
-              />
-              <p className="deckItem__text">На главную</p>
-            </div>
-            </>
-            }
-          </div>
-          {wordsAreVisible && !cardsAreVisible &&
-          <div className="decks__button-container">
-            <button className="deckItem__train-button" onClick={handleCardsModeClick}>
-              Учить карточки
-              </button>
-            <button className="deckItem__train-button" onClick={handleRepeatModeClick}>
-              Печатать слова
-            </button>
-            {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
-            <button className="deckItem__train-button" onClick={handleTraunNumbersClick}>
-              Тренировать числа
-            </button>
-            }
-          </div>
-          }
-          {wordsAreVisible && !cardsAreVisible && !repeatMode &&
-            <form className="searchForm__form">
-              <div className="searchForm__input-container">
-                <input 
-                  className="searchForm__input" 
-                  type="name" 
-                  name="search" 
-                  id="search" 
-                  placeholder="Введите слово" 
-                  required 
-                  onChange={e => setSearch(e.target.value)}/>
-                  <img className="searchForm__img" src={magnifier} alt="Лупа"></img>
-                </div>
-            </form>
-          }
-          {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords !== 0 &&
-            <div className="deckItem__words">
-              {filteredWords.map((item, i) => (
-                <WordCard key={i} item={item} cardsAreVisible={cardsAreVisible}/>))
-              }
-            </div>
-          }
-          {!wordsAreVisible && repeatMode &&
-            <CardsHolder words={words} handleCloseModesClick={handleCloseModesClick} />
-          }
-          {!repeatMode && cardsAreVisible && 
-            <div className="deckItem__arrow-container" onClick={handleCloseModesClick}>
-              <img 
-                src={arrow} 
-                alt="Стрелка назад" 
-                className='deckItem__arrow'
-              />
-              <p className="deckItem__text">Назад к теме</p>
-            </div>
-          }
-        </section>
-      </main>
-      <Footer />
-      </>
-        }
-    </>
-  );
-}  
-
-export default DeckItemPage;
-
-*/

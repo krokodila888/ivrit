@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
 import './PageNotFound.css';
-import Header from '../Header/Header.jsx';
+import Header from '../../components/Header/Header.jsx';
 import arrow from '../../images/arrow2.png';
 
 function PageNotFound () {

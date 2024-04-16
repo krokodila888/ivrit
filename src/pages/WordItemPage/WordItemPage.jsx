@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../Header/Header.jsx';
-import Footer from '../Footer/Footer.jsx';
+import Header from '../../components/Header/Header.jsx';
+import Footer from '../../components/Footer/Footer.jsx';
+import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
 import './WordItemPage.css';
 import { verbs } from "../../utils/constants.js";
 import arrow from '../../images/arrow2.png';
-import { removeCurrentDeck } from '../../services/actions/currentDeck.js';
-import { removeCurrentWord } from '../../services/actions/currentDeck.js';
+import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck.js';
 
 function WordItemPage() {
 
@@ -26,7 +26,7 @@ function WordItemPage() {
     navigate(`/`);
   }
 
-  function handleCBackClick() {
+  function handleBackClick() {
     console.log(document.referrer);
     setCardsAreVisible(true);
     dispatch(removeCurrentWord());
@@ -36,7 +36,7 @@ function WordItemPage() {
   return (
     <>
       <Header />
-      <main className="main__content1">
+      <main className="wordItem">
         <section className="wordItem__content">
           <div className="wordItem__title-container">
             <div className="wordItem__titleTextContainer">
@@ -103,14 +103,7 @@ function WordItemPage() {
               </p>
             </div>
           </div>
-          <div className="deckItem__arrow-container" onClick={handleCBackClick}>
-            <img 
-              src={arrow} 
-              alt="Стрелка назад" 
-              className='deckItem__arrow'
-            />
-            <p className="deckItem__text">Назад к теме</p>
-          </div>
+          <BackToTopic handleCloseModesClick={handleBackClick} />
         </section>
       </main>
       <Footer />
