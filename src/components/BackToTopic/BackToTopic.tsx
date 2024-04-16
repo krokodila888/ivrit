@@ -1,8 +1,12 @@
-import React from "react";
+import React, {FC} from "react";
 import './BackToTopic.css';
 import arrow from '../../images/arrow2.png';
 
-function BackToTopic(props) {
+type TProps = {
+  handleCloseModesClick: () => void;
+};
+
+const BackToTopic: FC<TProps> = (props: TProps) => {
 
   const { handleCloseModesClick } = props;
 

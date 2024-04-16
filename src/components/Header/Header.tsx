@@ -1,15 +1,15 @@
-import React from "react";
+import React, { FC } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import icon from '../../images/icon.png';
-import { removeCurrentDeck } from '../../services/actions/currentDeck.js';
+import { removeCurrentDeck } from '../../services/actions/currentDeck';
 import './header.css';
 
-function Header() {
+const Header: FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
 
   function handleClick() {
     dispatch(removeCurrentDeck());

@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/Header.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
-import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
-import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx";
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import BackToTopic from "../../components/BackToTopic/BackToTopic";
+import TitleContainer from "../../components/TitleContainer/TitleContainer";
 import './WordItemPage.css';
-import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck.js';
+import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck';
 
 function WordItemPage() {
 

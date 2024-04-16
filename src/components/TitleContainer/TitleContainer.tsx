@@ -1,12 +1,16 @@
-import React from "react";
+import React, { FC } from "react";
 import { useSelector} from 'react-redux';
 import './TitleContainer.css';
 import arrow from '../../images/arrow2.png';
 
-function TitleContainer(props) {
+type TProps = {
+  handleClick: () => void;
+};
+
+const TitleContainer: FC<TProps> = (props: TProps) => {
 
   const { handleClick } = props;
-  const { currentDeck, currentWord } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck, currentWord } = useSelector((state: any) => state.currentDeckReducer);
 
   return (
     <div className="titleContainer">

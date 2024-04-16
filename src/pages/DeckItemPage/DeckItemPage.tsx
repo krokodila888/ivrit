@@ -1,33 +1,34 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import Header from '../../components/Header/Header.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
-import CardsHolder from '../../components/CardsHolder/CardsHolder.jsx';
-import PageNotFound from '../../pages/PageNotFound/PageNotFound.jsx';
-import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx"; 
-import WordCard from '../../components/WordCard/WordCard.jsx';
-import SearchingForm from "../../components/SearchingForm/SearchingForm.jsx";
-import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import CardsHolder from '../../components/CardsHolder/CardsHolder';
+import PageNotFound from '../PageNotFound/PageNotFound';
+import TitleContainer from "../../components/TitleContainer/TitleContainer"; 
+import WordCard from '../../components/WordCard/WordCard';
+import SearchingForm from "../../components/SearchingForm/SearchingForm";
+import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import './DeckItemPage.css';
-import { vocabulary } from "../../utils/constants.js";
-import { removeCurrentDeck } from '../../services/actions/currentDeck.js';
+import { vocabulary } from "../../utils/constants";
+import { removeCurrentDeck } from '../../services/actions/currentDeck';
+import { TWord, TTopic } from '../../utils/types';
 
-function DeckItemPage() {
+const DeckItemPage: FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [words, setWords] = useState([]);
-  const [filteredWords, setFilteredWords] = useState([]);
+  const [words, setWords] = useState<TWord[]>([]);
+  const [filteredWords, setFilteredWords] = useState<TWord[]>([]);
   const [wordsAreVisible, setWordsAreVisible] = useState(true);
   const [cardsAreVisible, setCardsAreVisible] = useState(false);
   const [repeatMode, setRepeatMode] = useState(false);
   const [search, setSearch] = useState('');
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
 
   useEffect(() => {
     if (search !== '')
-  {setFilteredWords(words.filter((item) => 
+  {setFilteredWords(words.filter((item: TWord) => 
     {if (!item.ruTopic.includes('Глаголы')) return (
         (item.word.toLowerCase().includes(search.toLowerCase()) ) 
         || (item.vocalization.toLowerCase().includes(search.toLowerCase()) )
@@ -39,27 +40,27 @@ function DeckItemPage() {
       || (item.vocalization.toLowerCase().includes(search.toLowerCase()) )
       || (item.translation.toLowerCase().includes(search.toLowerCase()) )
       || (item.transcription.toLowerCase().includes(search.toLowerCase()) )
-      || (item.infinitive.translation.toLowerCase().includes(search.toLowerCase()) )
-      || (item.infinitive.word.toLowerCase().includes(search.toLowerCase()) )
+      || (item.infinitive && item.infinitive.translation.toLowerCase().includes(search.toLowerCase()) )
+      || (item.infinitive && item.infinitive.word.toLowerCase().includes(search.toLowerCase()) )
       )
-      || (item.infinitive.vocalization.toLowerCase().includes(search.toLowerCase()) )
-      || (item.infinitive.transcription.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[0].vocalization.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[1].vocalization.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[2].vocalization.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[3].vocalization.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[0].word.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[1].word.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[2].word.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[3].word.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[0].transcription.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[1].transcription.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[2].transcription.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[3].transcription.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[0].translation.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[1].translation.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[2].translation.toLowerCase().includes(search.toLowerCase()) )
-      || (item.present[3].translation.toLowerCase().includes(search.toLowerCase()) )
+      || (item.infinitive && item.infinitive.vocalization.toLowerCase().includes(search.toLowerCase()) )
+      || (item.infinitive && item.infinitive.transcription.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[0].vocalization.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[1].vocalization.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[2].vocalization.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[3].vocalization.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[0].word.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[1].word.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[2].word.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[3].word.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[0].transcription.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[1].transcription.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[2].transcription.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[3].transcription.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[0].translation.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[1].translation.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[2].translation.toLowerCase().includes(search.toLowerCase()) )
+      || (item.present && item.present[3].translation.toLowerCase().includes(search.toLowerCase()) )
     }
     ))}
     else {setFilteredWords(words)}
@@ -141,7 +142,7 @@ function DeckItemPage() {
           {wordsAreVisible && !cardsAreVisible && !repeatMode &&
           <SearchingForm setSearch={setSearch} />
           }
-          {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords !== 0 &&
+          {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords.length !== 0 &&
             <div className="deckItem__words">
               {filteredWords.map((item, i) => (
                 <WordCard 

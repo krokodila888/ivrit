@@ -1,16 +1,18 @@
-export const REMOVE_CARD = 'REMOVE_CARD';
-export const ADD_CARD = 'ADD_CARD';
-export const EDIT_CARD = 'EDIT_CARD';
-export const SET_LOCATION = 'SET_LOCATION';
-export const ON_CLICK = 'ON_CLICK';
-export const REMOVE_ON_CLICK = 'REMOVE_ON_CLICK';
-export const REMOVE_LOCATIONS = 'REMOVE_LOCATIONS';
-export const SET_DECK = 'SET_DECK';
-export const CLEAR_CURRENT_DECK = 'CLEAR_CURRENT_DECK';
-export const SET_WORD = 'SET_WORD';
-export const CLEAR_CURRENT_WORD = 'CLEAR_CURRENT_WORD';
+import { TTopic, TWord } from './types';
 
-export const topics = [
+export const REMOVE_CARD: 'REMOVE_CARD' = 'REMOVE_CARD';
+export const ADD_CARD: 'ADD_CARD' = 'ADD_CARD';
+export const EDIT_CARD: 'EDIT_CARD' = 'EDIT_CARD';
+export const SET_LOCATION: 'SET_LOCATION' = 'SET_LOCATION';
+export const ON_CLICK: 'ON_CLICK' = 'ON_CLICK';
+export const REMOVE_ON_CLICK: 'REMOVE_ON_CLICK' = 'REMOVE_ON_CLICK';
+export const REMOVE_LOCATIONS: 'REMOVE_LOCATIONS' = 'REMOVE_LOCATIONS';
+export const SET_DECK: 'SET_DECK' = 'SET_DECK';
+export const CLEAR_CURRENT_DECK: 'CLEAR_CURRENT_DECK' = 'CLEAR_CURRENT_DECK';
+export const SET_WORD: 'SET_WORD' = 'SET_WORD';
+export const CLEAR_CURRENT_WORD: 'CLEAR_CURRENT_WORD' = 'CLEAR_CURRENT_WORD';
+
+export const topics: Array<TTopic> = [
   {
     ruTopic: 'Адрес',
     enTopic: 'Address',
@@ -101,7 +103,7 @@ export const topics = [
   },
 ];
 
-export const partsOfSpeach = [
+export const partsOfSpeach: Array<TTopic> = [
   {
     ruTopic: 'Прилагательные',
     enTopic: 'Adjectives',
@@ -124,7 +126,7 @@ export const partsOfSpeach = [
   },
 ];
 
-export const topicsForRender = [
+export const topicsForRender: Array<TTopic> = [
   {
     ruTopic: 'Приветствия',
     enTopic: 'Greetings',
@@ -191,7 +193,7 @@ export const topicsForRender = [
   },
 ];
 
-export const vocabulary = [
+export const vocabulary: Array<TWord> = [
   {
     word: 'מה',
     vocalization: 'מה',

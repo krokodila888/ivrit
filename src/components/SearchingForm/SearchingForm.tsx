@@ -1,8 +1,12 @@
-import React from "react";
+import React, { FC } from "react";
 import magnifier from '../../images/magn.png';
 import './SearchingForm.css';
 
-function SearchingForm(props) {
+type TProps = {
+  setSearch: (arg0: any) => void;
+};
+
+const SearchingForm: FC<TProps> = (props: TProps) => {
 
   const { setSearch } = props;
 

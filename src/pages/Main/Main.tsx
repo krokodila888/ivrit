@@ -1,20 +1,20 @@
-import React, { useEffect, useState } from "react";
-import Header from '../../components/Header/Header.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
+import React, { FC, useEffect, useState } from "react";
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import photo from '../../images/photo1.jpg';
-import { topics, topicsForRender, partsOfSpeach } from '../../utils/constants.js';
-import { setCurrentDeck } from '../../services/actions/currentDeck.js';
+import { topics, topicsForRender, partsOfSpeach } from '../../utils/constants';
+import { setCurrentDeck } from '../../services/actions/currentDeck';
 import './Main.css';
 
-function Main() {
+const Main: FC = () => {
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
 
-  function setDeck(item) {
+  function setDeck(item: any) {
     dispatch(setCurrentDeck(item));
     navigate(`/topics/${item.enTopic}`);
   };

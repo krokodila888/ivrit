@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import { cardsReducer } from './cardsReducer';
+//import { cardsReducer } from './cardsReducer.ts';
 import { currentDeckReducer } from './currentDeckReducer';
 
 export const rootReducer = combineReducers({
-  cardsReducer,
-  currentDeckReducer,
+  //cardsReducer,
+  currentDeckReducer
 });

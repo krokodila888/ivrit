@@ -1,20 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom';
-import Main from '../../pages/Main/Main.jsx';
-import PageNotFound from '../../pages/PageNotFound/PageNotFound.jsx';
-import DeckItemPage from '../../pages/DeckItemPage/DeckItemPage.jsx';
-import WordItemPage from '../../pages/WordItemPage/WordItemPage.jsx';
-import NumbersTrainPage from '../../pages/NumbersTrainPage/NumbersTrainPage.jsx';
+import Main from '../../pages/Main/Main';
+import PageNotFound from '../../pages/PageNotFound/PageNotFound';
+import DeckItemPage from '../../pages/DeckItemPage/DeckItemPage';
+import WordItemPage from '../../pages/WordItemPage/WordItemPage';
+import NumbersTrainPage from '../../pages/NumbersTrainPage/NumbersTrainPage';
 import './App.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { vocabulary, topics, verbs } from "../../utils/constants.js";
-import { removeCurrentDeck, setCurrentDeck, setCurrentWord  } from '../../services/actions/currentDeck.js';
+import { topics, verbs } from "../../utils/constants";
+import { setCurrentDeck, setCurrentWord  } from '../../services/actions/currentDeck';
 
-function App() {
+const App: FC = () => {
 
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
-  const { currentWord } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck, currentWord } = useSelector((state: any) => state.currentDeckReducer);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,7 +48,7 @@ function App() {
       <div className="page">
         <Routes>
           <Route 
-            exact path="/" 
+            path="/" 
             element={
               <Main />
             }>  

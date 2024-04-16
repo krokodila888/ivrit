@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useNavigate } from "react-router-dom";
 import './PageNotFound.css';
-import Header from '../../components/Header/Header.jsx';
+import Header from '../../components/Header/Header';
 import arrow from '../../images/arrow2.png';
 
-function PageNotFound () {
+const PageNotFound: FC = () => {
 
   const navigate = useNavigate();
 

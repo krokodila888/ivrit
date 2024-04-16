@@ -1,10 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import './CardsHolder.css';
-import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
+import BackToTopic from "../BackToTopic/BackToTopic";
 import { useDispatch } from 'react-redux';
 import arrow1 from '../../images/repeat.png';
+import { TWord } from '../../utils/types';
 
-function CardsHolder(props) {
+type TProps = {
+  handleCloseModesClick: () => void;
+  words: TWord[];
+};
+
+const CardsHolder: FC<TProps> = (props: TProps) => {
 
   const { words, handleCloseModesClick } = props;
 
@@ -12,10 +18,10 @@ function CardsHolder(props) {
   const [repeatMode, setRepeatMode] = useState(true);
   const [showWord, setShowWord] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
-  const [currentWord, setCurrentWord] = useState(null);
+  const [currentWord, setCurrentWord] = useState<TWord | null>(null);
   const [repeatingForm, setMeaning] = useState({ word: '' });
-  const [repeatedWords, setRepeatedWords] = useState([]);
-  const [wordsToRepeat, setWordsToRepeat] = useState([]);
+  const [repeatedWords, setRepeatedWords] = useState<TWord[]>([]);
+  const [wordsToRepeat, setWordsToRepeat] = useState<TWord[]>([]);
   const [hintIsVisible, setHintIsVisible] = useState(false);
   const repeatingInput = document.getElementById('cardsHolderRepeatingInput');
 
@@ -24,15 +30,15 @@ function CardsHolder(props) {
     setCurrentWord(wordsToRepeat[0]);
   }
 
-  function setText(item) {
+  function setText(item: TWord) {
     if (hintIsVisible) return `${item.transcription}`; else return 'Подсказка'
   }
 
   useEffect(()=> {
     if (words && words.length !== 0) {
       let aaa = words;
-      aaa.forEach(item => item.number = Math.floor(Math.random() * 10) + 1);
-      aaa.sort(function (a, b) {
+      aaa.forEach((item: TWord) => item.number = Math.floor(Math.random() * 10) + 1);
+      aaa.sort(function (a: any, b: any) {
         return a.number - b.number;
       });
       setWordsToRepeat(aaa);
@@ -52,7 +58,7 @@ function CardsHolder(props) {
     setShowWord(true);
   };
 
-  const onRepeatChange = e => {
+  const onRepeatChange = (e: any) => {
     setMeaning({ ...repeatingForm, [e.target.name]: e.target.value });
   };
 
@@ -99,24 +105,28 @@ function CardsHolder(props) {
   }
   
   useEffect(()=> {
-    if (repeatingInput && (currentWord.word === repeatingForm.word)) 
+    if (repeatingInput && currentWord && (currentWord.word === repeatingForm.word)) 
     {setIsCorrect(true);
     repeatingInput.classList.add('cardsHolder__input_active');};
-    if (repeatingInput && (currentWord.word !== repeatingForm.word) && isCorrect) {
+    if (repeatingInput && currentWord && (currentWord.word !== repeatingForm.word) && isCorrect) {
       setIsCorrect(false);
       repeatingInput.classList.remove('cardsHolder__input_active');};
   }, [repeatingForm])
 
   function nextWord1() {
-    setRepeatedWords([...repeatedWords, currentWord]);
-    setShowWord(false);
-    setIsCorrect(false);
-    setHintIsVisible(false);
-    setMeaning({ ...repeatingForm, word: '' });
-    repeatingInput.classList.remove('cardsHolder__input_active');
-    if (wordsToRepeat.length > 1) {setCurrentWord(wordsToRepeat[1]); 
-    setWordsToRepeat(wordsToRepeat.slice(1));}
-    else {setCurrentWord({word: 'Правда все.', translation: 'Вы повторили все!', transcription: 'Вы можете начать с начала'})}
+    if (currentWord) {
+      setRepeatedWords([...repeatedWords, currentWord]);
+      setShowWord(false);
+      setIsCorrect(false);
+      setHintIsVisible(false);
+      setMeaning({ ...repeatingForm, word: '' });
+      if (repeatingInput) {
+        repeatingInput.classList.remove('cardsHolder__input_active');
+      };
+      if (wordsToRepeat.length > 1) {setCurrentWord(wordsToRepeat[1]); 
+      setWordsToRepeat(wordsToRepeat.slice(1));}
+      else {setCurrentWord({word: 'Правда все.', translation: 'Вы повторили все!', transcription: 'Вы можете начать с начала', vocalization: '', ruTopic: '', enTopic: ''})}
+    }
   }
 
   return (

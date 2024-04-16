@@ -4,13 +4,20 @@ import {
   SET_WORD,
   CLEAR_CURRENT_WORD,
 } from '../../utils/constants';
+import { TWord } from '../../utils/types';
+import type { TCurrentDeckActions } from '../actions/currentDeck';
 
-const initialState = {
+type TCurrentDeckState = {
+  currentDeck: TWord[] | null;
+  currentWord: TWord | null;
+};
+
+const initialState: TCurrentDeckState = {
   currentDeck: null,
   currentWord: null,
 };
 
-export const currentDeckReducer = (state = initialState, action) => {
+export const currentDeckReducer = (state = initialState, action: TCurrentDeckActions) => {
   switch (action.type) {
     case SET_DECK:
       return {

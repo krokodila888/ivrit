@@ -1,14 +1,20 @@
-import React, { useState } from "react";
+import React, { FC, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import around from '../../images/around.png';
 import './WordCard.css';
-import { setCurrentWord} from '../../services/actions/currentDeck.js';
+import { setCurrentWord} from '../../services/actions/currentDeck';
+import { TWord } from '../../utils/types';
 
-function WordCard(props) {
+type TProps = {
+  cardsAreVisible: boolean;
+  item: TWord;
+};
+
+const WordCard: FC<TProps> = (props: TProps) => {
 
   const {item, cardsAreVisible } = props;
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 

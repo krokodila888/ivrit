@@ -1,10 +1,16 @@
-import { ADD_CARD, REMOVE_CARD, EDIT_CARD } from '../../utils/constants';
+/*import { ADD_CARD, REMOVE_CARD, EDIT_CARD } from '../../utils/constants';
+import { TWord, TTopic, TNumWord } from '../../utils/types';
+import type { TCardActions } from '../actions/cards';
 
-const initialState = {
+type TCardState = {
+  cards: Array<any> | null;
+};
+
+const initialState: TCardState = {
   cards: [],
 };
 
-export const cardsReducer = (state = initialState, action) => {
+export const cardsReducer = (state = initialState, action: TCardActions) => {
   switch (action.type) {
     case ADD_CARD: {
       const previousCards = [...state.cards];
@@ -36,4 +42,4 @@ export const cardsReducer = (state = initialState, action) => {
       return state;
     }
   }
-};
+};*/

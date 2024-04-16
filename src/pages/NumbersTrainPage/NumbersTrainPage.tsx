@@ -1,33 +1,33 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import Header from '../../components/Header/Header.jsx';
-import Footer from '../../components/Footer/Footer.jsx';
-import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx";
-import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx"; 
+import Header from '../../components/Header/Header';
+import Footer from '../../components/Footer/Footer';
+import TitleContainer from "../../components/TitleContainer/TitleContainer";
+import BackToTopic from "../../components/BackToTopic/BackToTopic"; 
 import './NumbersTrainPage.css';
-import { vocabulary } from "../../utils/constants.js";
+import { vocabulary } from "../../utils/constants";
 import arrow from '../../images/arrow2.png';
-import { removeCurrentDeck, setCurrentDeck } from '../../services/actions/currentDeck.js';
+import { removeCurrentDeck, setCurrentDeck } from '../../services/actions/currentDeck';
+import { TWord, TTopic, TNumWord } from '../../utils/types';
 
-
-function NumbersTrainPage() {
+const NumbersTrainPage: FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [currentNum, setCurrentNum] = useState(null);
+  const [currentNum, setCurrentNum] = useState<TNumWord | null>(null);
   const [showNum, setShowNum] = useState(false);
   const [isCorrect, setIsCorrect] = useState(false);
   const [hintIsVisible, setHintIsVisible] = useState(false);
   const words = vocabulary.filter(item => item.ruTopic.includes('Числа'));
   const [repeatingForm, setMeaning] = useState({ word: '' });
   const repeatingInput = document.getElementById('cardsHolderRepeatingNumInput');
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
 
   function makeAnswer() {
     let num1 = Math.floor(Math.random() * 100) + Math.floor(Math.random() * 10);
-    let meaning1;
-    let transcription1;
+    let meaning1 = '';
+    let transcription1 = '';
     if (num1 < 21 && words !== null) {
       meaning1 = words.filter(item => item.num === num1)[0].word;
       transcription1 = words.filter(item => item.num === num1)[0].transcription;
@@ -38,7 +38,7 @@ function NumbersTrainPage() {
     }
     else if (num1 > 20 && num1 < 110 && num1 !== 100) {
       let tens1;
-      let tens2;
+      let tens2: number | undefined;
       let tens;
       if (num1 > 20 && num1 < 100) {
         tens1 = String(num1)[0];
@@ -102,7 +102,7 @@ function NumbersTrainPage() {
     setHintIsVisible(true);
   }
   function setText() {
-    if (hintIsVisible) return `${currentNum.transcription}`; else return 'Подсказка'
+    if (hintIsVisible && currentNum && currentNum.transcription) return `${currentNum.transcription}`; else return 'Подсказка'
   }
 
   function word() {
@@ -135,15 +135,15 @@ function NumbersTrainPage() {
     setShowNum(true);
   };
 
-  const onRepeatChange = e => {
+  const onRepeatChange = (e: any) => {
     setMeaning({ ...repeatingForm, [e.target.name]: e.target.value });
   };
 
   useEffect(()=> {
-    if (repeatingInput && (currentNum.meaning === repeatingForm.word)) 
+    if (repeatingInput && currentNum && (currentNum.meaning === repeatingForm.word)) 
     {setIsCorrect(true);
     repeatingInput.classList.add('cardsHolder__input_active');};
-    if (repeatingInput && (currentNum.meaning !== repeatingForm.word) && isCorrect) {
+    if (repeatingInput && currentNum && (currentNum.meaning !== repeatingForm.word) && isCorrect) {
       setIsCorrect(false);
       repeatingInput.classList.remove('cardsHolder__input_active');};
   }, [repeatingForm])
@@ -158,7 +158,9 @@ function NumbersTrainPage() {
     setIsCorrect(false);
     setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
-    repeatingInput.classList.remove('cardsHolder__input_active');
+    if (repeatingInput) {
+      repeatingInput.classList.remove('cardsHolder__input_active');
+    };
     makeAnswer();
   }
 
@@ -167,7 +169,9 @@ function NumbersTrainPage() {
     setIsCorrect(false);
     setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
-    repeatingInput.classList.remove('cardsHolder__input_active');
+    if (repeatingInput) {
+      repeatingInput.classList.remove('cardsHolder__input_active');
+    };
     dispatch(setCurrentDeck({
       ruTopic: 'Числа',
       enTopic: 'Numbers',
