@@ -6,18 +6,13 @@ import Footer from '../../components/Footer/Footer.jsx';
 import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
 import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx";
 import './WordItemPage.css';
-import { verbs } from "../../utils/constants.js";
-import arrow from '../../images/arrow2.png';
 import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck.js';
 
 function WordItemPage() {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [words, setWords] = useState([]);
-  const [wordsAreVisible, setWordsAreVisible] = useState(true);
   const [cardsAreVisible, setCardsAreVisible] = useState(false);
-  const [repeatMode, setRepeatMode] = useState(false);
   const { currentDeck } = useSelector(state => state.currentDeckReducer);
   const { currentWord } = useSelector(state => state.currentDeckReducer);
 
