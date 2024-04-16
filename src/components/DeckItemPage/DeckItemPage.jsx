@@ -11,6 +11,7 @@ import arrow from '../../images/arrow2.png';
 import magnifier from '../../images/magn.png';
 import { removeCurrentDeck } from '../../services/actions/currentDeck.js';
 import PageNotFound from '../PageNotFound/PageNotFound.jsx';
+import TitleContainer from "../TitleContainer/TitleContainer.jsx"; 
 
 function DeckItemPage() {
 
@@ -113,13 +114,83 @@ function DeckItemPage() {
       <Header />
       <main className="deckItem__content">
         <section className="deckItem__section">
+          <TitleContainer 
+            handleClick={handleClick}
+          />
+          {wordsAreVisible && !cardsAreVisible &&
+          <div className="decks__button-container">
+            <button className="deckItem__train-button" onClick={handleCardsModeClick}>
+              Учить карточки
+              </button>
+            <button className="deckItem__train-button" onClick={handleRepeatModeClick}>
+              Печатать слова
+            </button>
+            {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
+            <button className="deckItem__train-button" onClick={handleTraunNumbersClick}>
+              Тренировать числа
+            </button>
+            }
+          </div>
+          }
+          {wordsAreVisible && !cardsAreVisible && !repeatMode &&
+            <form className="searchForm__form">
+              <div className="searchForm__input-container">
+                <input 
+                  className="searchForm__input" 
+                  type="name" 
+                  name="search" 
+                  id="search" 
+                  placeholder="Введите слово" 
+                  required 
+                  onChange={e => setSearch(e.target.value)}/>
+                  <img className="searchForm__img" src={magnifier} alt="Лупа"></img>
+                </div>
+            </form>
+          }
+          {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords !== 0 &&
+            <div className="deckItem__words">
+              {filteredWords.map((item, i) => (
+                <WordCard key={i} item={item} cardsAreVisible={cardsAreVisible}/>))
+              }
+            </div>
+          }
+          {!wordsAreVisible && repeatMode &&
+            <CardsHolder words={words} handleCloseModesClick={handleCloseModesClick} />
+          }
+          {!repeatMode && cardsAreVisible && 
+            <div className="deckItem__arrow-container" onClick={handleCloseModesClick}>
+              <img 
+                src={arrow} 
+                alt="Стрелка назад" 
+                className='deckItem__arrow'
+              />
+              <p className="deckItem__text">Назад к теме</p>
+            </div>
+          }
+        </section>
+      </main>
+      <Footer />
+      </>
+        }
+    </>
+  );
+}  
+
+export default DeckItemPage;
+
+
+/*
+    <> {(!currentDeck || currentDeck === null || currentDeck === undefined) ? <PageNotFound /> : <>
+      <Header />
+      <main className="deckItem__content">
+        <section className="deckItem__section">
           <div className="deckItem__title-container">
             {currentDeck && currentDeck !== null &&
             <>
               <h1 className="deckItem__title">
               Слова по теме: {currentDeck.ruTopic}
             </h1>
-            <div className="deckItem__title-container1" onClick={handleClick}>
+            <div className="deckItem__arrow-container-top" onClick={handleClick}>
               <img 
                 src={arrow} 
                 alt="Стрелка назад" 
@@ -190,3 +261,5 @@ function DeckItemPage() {
 }  
 
 export default DeckItemPage;
+
+*/

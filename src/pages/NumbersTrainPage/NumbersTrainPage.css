@@ -1,0 +1,139 @@
+@import url(../../vendor/Railroad/stylesheet.css);
+
+.numbersTraining__content {
+  background-color: #fff;
+  min-height: calc(100vh - 262px);
+  max-width: 1040px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media screen and (max-width: 1080px) {
+
+  .numbersTraining__content {
+    padding: 20px;
+  }
+}
+
+@media screen and (max-width: 680px) {
+
+  .numbersTraining__content {
+    padding: 20px 8px;
+  }
+}
+
+.numbersTraining__section {
+  justify-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 70px 20px;
+  max-width: 1040px;
+  width: 100%;
+  min-height: 300px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media screen and (max-width: 680px) {
+
+  .numbersTraining__section {
+    padding: 40px 20px 20px;
+    align-items: inherit;
+  }
+}
+
+@media screen and (max-width: 480px) {
+
+  .numbersTraining__section {
+    padding: 26px 5px 20px;
+    /*align-items: center;*/
+  }
+}
+
+.numbersTraining__title-container {
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  max-width: 1040px;
+  width: 100%;
+  flex-wrap: wrap;
+  position: sticky;
+  top: 0;
+  z-index: 3;
+  background: white;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  align-items: center;
+  padding-bottom: 15px;
+  padding-top: 10px;
+}
+
+@media screen and (max-width: 580px) {
+
+  .numbersTraining__title-container {
+    text-align: center;
+  }
+}
+
+.numbersTraining__title {
+  font-family: Inter, sans-serif;
+  line-height: 30px;
+  margin: 0;
+  padding-bottom: 26px;
+  font-weight: 400;
+  font-size: 28px;
+  color: rgb(67 67 67);
+}
+
+.numbersTraining__text {
+  font-family: Inter, sans-serif;
+  line-height: 30px;
+  margin: 0;
+  font-weight: 400;
+  font-size: 20px;
+  color: rgb(67 67 67);
+}
+
+.numbersTraining__text:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+
+@media screen and (max-width: 740px) {
+
+  .numbersTraining__text {
+    font-size: 16px;
+  }
+}
+
+.deckItem__arrow-container {
+  justify-content: flex-end;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 200px;
+  align-self: center;
+}
+
+.deckItem__arrow {
+  width: 90px;
+  height: 40px;
+}
+
+.deckItem__arrow:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.deckItem__text:hover {
+  opacity: 0.5;
+  cursor: pointer;
+  transition: 1s;
+}

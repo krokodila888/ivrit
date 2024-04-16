@@ -3420,8 +3420,8 @@ export const vocabulary = [
     enTopic: ['Prepositions'],
   },
   {
-    word: 'על-יד',
-    vocalization: 'על-יד',
+    word: 'מול',
+    vocalization: 'מול',
     translation: 'напротив',
     transcription: 'муль',
     ruTopic: ['Предлоги'],
