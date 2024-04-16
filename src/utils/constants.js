@@ -996,7 +996,7 @@ export const vocabulary = [
     word: 'משפחה',
     vocalization: 'מִשְׁפָּחָה',
     translation: 'Семья',
-    transcription: '',
+    transcription: 'мишпахА',
     ruTopic: 'Семья',
     enTopic: 'Family',
   },
@@ -2270,7 +2270,7 @@ export const vocabulary = [
         word: 'גרה',
         vocalization: 'גרה',
         translation: 'живет',
-        transcription: '',
+        transcription: 'гарА',
       },
       {
         word: 'גרים',

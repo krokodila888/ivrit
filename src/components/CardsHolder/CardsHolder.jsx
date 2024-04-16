@@ -44,10 +44,6 @@ function CardsHolder(props) {
     startRepeating();
   }, [wordsToRepeat])
 
-  useEffect(()=> {
-    console.log(wordsToRepeat)
-  }, [wordsToRepeat])
-
   function showHint() {
     setHintIsVisible(true);
   }
@@ -164,7 +160,7 @@ function CardsHolder(props) {
         <img 
           src={arrow1} 
           alt="Стрелка назад" 
-          className='cardsHolder__arrow1'
+          className='cardsHolder__repeat-img'
         />
         <p className="deckItem__text">Повторять снова</p>
       </div>

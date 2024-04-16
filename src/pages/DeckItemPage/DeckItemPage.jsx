@@ -144,7 +144,10 @@ function DeckItemPage() {
           {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords !== 0 &&
             <div className="deckItem__words">
               {filteredWords.map((item, i) => (
-                <WordCard key={i} item={item} cardsAreVisible={cardsAreVisible}/>))
+                <WordCard 
+                  key={i} 
+                  item={item} 
+                  cardsAreVisible={cardsAreVisible}/>))
               }
             </div>
           }

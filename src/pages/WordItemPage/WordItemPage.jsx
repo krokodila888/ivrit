@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header.jsx';
 import Footer from '../../components/Footer/Footer.jsx';
 import BackToTopic from "../../components/BackToTopic/BackToTopic.jsx";
+import TitleContainer from "../../components/TitleContainer/TitleContainer.jsx";
 import './WordItemPage.css';
 import { verbs } from "../../utils/constants.js";
 import arrow from '../../images/arrow2.png';
@@ -33,30 +34,18 @@ function WordItemPage() {
     navigate(`/topics/${currentDeck.enTopic}`);
   }
 
+  React.useEffect(()=> {
+    console.log(currentWord);
+  }, [])
+
   return (
     <>
       <Header />
       <main className="wordItem">
         <section className="wordItem__content">
-          <div className="wordItem__title-container">
-            <div className="wordItem__titleTextContainer">
-              <h1 className="wordItem__title">Формы глагола </h1>
-              <p className="wordItem__title1">
-                {currentWord.infinitive.vocalization} 
-              </p> 
-              <p className="wordItem__text-grey">
-                {currentWord.infinitive.transcription}
-              </p>
-            </div>
-            <div className="wordItem__title-container1" onClick={handleClick}>
-              <img 
-                src={arrow} 
-                alt="Стрелка назад" 
-                className='deckItem__arrow'
-              />
-              <p className="wordItem__text">На главную</p>
-            </div>
-          </div>
+          <TitleContainer 
+            handleClick={handleClick}
+          />
           <div className="wordItem__forms-container">
             <div className="wordItem__form-container">
               <p className="wordItem__word">
