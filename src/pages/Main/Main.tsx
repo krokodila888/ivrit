@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import photo from '../../images/photo1.jpg';
 import { topics, topicsForRender, partsOfSpeach } from '../../utils/constants';
 import { setCurrentDeck } from '../../services/actions/currentDeck';
-import './Main.css';
+import './Main.scss';
 
 const Main: FC = () => {
 

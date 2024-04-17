@@ -4,12 +4,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import TitleContainer from "../../components/TitleContainer/TitleContainer";
-import BackToTopic from "../../components/BackToTopic/BackToTopic"; 
-import './NumbersTrainPage.css';
+import BackToTopic from "../../components/BackToTopic/BackToTopic";
+import TrainButton from "../../ui/TrainButton/TrainButton";
+import './NumbersTrainPage.scss';
 import { vocabulary } from "../../utils/constants";
-import arrow from '../../images/arrow2.png';
 import { removeCurrentDeck, setCurrentDeck } from '../../services/actions/currentDeck';
-import { TWord, TTopic, TNumWord } from '../../utils/types';
+import { TNumWord } from '../../utils/types';
 
 const NumbersTrainPage: FC = () => {
 
@@ -211,16 +211,14 @@ const NumbersTrainPage: FC = () => {
               autoCapitalize="off" 
               spellCheck="false" />
             <div className='cardsHolder__button-block'>
-              <button 
-                className='cardsHolder__button'
-                onClick={showTranslation}>
-                  Показать ответ
-              </button>
-              <button 
-                className='cardsHolder__button'
-                onClick={nextWord1}>
-                  Следующее число
-              </button>
+              <TrainButton
+                onClick={showTranslation}
+                text="Показать ответ"
+              />
+              <TrainButton
+                onClick={nextWord1}
+                text="Следующее число"
+              />
             </div>
           </div>
           <BackToTopic handleCloseModesClick={handleCloseModesClick} />

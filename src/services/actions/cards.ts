@@ -16,10 +16,7 @@ export interface IEeditCard {
   readonly item: string;
 }
 
-export type TCardActions =
-  | IAaddCard
-  | IRremoveCard
-  | IEeditCard
+export type TCardActions = IAaddCard | IRremoveCard | IEeditCard;
 
 export function addCard(data: any) {
   return {

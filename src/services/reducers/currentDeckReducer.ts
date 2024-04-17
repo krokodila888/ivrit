@@ -17,7 +17,10 @@ const initialState: TCurrentDeckState = {
   currentWord: null,
 };
 
-export const currentDeckReducer = (state = initialState, action: TCurrentDeckActions) => {
+export const currentDeckReducer = (
+  state = initialState,
+  action: TCurrentDeckActions
+) => {
   switch (action.type) {
     case SET_DECK:
       return {

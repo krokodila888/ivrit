@@ -1,12 +1,11 @@
-import React, { FC } from "react";
+import React, { FC } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import icon from '../../images/icon.png';
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
-import './header.css';
+import styles from './header.module.scss';
 
 const Header: FC = () => {
-
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
@@ -17,19 +16,22 @@ const Header: FC = () => {
   }
 
   return (
-    <header className='header'>
-      <div className='header__content'>
-        <h2 className="header__title">
+    <header className={styles.header}>
+      <div className={styles.header__content}>
+        <h2 className={styles.header__title}>
           (Не)рабочее пространство Женечки
         </h2>
-        <img 
-          src={icon} 
-          alt="Иконка" 
-          className={currentDeck !== null ? 'header__icon-hover' : 'header__icon'}
-          onClick={handleClick}/>
+        <img
+          src={icon}
+          alt="Иконка"
+          className={
+            currentDeck !== null ? styles.header__iconHover : styles.header__icon
+          }
+          onClick={handleClick}
+        />
       </div>
     </header>
   );
-}  
+};
 
-export default Header; 
+export default Header;

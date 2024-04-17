@@ -1,5 +1,5 @@
-import { FC } from "react";
-import './BigTopicButton.css';
+import { FC } from 'react';
+import styles from './BigTopicButton.module.scss';
 
 type TProps = {
   onClick: () => void;
@@ -8,23 +8,21 @@ type TProps = {
 };
 
 const BigTopicButton: FC<TProps> = (props: TProps) => {
-
   const { onClick, bigText, smallText } = props;
 
   return (
     <button 
-      className="bigTopicButton" 
-      onClick={onClick}
-      type='button'
-    >
-      <h2 className="bigTopicButton__main-text">
+      className={styles.bigTopicButton} 
+      onClick={onClick} 
+      type="button">
+      <h2 className={styles.bigTopicButton__mainText}>
         {bigText}
       </h2>
-      <p className="bigTopicButton__text">
+      <p className={styles.bigTopicButton__text}>
         {smallText}
       </p>
     </button>
   );
-}  
+};
 
 export default BigTopicButton;

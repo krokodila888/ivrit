@@ -10,7 +10,7 @@ import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TrainButton from "../../ui/TrainButton/TrainButton";
-import './DeckItemPage.css';
+import './DeckItemPage.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
 import { TWord, TTopic } from '../../utils/types';

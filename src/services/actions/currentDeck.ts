@@ -28,7 +28,7 @@ export type TCurrentDeckActions =
   | ISetCurrentDeck
   | IRemoveCurrentDeck
   | ISetCurrentWord
-  | IRemoveCurrentWord
+  | IRemoveCurrentWord;
 
 export function setCurrentDeck(data: TTopic) {
   return {

@@ -5,7 +5,7 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TitleContainer from "../../components/TitleContainer/TitleContainer";
-import './WordItemPage.css';
+import styles from './WordItemPage.module.scss';
 import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck';
 import { TWord, TTopic, TNumWord } from '../../utils/types';
 
@@ -13,7 +13,7 @@ const WordItemPage: FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [cardsAreVisible, setCardsAreVisible] = useState(false);
+  const [cardsAreVisible, setCardsAreVisible] = useState<boolean>(false);
   const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
   const { currentWord } = useSelector((state: any) => state.currentDeckReducer);
 
@@ -24,67 +24,67 @@ const WordItemPage: FC = () => {
   }
 
   function handleBackClick() {
-    console.log(document.referrer);
+    //console.log(document.referrer);
     setCardsAreVisible(true);
     dispatch(removeCurrentWord());
     navigate(`/topics/${currentDeck.enTopic}`);
   }
 
-  React.useEffect(()=> {
+  /*React.useEffect(()=> {
     console.log(currentWord);
-  }, [])
+  }, [])*/
 
   return (
     <>
       <Header />
-      <main className="wordItem">
-        <section className="wordItem__content">
+      <main className={styles.wordItem}>
+        <section className={styles.wordItem__content}>
           <TitleContainer 
             handleClick={handleClick}
           />
-          <div className="wordItem__forms-container">
-            <div className="wordItem__form-container">
-              <p className="wordItem__word">
+          <div className={styles.wordItem__formsContainer}>
+            <div className={styles.wordItem__formContainer}>
+              <p className={styles.wordItem__word}>
                 הו {currentWord.present[0].vocalization} 
               </p>
-              <p className="wordItem__transcription">
+              <p className={styles.wordItem__transcription}>
                 {currentWord.present[0].transcription}
               </p>
               <p>
                 (он {currentWord.present[0].translation})
               </p>
             </div>
-            <div className="wordItem__form-container">
-              <p className="wordItem__word">
+            <div className={styles.wordItem__formContainer}>
+              <p className={styles.wordItem__word}>
                 הי {currentWord.present[1].vocalization} 
               </p>
-              <p className="wordItem__transcription">
+              <p className={styles.wordItem__transcription}>
                 {currentWord.present[1].transcription}
               </p>
               <p>
                 (она {currentWord.present[1].translation})
               </p>
             </div>
-            <div className="wordItem__form-container">
-              <p className="wordItem__word">
+            <div className={styles.wordItem__formContainer}>
+              <p className={styles.wordItem__word}>
                 הם {currentWord.present[2].vocalization} 
               </p>
-              <p className="wordItem__transcription">
+              <p className={styles.wordItem__transcription}>
                 {currentWord.present[2].transcription}
               </p>
               <p>
-                (они {currentWord.present[2].translation})
+                (они (м) {currentWord.present[2].translation})
               </p>
             </div>
-            <div className="wordItem__form-container">
-              <p className="wordItem__word">
+            <div className={styles.wordItem__formContainer}>
+              <p className={styles.wordItem__word}>
                 הן {currentWord.present[3].vocalization} 
               </p>
-              <p className="wordItem__transcription">
+              <p className={styles.wordItem__transcription}>
                 {currentWord.present[3].transcription}
               </p>
               <p>
-                (они {currentWord.present[3].translation})
+                (они (ж) {currentWord.present[3].translation})
               </p>
             </div>
           </div>

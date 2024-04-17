@@ -1,7 +1,7 @@
 @import url(../../vendor/Railroad/stylesheet.css);
 
 .main__content {
-  background-color: #fff;
+  background-color: var(--color-background);
   display: flex;
   flex-direction: column;
   min-height: calc(100vh - 262px);
@@ -37,7 +37,7 @@
   display: flex;
   flex-direction: column;
   padding: 30px 70px 70px;
-  color: #000;
+  color: var(--color-font-base);
   align-self: center;
 }
 
@@ -126,7 +126,7 @@
 
 .aboutMe__link {
   text-decoration: none;
-  color: rgb(160 156 156);
+  color: var(--color-font-grey);
   font-family: Inter, sans-serif;
   font-weight: 500;
   font-size: 18px;
@@ -153,7 +153,6 @@
   .aboutMe__text {
     font-size: 18px;
     line-height: 24px;
-    /*max-width: 364px;*/
     padding-right: 0;
   }
 }

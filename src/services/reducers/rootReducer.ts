@@ -4,5 +4,5 @@ import { currentDeckReducer } from './currentDeckReducer';
 
 export const rootReducer = combineReducers({
   //cardsReducer,
-  currentDeckReducer
+  currentDeckReducer,
 });

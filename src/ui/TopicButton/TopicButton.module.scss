@@ -1,0 +1,55 @@
+@import "../../components/App/App";
+@import url(../../vendor/Railroad/stylesheet.css);
+
+.topicButton {
+  display: block;
+  width: 240px;
+  min-height: 36px;
+  height: fit-content;
+  line-height: 32px;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: $color-font-base;
+  background-color: $color-button-topic;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  margin: 10px auto 0;
+  border-radius: 20px;
+  justify-content: center;
+  padding-top: 10px;
+  border: 0.5px solid $color-border-grey;
+
+  &:after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 100%;
+    background: $color-button-hovered;
+    transition: all 0.35s;
+    opacity: 0.4;
+    border-radius: 20px;
+  }
+
+  &:hover:after {
+    width: 100%;
+    cursor: pointer;
+  }
+
+  &__itemText {
+    margin: 0;
+    min-height: 46px;
+  }
+
+  @media (max-width: 660px) {
+    width: 380px;
+  }
+  
+  @media  (max-width: 420px) {
+    width: 280px;
+  }
+}

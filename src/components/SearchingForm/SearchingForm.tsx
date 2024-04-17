@@ -1,35 +1,33 @@
-import React, { FC } from "react";
+import { FC } from 'react';
 import magnifier from '../../images/magn.png';
-import './SearchingForm.css';
+import styles from './SearchingForm.module.scss';
 
 type TProps = {
   setSearch: (arg0: any) => void;
 };
 
 const SearchingForm: FC<TProps> = (props: TProps) => {
-
   const { setSearch } = props;
 
   return (
-   <form className="searchForm__form">
-      <div className="searchForm__input-container">
-        <input 
-          className="searchForm__input" 
-          type="name" 
-          name="search" 
-          id="search" 
-          placeholder="Введите слово" 
-          required 
-          onChange={e => setSearch(e.target.value)}
+    <form className={styles.searchForm}>
+      <div className={styles.searchForm__inputContainer}>
+        <input
+          className={styles.searchForm__input}
+          type="name"
+          name="search"
+          id="search"
+          placeholder="Введите слово"
+          required
+          onChange={(e) => setSearch(e.target.value)}
         />
         <img 
-          className="searchForm__img" 
+          className={styles.searchForm__img} 
           src={magnifier} 
-          alt="Лупа" 
-        />
+          alt="Лупа" />
       </div>
     </form>
   );
-}  
+};
 
 export default SearchingForm;

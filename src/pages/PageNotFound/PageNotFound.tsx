@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useNavigate } from "react-router-dom";
-import './PageNotFound.css';
+import './PageNotFound.scss';
 import Header from '../../components/Header/Header';
 import arrow from '../../images/arrow2.png';
 

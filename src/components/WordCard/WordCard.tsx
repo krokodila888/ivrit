@@ -1,9 +1,9 @@
-import React, { FC, useState } from "react";
+import React, { FC, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import around from '../../images/around1.png';
-import './WordCard.css';
-import { setCurrentWord} from '../../services/actions/currentDeck';
+import styles from './WordCard.module.scss';
+import { setCurrentWord } from '../../services/actions/currentDeck';
 import { TWord } from '../../utils/types';
 
 type TProps = {
@@ -12,14 +12,13 @@ type TProps = {
 };
 
 const WordCard: FC<TProps> = (props: TProps) => {
-
-  const {item, cardsAreVisible } = props;
+  const { item, cardsAreVisible } = props;
   const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [hintIsVisible, setHintIsVisible] = useState(false);
-  const [backIsVisible, setBackIsVisible] = useState(false);
+  const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
+  const [backIsVisible, setBackIsVisible] = useState<boolean>(false);
 
   function handleClick() {
     setHintIsVisible(!hintIsVisible);
@@ -30,7 +29,8 @@ const WordCard: FC<TProps> = (props: TProps) => {
   }
 
   function setText() {
-    if (hintIsVisible) return `${item.transcription}`; else return 'Подсказка'
+    if (hintIsVisible) return `${item.transcription}`;
+    else return 'Подсказка';
   }
 
   function setVerb() {
@@ -41,62 +41,68 @@ const WordCard: FC<TProps> = (props: TProps) => {
   }
 
   return (
-    <div className="wordCard">
-      {!backIsVisible && 
-      <>
-        {cardsAreVisible &&         
-        <p className="word">
-          {item.translation}
-        </p>}
-        {!cardsAreVisible && 
+    <div className={styles.wordCard}>
+      {!backIsVisible && (
         <>
-          <p className="word">
+          {cardsAreVisible && 
+          <p className={styles.word}>
+            {item.translation}
+          </p>}
+          {!cardsAreVisible && (
+            <>
+              <p className={styles.word}>
+                {item.vocalization}
+              </p>
+              <p className={styles.translation}>
+                {item.translation}
+              </p>
+              <p className={styles.translation}>
+                {item.transcription}
+              </p>
+            </>
+          )}
+          {cardsAreVisible && (
+            <>
+              <p 
+                className={styles.translation1 && styles.translation2} 
+                onClick={handleClick}>
+                {setText()}
+              </p>
+              <img
+                src={around}
+                alt="Стрелка переворота"
+                className={styles.wordCard__img}
+                onClick={handleIconClick}
+              />
+            </>
+          )}
+        </>
+      )}
+      {backIsVisible && (
+        <>
+          <p className={styles.word}>
             {item.vocalization}
           </p>
-          <p className="translation">
-            {item.translation}
-          </p>
-          <p className="translation">
+          <p className={styles.translation1}>
             {item.transcription}
           </p>
-        </>
-        }
-        {cardsAreVisible && 
-        <>
-          <p className="translation1 translation2" onClick={handleClick}>
-            {setText()}
-          </p>
-          <img 
-            src={around} 
-            alt="Стрелка переворота" 
-            className='wordCard__img'
+          <img
+            src={around}
+            alt="Стрелка переворота"
+            className={styles.wordCard__img}
             onClick={handleIconClick}
           />
         </>
-        }
-      </>
-      }
-      {backIsVisible && 
-      <>
-        <p className="word">
-          {item.vocalization}
-        </p>
-        <p className="translation1">
-          {item.transcription}
-        </p>
-        <img 
-          src={around} 
-          alt="Стрелка переворота" 
-          className='wordCard__img'
-          onClick={handleIconClick}/>
-        </>
-      }
-      {item && item.ruTopic.includes('Глаголы') &&         
-        <p className="text" onClick={setVerb}>
+      )}
+      {item && item.ruTopic.includes('Глаголы') && (
+        <p 
+          className={styles.text}
+          onClick={setVerb}>
           cмотреть формы
-        </p>}
+        </p>
+      )}
     </div>
   );
-}  
+};
 
 export default WordCard;

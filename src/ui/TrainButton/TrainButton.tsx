@@ -1,5 +1,5 @@
-import { FC } from "react";
-import './TrainButton.css';
+import { FC } from 'react';
+import styles from './TrainButton.module.scss';
 
 type TProps = {
   onClick: () => void;
@@ -7,17 +7,16 @@ type TProps = {
 };
 
 const TrainButton: FC<TProps> = (props: TProps) => {
-
   const { onClick, text } = props;
 
   return (
     <button 
-      className="trainButton" 
-      onClick={onClick}
-      type='button'>
+      className={styles.trainButton} 
+      onClick={onClick} 
+      type="button">
       {text}
     </button>
   );
-}  
+};
 
 export default TrainButton;

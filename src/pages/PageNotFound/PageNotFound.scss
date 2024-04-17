@@ -7,7 +7,7 @@
 }
 
 .pageNotFound__title {
-  font-family: Inter;
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 140px;
   line-height: 169px;
@@ -17,7 +17,7 @@
 }
 
 .pageNotFound__text {
-  font-family: Inter;
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 16px;
   line-height: 19px;
@@ -31,7 +31,7 @@
 }
 
 .pageNotFound__link {
-  font-family: Inter;
+  font-family: var(--font-sans);
   font-weight: 400;
   font-size: 14px;
   line-height: 17px;

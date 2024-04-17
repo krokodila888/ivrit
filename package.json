@@ -11,7 +11,9 @@
     "@types/react-dom": "^18.2.25",
     "@types/react-router-dom": "^5.3.3",
     "cra-template-typescript": "^1.2.0",
+    "css-loader": "^7.1.1",
     "fork-ts-checker-webpack-plugin": "^8.0.0",
+    "node-sass": "^9.0.0",
     "prettier": "^3.2.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,7 +23,9 @@
     "redux": "^4.2.1",
     "redux-devtools-extension": "^2.13.9",
     "redux-thunk": "^2.4.2",
+    "style-loader": "^4.0.0",
     "stylelint": "^16.3.1",
+    "typescript-plugin-css-modules": "^5.1.0",
     "web-vitals": "^2.1.4"
   },
   "overrides": {
@@ -34,12 +38,13 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "check": "prettier --check './**/**/**/*.{html,css,js,ts,tsx}'",
-    "format": "prettier --write './**/**/**/*.{html,css,js,ts,tsx}'",
-    "lint": "stylelint src/**/**/*.css",
-    "lintfix": "stylelint src/**/**/*.css --fix",
+    "check": "prettier --check './src/**/**/*.{html,css,js,ts,tsx,scss}'",
+    "format": "prettier --write './src/**/**/*.{html,css,js,ts,tsx,scss}'",
+    "lint": "stylelint src/**/**/*.{scss,css}",
+    "lintfix": "stylelint src/**/**/*.{scss,css} --fix",
     "checkAll": "npm run check && npm run lint",
-    "fixAll": "npm run format && npm run lintfix"
+    "fixAll": "npm run format && npm run lintfix",
+    "sass": "sass --watch ./src/**/**/*.{scss}"
   },
   "eslintConfig": {
     "extends": [
@@ -67,6 +72,10 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@types/react-router-dom": "^5.3.3",
-    "typescript": "^5.4.5"
+    "sass": "^1.75.0",
+    "sass-loader": "^14.2.1",
+    "stylelint-config-standard-scss": "^13.1.0",
+    "typescript": "^5.4.5",
+    "webpack": "^5.91.0"
   }
 }

@@ -1,0 +1,175 @@
+@import "../../components/App/App";
+@import url(../../vendor/Railroad/stylesheet.css);
+
+.wordItem {
+  background-color: $color-background;
+  min-height: calc(100vh - 262px);
+  
+  &__content {
+    justify-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 70px 20px;
+    max-width: 1040px;
+    min-height: 300px;
+    margin-right: auto;
+    margin-left: auto;
+  
+    @media (max-width: 680px) {
+      padding: 66px 20px 20px;
+    }
+
+    @media (max-width: 480px) {
+      padding: 66px 12px 20px;
+    }
+  }
+
+  &__titleContainer1 {
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 1040px;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  &__titleContainer {
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 1040px;
+    flex-wrap: wrap;
+    
+    @media (max-width: 780px) {
+      justify-content: center;
+      align-items: center;
+      flex-direction: column-reverse;
+    }
+
+    @media (max-width: 680px) {
+      align-items: center;
+    }
+  }
+
+  &__title {
+    font-family: $font-sans;
+    line-height: 30px;
+    margin: 0;
+    padding-bottom: 26px;
+    font-weight: 400;
+    font-size: 28px;
+    color: $color-font-darkgrey;
+
+    @media (max-width: 630px) {
+      text-align: center;
+    }
+  }
+
+  &__word {
+    font-family: $font-sans;
+    line-height: 30px;
+    margin: 0;
+    padding-bottom: 20px;
+    font-weight: 700;
+    font-size: 30px;
+    color: $color-font-darkgrey;
+
+    @media (max-width: 490px) {
+      line-height: 20px;
+      font-size: 18px;
+      padding-bottom: 10px;
+    }
+    
+    @media (max-width: 390px) {
+      font-size: 16px;
+    }
+  }
+
+  &__transcription {
+    font-family: $font-sans;
+    line-height: 28px;
+    margin: 4px 0;
+    padding: 4px 0;
+    font-weight: 400;
+    font-size: 24px;
+    color: $color-font-grey;
+    background-color: $color-background;
+    border-radius: 10px;
+    width: 100%;
+    text-align: center;
+  
+    @media (max-width: 390px) {
+      font-size: 14px;
+      line-height: 26px;
+      margin: 6px 0;
+    }
+  }
+
+  &__title1 {
+    font-family: $font-sans;
+    line-height: 30px;
+    margin: 0;
+    padding-bottom: 28px;
+    font-weight: 700;
+    font-size: 34px;
+    color: $color-font-darkgrey;
+    padding-left: 20px;
+
+    @media (max-width: 630px) {
+      padding-left: 0;
+    }
+  }
+
+  &__text {
+    font-family: $font-sans;
+    line-height: 30px;
+    margin: 0;
+    font-weight: 400;
+    font-size: 20px;
+    color: $color-font-grey;
+  }
+
+  &__titleTextContainer {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  
+    @media (max-width: 630px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__formsContainer {
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 1040px;
+    flex-wrap: wrap;
+    padding-bottom: 30px;
+    padding-top: 20px;
+ 
+    @media (max-width: 630px) {
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__formContainer {
+    justify-content: space-between;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: $color-background-card;
+    border-radius: 20px;
+    padding: 20px;
+    align-items: center;
+    margin: 10px;
+    min-width: 170px;
+  }
+}

@@ -1,7 +1,7 @@
-import React, { FC, useEffect, useState } from "react";
-import './CardsHolder.css';
-import BackToTopic from "../BackToTopic/BackToTopic";
-import TrainButton from "../../ui/TrainButton/TrainButton";
+import React, { FC, useEffect, useState } from 'react';
+import styles from './CardsHolder.module.scss';
+import BackToTopic from '../BackToTopic/BackToTopic';
+import TrainButton from '../../ui/TrainButton/TrainButton';
 import { useDispatch } from 'react-redux';
 import arrowBack from '../../images/repeat.png';
 import { TWord } from '../../utils/types';
@@ -12,7 +12,6 @@ type TProps = {
 };
 
 const CardsHolder: FC<TProps> = (props: TProps) => {
-
   const { words, handleCloseModesClick } = props;
 
   const dispatch = useDispatch();
@@ -32,24 +31,32 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
   }
 
   function setText(item: TWord) {
-    if (hintIsVisible) return `${item.transcription}`; else return 'Подсказка'
+    if (hintIsVisible) return `${item.transcription}`;
+    else return 'Подсказка';
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     if (words && words.length !== 0) {
       let aaa = words;
-      aaa.forEach((item: TWord) => item.number = Math.floor(Math.random() * 10) + 1);
+      aaa.forEach(
+        (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
+      );
       aaa.sort(function (a: any, b: any) {
         return a.number - b.number;
       });
       setWordsToRepeat(aaa);
-    }    
-  }, [words])
+    }
+  }, [words]);
 
-  useEffect(()=> {
-    if (words && words.length !== 0 && wordsToRepeat && wordsToRepeat.length === words.length) 
-    startRepeating();
-  }, [wordsToRepeat])
+  useEffect(() => {
+    if (
+      words &&
+      words.length !== 0 &&
+      wordsToRepeat &&
+      wordsToRepeat.length === words.length
+    )
+      startRepeating();
+  }, [wordsToRepeat]);
 
   function showHint() {
     setHintIsVisible(true);
@@ -57,7 +64,7 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
 
   function showTranslation() {
     setShowWord(true);
-  };
+  }
 
   const onRepeatChange = (e: any) => {
     setMeaning({ ...repeatingForm, [e.target.name]: e.target.value });
@@ -81,38 +88,57 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
 
   function word() {
     if (currentWord && currentWord !== null) {
-    return (
-    <>
-      <div className="cardsHolder__title-raw">
-        <p className="cardsHolder__title">
-          {currentWord.translation}
-        </p>
-        <p className="cardsHolder__hint" onClick={showHint}>
-          {setText(currentWord)}
-        </p>
-      </div>
-      {showWord && 
-      <>
-        <p className="cardsHolder__title">
-          {currentWord.word}
-        </p>
-        {currentWord && currentWord !== null && currentWord.word !== 'Правда все.' &&
-          <p>
-            Рекомендуется напечатать правильный вариант все равно: так он лучше запомнится
-          </p>
-        }
-      </>}
-    </>)}
+      return (
+        <>
+          <div className={styles.cardsHolder__titleRow}>
+            <p className={styles.cardsHolder__title}>
+              {currentWord.translation}
+            </p>
+            <p 
+              className={styles.cardsHolder__hint} 
+              onClick={showHint}>
+              {setText(currentWord)}
+            </p>
+          </div>
+          {showWord && (
+            <>
+              <p className={styles.cardsHolder__title}>
+                {currentWord.word}
+              </p>
+              {currentWord &&
+                currentWord !== null &&
+                currentWord.word !== 'Правда все.' && (
+                  <p>
+                    Рекомендуется напечатать правильный вариант все равно: так
+                    он лучше запомнится
+                  </p>
+                )}
+            </>
+          )}
+        </>
+      );
+    }
   }
-  
-  useEffect(()=> {
-    if (repeatingInput && currentWord && (currentWord.word === repeatingForm.word)) 
-    {setIsCorrect(true);
-    repeatingInput.classList.add('cardsHolder__input_active');};
-    if (repeatingInput && currentWord && (currentWord.word !== repeatingForm.word) && isCorrect) {
+
+  useEffect(() => {
+    if (
+      repeatingInput &&
+      currentWord &&
+      currentWord.word === repeatingForm.word
+    ) {
+      setIsCorrect(true);
+      repeatingInput.classList.add(styles.cardsHolder__input_active);
+    }
+    if (
+      repeatingInput &&
+      currentWord &&
+      currentWord.word !== repeatingForm.word &&
+      isCorrect
+    ) {
       setIsCorrect(false);
-      repeatingInput.classList.remove('cardsHolder__input_active');};
-  }, [repeatingForm])
+      repeatingInput.classList.remove(styles.cardsHolder__input_active);
+    }
+  }, [repeatingForm]);
 
   function nextWord1() {
     if (currentWord) {
@@ -122,62 +148,79 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
       setHintIsVisible(false);
       setMeaning({ ...repeatingForm, word: '' });
       if (repeatingInput) {
-        repeatingInput.classList.remove('cardsHolder__input_active');
-      };
-      if (wordsToRepeat.length > 1) {setCurrentWord(wordsToRepeat[1]); 
-      setWordsToRepeat(wordsToRepeat.slice(1));}
-      else {setCurrentWord({word: 'Правда все.', translation: 'Вы повторили все!', transcription: 'Вы можете начать с начала', vocalization: '', ruTopic: '', enTopic: ''})}
+        repeatingInput.classList.remove(styles.cardsHolder__input_active);
+      }
+      if (wordsToRepeat.length > 1) {
+        setCurrentWord(wordsToRepeat[1]);
+        setWordsToRepeat(wordsToRepeat.slice(1));
+      } else {
+        setCurrentWord({
+          word: 'Правда все.',
+          translation: 'Вы повторили все!',
+          transcription: 'Вы можете начать с начала',
+          vocalization: '',
+          ruTopic: '',
+          enTopic: '',
+        });
+      }
     }
   }
 
   return (
     <>
-    <section className="cardsHolder__content" id="cardsHolder">
-      {repeatMode && 
-      <div className='cardsHolder__form'>
-        <div>
-          {word()}
-        </div>
-        <input 
-          placeholder="Место для слова" 
-          value={repeatingForm.word} 
-          id='cardsHolderRepeatingInput'
-          type="text"
-          name="word" 
-          onChange={onRepeatChange}
-          required
-          className='cardsHolder__input'
-          autoComplete="off"
-          autoCorrect="off" 
-          autoCapitalize="off" 
-          spellCheck="false" />
-        <div className='cardsHolder__button-block'>
-          <TrainButton
-            onClick={showTranslation}
-            text="Показать слово"
-          />
-          <TrainButton
-            onClick={nextWord1}
-            text="Следующая"
-          />
-        </div>
-      </div>}
-      {currentWord && currentWord !== null && currentWord.word === 'Правда все.' &&
-      <div 
-        className="cardsHolder__arrow-container" 
-        onClick={repeatAgain}>
-        <img 
-          src={arrowBack} 
-          alt="Стрелка назад" 
-          className='cardsHolder__repeat-img'
-        />
-        <p className="deckItem__text">Повторять снова</p>
-      </div>
-      }
-      <BackToTopic handleCloseModesClick={stopRepeating} />
-    </section>
+      <section 
+        className={styles.cardsHolder} 
+        id="cardsHolder"
+      >
+        {repeatMode && (
+          <div className={styles.cardsHolder__form}>
+            <div>{word()}</div>
+            <input
+              placeholder="Место для слова"
+              value={repeatingForm.word}
+              id="cardsHolderRepeatingInput"
+              type="text"
+              name="word"
+              onChange={onRepeatChange}
+              required
+              className={styles.cardsHolder__input}
+              autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
+              spellCheck="false"
+            />
+            <div className={styles.cardsHolder__buttonBlock}>
+              <TrainButton 
+                onClick={showTranslation} 
+                text="Показать слово" 
+              />
+              <TrainButton 
+                onClick={nextWord1} 
+                text="Следующая" 
+              />
+            </div>
+          </div>
+        )}
+        {currentWord &&
+          currentWord !== null &&
+          currentWord.word === 'Правда все.' && (
+            <div 
+              className={styles.cardsHolder__arrowContainer}
+              onClick={repeatAgain}>
+              <img
+                src={arrowBack}
+                alt="Стрелка назад"
+                className={styles.cardsHolder__repeatImg}
+              />
+              <p className={styles.deckItem__text}>
+                Повторять снова
+              </p>
+            </div>
+          )}
+        <BackToTopic handleCloseModesClick={stopRepeating} />
+      </section>
     </>
   );
-}  
+};
 
-export default CardsHolder; 
+export default CardsHolder;

@@ -1,5 +1,5 @@
-import React, {FC} from "react";
-import './BackToTopic.css';
+import React, { FC } from 'react';
+import styles from './BackToTopic.module.scss';
 import arrow from '../../images/arrow2.png';
 
 type TProps = {
@@ -7,21 +7,22 @@ type TProps = {
 };
 
 const BackToTopic: FC<TProps> = (props: TProps) => {
-
   const { handleCloseModesClick } = props;
 
   return (
-    <div className="backToTopic__arrow-container" onClick={handleCloseModesClick}>
+    <div
+      className={styles.backToTopic}
+      onClick={handleCloseModesClick}
+    >
       <img 
         src={arrow} 
         alt="Стрелка назад" 
-        className='backToTopic__arrow'
-      />
-      <p className="backToTopic__text">
+        className={styles.backToTopic__arrow} />
+      <p className={styles.backToTopic__text}>
         Назад к теме
       </p>
     </div>
-  )
-}  
+  );
+};
 
 export default BackToTopic;
