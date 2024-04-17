@@ -1,8 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import './CardsHolder.css';
 import BackToTopic from "../BackToTopic/BackToTopic";
+import TrainButton from "../../ui/TrainButton/TrainButton";
 import { useDispatch } from 'react-redux';
-import arrow1 from '../../images/repeat.png';
+import arrowBack from '../../images/repeat.png';
 import { TWord } from '../../utils/types';
 
 type TProps = {
@@ -151,16 +152,14 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
           autoCapitalize="off" 
           spellCheck="false" />
         <div className='cardsHolder__button-block'>
-          <button 
-            className='cardsHolder__button'
-            onClick={showTranslation}>
-              Показать слово
-          </button>
-          <button 
-            className='cardsHolder__button'
-            onClick={nextWord1}>
-              Следующая
-          </button>
+          <TrainButton
+            onClick={showTranslation}
+            text="Показать слово"
+          />
+          <TrainButton
+            onClick={nextWord1}
+            text="Следующая"
+          />
         </div>
       </div>}
       {currentWord && currentWord !== null && currentWord.word === 'Правда все.' &&
@@ -168,7 +167,7 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
         className="cardsHolder__arrow-container" 
         onClick={repeatAgain}>
         <img 
-          src={arrow1} 
+          src={arrowBack} 
           alt="Стрелка назад" 
           className='cardsHolder__repeat-img'
         />

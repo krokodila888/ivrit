@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from "react";
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
+import BigTopicButton from "../../ui/BigTopicButton/BigTopicButton";
+import TopicButton from "../../ui/TopicButton/TopicButton";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import photo from '../../images/photo1.jpg';
@@ -47,48 +49,30 @@ const Main: FC = () => {
         </section>
         <section className="decks__main-content" id="Main-decks">
           <div className="decks__content-wrap">
-            <div 
-              className="decks__item" 
+            <BigTopicButton 
               onClick={() => {setDeck({
-              ruTopic: 'Все',
-              enTopic: 'All',
-              })}}
-            >
-              <h2 className="decks__main-item-text">
-                Все слова
-              </h2>
-              <p className="decks__grey-item-text">
-                с поиском
-              </p>
-            </div>
-            <div 
-              className="decks__middle-item" 
+                ruTopic: 'Все',
+                enTopic: 'All',
+                })}}
+              bigText="Все слова"
+              smallText="с поиском"
+            />
+            <BigTopicButton 
               onClick={() => {setDeck({
-              ruTopic: 'Глаголы',
-              enTopic: 'Verbs',
-              })}}
-            >
-              <h2 className="decks__main-item-text">
-                Глаголы
-              </h2>
-              <p className="decks__grey-item-text">
-                и их формы
-              </p>
-            </div>
-            <div 
-              className="decks__item" 
+                ruTopic: 'Глаголы',
+                enTopic: 'Verbs',
+                })}}
+              bigText="Глаголы"
+              smallText="и их формы"
+            />
+            <BigTopicButton 
               onClick={() => {setDeck({
-              ruTopic: 'Числа',
-              enTopic: 'Numbers',
-              })}}
-            >
-              <h2 className="decks__main-item-text">
-                Числа
-              </h2>
-              <p className="decks__grey-item-text">
-                и тренажер к ним
-              </p>
-            </div>
+                ruTopic: 'Числа',
+                enTopic: 'Numbers',
+                })}}
+              bigText="Числа"
+              smallText="и тренажер к ним"
+            />
           </div>
         </section>
         <section className="decks__content" id="Decks">
@@ -97,30 +81,24 @@ const Main: FC = () => {
           </h2>
           <div className="decks__content-wrap">
             {partsOfSpeach.map((item, i) => (
-            <div 
-              key={i} 
-              className="decks__item" 
-              onClick={() => {setDeck(item)}}>
-              <p className="decks__item-text">
-                {item.ruTopic}
-              </p>
-            </div>))
-            }
+              <TopicButton 
+                key={i}
+                onClick={() => {setDeck(item)}}
+                text={item.ruTopic} 
+              />
+            ))}
           </div>
           <h2 className="aboutMe__title-text">
             Темы
           </h2>
           <div className="decks__content-wrap">
             {topicsForRender.map((item, i) => (
-            <div 
-              key={i} 
-              className="decks__item" 
-              onClick={() => {setDeck(item)}}>
-              <p className="decks__item-text">
-                {item.ruTopic}
-              </p>
-            </div>))
-            }
+              <TopicButton 
+                key={i}
+                onClick={() => {setDeck(item)}}
+                text={item.ruTopic} 
+              />
+            ))}
           </div>
         </section>
       </main>

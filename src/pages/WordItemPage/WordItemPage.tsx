@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FC, useEffect, useState } from "react";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
@@ -7,14 +7,15 @@ import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TitleContainer from "../../components/TitleContainer/TitleContainer";
 import './WordItemPage.css';
 import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck';
+import { TWord, TTopic, TNumWord } from '../../utils/types';
 
-function WordItemPage() {
+const WordItemPage: FC = () => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [cardsAreVisible, setCardsAreVisible] = useState(false);
-  const { currentDeck } = useSelector(state => state.currentDeckReducer);
-  const { currentWord } = useSelector(state => state.currentDeckReducer);
+  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
+  const { currentWord } = useSelector((state: any) => state.currentDeckReducer);
 
   function handleClick() {
     dispatch(removeCurrentDeck());

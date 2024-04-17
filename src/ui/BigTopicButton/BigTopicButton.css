@@ -1,0 +1,78 @@
+@import url(../../vendor/Railroad/stylesheet.css);
+
+.bigTopicButton {
+  display: block;
+  width: 240px;
+  min-height: 36px;
+  height: fit-content;
+  line-height: 32px;
+  font-size: 20px;
+  font-family: sans-serif;
+  text-decoration: none;
+  color: #333;
+  background-color: #f8f9e7;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  border-radius: 20px;
+  justify-content: center;
+  padding-top: 10px;
+  border: 0.5px solid rgb(239 239 239);
+  margin: 10px 20px 0;
+}
+
+.bigTopicButton__main-text {
+  margin: 0;
+  min-height: 32px;
+  font-size: 28px;
+  line-height: 28px;
+  padding-top: 20px;
+}
+
+.bigTopicButton__text {
+  margin: 0;
+  min-height: 56px;
+  font-size: 16px;
+  color: rgb(160 160 160);
+}
+
+.bigTopicButton:after {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  /*background-color: white;*/
+  background: #61fff4;
+  transition: all 0.35s;
+  opacity: 0.4;
+  border-radius: 20px;
+}
+
+.bigTopicButton:hover:after {
+  width: 100%;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 787px) {
+
+  .bigTopicButton {
+    margin: 10px auto 0;
+  }
+}
+
+@media screen and (max-width: 660px) {
+
+  .bigTopicButton {
+    width: 380px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+
+  .bigTopicButton {
+    width: 280px;
+  }
+}

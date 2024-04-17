@@ -9,6 +9,7 @@ import TitleContainer from "../../components/TitleContainer/TitleContainer";
 import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
+import TrainButton from "../../ui/TrainButton/TrainButton";
 import './DeckItemPage.css';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
@@ -120,22 +121,19 @@ const DeckItemPage: FC = () => {
           />
           {wordsAreVisible && !cardsAreVisible &&
           <div className="decks__button-container">
-            <button 
-              className="deckItem__train-button" 
-              onClick={handleCardsModeClick}>
-              Учить карточки
-              </button>
-            <button 
-              className="deckItem__train-button" 
-              onClick={handleRepeatModeClick}>
-              Печатать слова
-            </button>
+            <TrainButton
+              onClick={handleCardsModeClick}
+              text="Учить карточки"
+            />
+            <TrainButton
+              onClick={handleRepeatModeClick}
+              text="Печатать слова"
+            />
             {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
-            <button 
-              className="deckItem__train-button" 
-              onClick={handleTrainNumbersClick}>
-              Тренировать числа
-            </button>
+            <TrainButton
+              onClick={handleTrainNumbersClick}
+              text="Тренировать числа"
+            />
             }
           </div>
           }

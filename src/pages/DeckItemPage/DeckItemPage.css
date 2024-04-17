@@ -54,17 +54,40 @@
 .decks__button-container {
   display: flex;
   flex-direction: row;
-  width: 600px;
+  width: 100%;
   align-self: center;
   margin-bottom: 20px;
   justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
 }
+
+.decks__button-container button {
+  width: 30%;
+}
+
+@media screen and (max-width: 990px) {
+
+  .decks__button-container button {
+    width: 240px;
+  }
+}
+
+@media screen and (max-width: 990px) {
+
+  .decks__button-container {
+    justify-content: center;
+  }
+}
+
 
 @media screen and (max-width: 640px) {
 
   .decks__button-container {
     flex-direction: column;
     max-width: 280px;
+    gap: 20px;
+    align-items: center;
   }
 }
 
