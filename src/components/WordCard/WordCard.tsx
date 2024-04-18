@@ -1,10 +1,11 @@
-import React, { FC, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { FC, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import around from '../../images/around1.png';
 import styles from './WordCard.module.scss';
 import { setCurrentWord } from '../../services/actions/currentDeck';
 import { TWord } from '../../utils/types';
+import { useAppDispatch } from '../../services/hooks';
+import { useAppSelector } from '../../services/hooks';
 
 type TProps = {
   cardsAreVisible: boolean;
@@ -13,9 +14,9 @@ type TProps = {
 
 const WordCard: FC<TProps> = (props: TProps) => {
   const { item, cardsAreVisible } = props;
-  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
+  const { currentDeck } = useAppSelector((state) => state.currentDeckReducer);
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
   const [backIsVisible, setBackIsVisible] = useState<boolean>(false);

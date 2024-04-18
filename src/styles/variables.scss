@@ -22,8 +22,19 @@ $color-background-card: #ebecde;
   transition: 1s;
 }
 
-@mixin test {
-  color: red;
-  opacity: 0;
-  background-color: green;
+@mixin column {
+  display: flex;
+  flex-direction: column;
+}
+
+@mixin row {
+  display: flex;
+  flex-direction: row;
+}
+
+@mixin font($font-size, $line-size, $font-weight) {
+  font-family: $font-sans;
+  font-size: $font-size;
+  line-height: $line-size;
+  font-weight: $font-weight;
 }

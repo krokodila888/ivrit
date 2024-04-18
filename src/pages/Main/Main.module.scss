@@ -1,17 +1,15 @@
 @import "../../styles/variables";
 
 .main {
+  @include column;
   background-color: $color-background;
-  display: flex;
-  flex-direction: column;
   min-height: calc(100vh - 262px);
 }
 
 .aboutMe {
+  @include column;
   justify-items: center;
   position: relative;
-  display: flex;
-  flex-direction: column;
   padding: 0 70px 20px;
   min-width: 1020px;
   min-height: 300px;
@@ -27,10 +25,7 @@
   }
 
   &__title {
-    font-family: $font-sans;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    @include font(22px, 27px, 400);
     margin: 0;
     padding-bottom: 23px;
 
@@ -42,12 +37,9 @@
   }
 
   &__statusText {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(28px, 30px, 400);
     margin: 0;
     padding-bottom: 26px;
-    font-weight: 400;
-    font-size: 28px;
     align-self: center;
 
     @media (max-width: 1050px) {
@@ -74,20 +66,15 @@
   }
 
   &__titleText {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(28px, 30px, 400);
     margin: 0;
     padding-bottom: 26px;
-    font-weight: 400;
-    font-size: 28px;
     align-self: center;
   }
 
   &__text {
+    @include font(18px, 26px, 500);
     font-family: $font-sans;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 26px;
     margin: 0;
     padding-bottom: 20px;
 
@@ -105,8 +92,7 @@
   }
 
   &__column {
-    display: flex;
-    flex-direction: column;
+    @include column;
     max-width: 770px;
     justify-content: space-between;
 
@@ -127,8 +113,7 @@
   }
 
   &__textBlock {
-    display: flex;
-    flex-direction: row;
+    @include row;
     padding-top: 66px;
     justify-content: space-between;
     gap: 20px;
@@ -163,12 +148,9 @@
   }
 
   &__link {
+    @include font(18px, 26px, 500);
     text-decoration: none;
     color: $color-font-grey;
-    font-family: $font-sans;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 26px;
     padding-top: 30px;
     margin-bottom: 30px;
 
@@ -183,11 +165,10 @@
 }
 
 .decks {
+  @include column;
   justify-items: center;
   align-items: stretch;
   position: relative;
-  display: flex;
-  flex-direction: column;
   padding: 30px 70px 70px;
   color: $color-font-base;
   align-self: center;
@@ -201,20 +182,18 @@
   }
 
   &__mainContent {
+    @include column;
     justify-items: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
     max-width: 1040px;
     flex-wrap: wrap;
     align-self: center;
   }
 
   &__contentWrap {
+    @include row;
     justify-items: center;
     position: relative;
-    display: flex;
-    flex-direction: row;
     max-width: 1040px;
     flex-wrap: wrap;
     padding-bottom: 40px;

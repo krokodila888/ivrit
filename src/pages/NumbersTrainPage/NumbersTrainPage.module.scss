@@ -1,11 +1,10 @@
 @import "../../styles/variables";
 
 .numbersTraining {
+  @include column;
   background-color: $color-background;
   min-height: calc(100vh - 262px);
   max-width: 1040px;
-  display: flex;
-  flex-direction: column;
   align-items: center;
   
   @media (max-width: 1080px) {
@@ -15,19 +14,19 @@
   @media (max-width: 680px) {
     padding: 20px 8px;
   }
+
   &__section {
-    justify-items: center;
+    @include column;
     position: relative;
-    display: flex;
-    flex-direction: column;
+    justify-items: center;
     padding: 30px 0 20px;
     max-width: 1040px;
     min-height: 300px;
     margin-right: auto;
     margin-left: auto;
 
-    @media (max-width: 680px) {
-      padding: 40px 20px 20px;
+    @media (max-width: 760px) {
+      padding: 40px 0px 20px;
     }
   
     @media (max-width: 480px) {
@@ -40,11 +39,16 @@
 .cardsHolder {
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    @include column;
     gap: 20px;
     padding-bottom: 50px;
     position: relative;
+    max-width: 600px;
+    align-self: center;
+
+    @media (max-width: 720px) {
+      gap: 12px;
+    }
   }
 
   &__input {
@@ -89,8 +93,7 @@
   }
 
   &__buttonBlock {
-    display: flex;
-    flex-direction: row;
+    @include row;
     justify-content: space-between;
     gap: 12px;
 
@@ -103,14 +106,12 @@
     
     @media (max-width: 630px) {
       gap: 30px;
-      padding-top: 30px;
     }
     
     @media (max-width: 530px) {
       flex-direction: column;
       width: 85vw;
       gap: 30px;
-      padding-top: 30px;
       align-items: center;
     }
 
@@ -121,34 +122,49 @@
     }
   }
 
+  &__answer {
+    @include column;
+    height: 22px;
+    max-width: 600px;
+  }
+
+  &__advice {
+    height: 42px;
+    max-width: 600px;
+
+    & p {
+      margin: 0;
+      width: fit-content;
+
+      @media (max-width: 530px) {
+        max-width: 85vw;
+      }
+    }
+  }
+
   &__titleRow {
-    display: flex;
-    flex-direction: row;
+    @include row;
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
     gap: 16px;
+
+    @media (max-width: 530px) {
+      max-width: 85vw;
+    }
   }
 
   &__title {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    @include font(22px, 27px, 400);
     margin: 0;
-    padding-bottom: 23px;
 
     @media (max-width: 650px) {
-      padding-bottom: 28px;
       font-size: 18px;
       line-height: 22px;
     }
   }
   &__hint {
-    font-family: $font-sans;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    @include font(22px, 27px, 400);
     margin: 0;
     padding-bottom: 23px;
     color: $color-font-grey;
@@ -159,10 +175,9 @@
   }
 
   &__arrowContainer {
+    @include column;
     justify-content: flex-end;
     position: relative;
-    display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     width: 200px;

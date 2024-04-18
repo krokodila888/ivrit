@@ -3,10 +3,11 @@ import magnifier from '../../images/magn.png';
 import styles from './SearchingForm.module.scss';
 
 type TProps = {
-  setSearch: (arg0: any) => void;
+  setSearch: (arg0: string) => void;
 };
 
 const SearchingForm: FC<TProps> = (props: TProps) => {
+  
   const { setSearch } = props;
 
   return (

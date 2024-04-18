@@ -1,6 +1,5 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState, ChangeEvent, useRef } from "react";
 import { useNavigate } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import TitleContainer from "../../components/TitleContainer/TitleContainer";
@@ -10,19 +9,19 @@ import styles from './NumbersTrainPage.module.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck, setCurrentDeck } from '../../services/actions/currentDeck';
 import { TNumWord } from '../../utils/types';
+import { useAppDispatch } from '../../services/hooks';
 
 const NumbersTrainPage: FC = () => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [currentNum, setCurrentNum] = useState<TNumWord | null>(null);
-  const [showNum, setShowNum] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
-  const [hintIsVisible, setHintIsVisible] = useState(false);
+  const [showNum, setShowNum] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
+  const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
   const words = vocabulary.filter(item => item.ruTopic.includes('Числа'));
   const [repeatingForm, setMeaning] = useState({ word: '' });
-  const repeatingInput = document.getElementById('cardsHolderRepeatingNumInput');
-  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
+  const repeatingNumInput = useRef<any>();
 
   function makeAnswer() {
     let num1 = Math.floor(Math.random() * 100) + Math.floor(Math.random() * 10);
@@ -119,17 +118,14 @@ const NumbersTrainPage: FC = () => {
           {setText()}
         </p>
       </div>
+      <div className={styles.cardsHolder__answer}>
       {showNum && 
       <>
         <p className={styles.cardsHolder__title}>
           {currentNum.meaning}
         </p>
-        {currentNum && currentNum !== null &&
-          <p>
-            Рекомендуется напечатать правильный вариант все равно: так он лучше запомнится
-          </p>
-        }
       </>}
+      </div>
     </>)}
   }
   
@@ -137,17 +133,19 @@ const NumbersTrainPage: FC = () => {
     setShowNum(true);
   };
 
-  const onRepeatChange = (e: any) => {
-    setMeaning({ ...repeatingForm, [e.target.name]: e.target.value });
+  const onRepeatChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (repeatingNumInput.current) {
+      setMeaning({ ...repeatingForm, [e.target.name]: e.target.value });
+    }
   };
 
   useEffect(()=> {
-    if (repeatingInput && currentNum && (currentNum.meaning === repeatingForm.word)) 
+    if (repeatingNumInput.current && currentNum && (currentNum.meaning === repeatingForm.word)) 
     {setIsCorrect(true);
-    repeatingInput.classList.add(styles.cardsHolder__input_active);};
-    if (repeatingInput && currentNum && (currentNum.meaning !== repeatingForm.word) && isCorrect) {
+      repeatingNumInput.current.classList.add(styles.cardsHolder__input_active);};
+    if (repeatingNumInput.current && currentNum && (currentNum.meaning !== repeatingForm.word) && isCorrect) {
       setIsCorrect(false);
-      repeatingInput.classList.remove(styles.cardsHolder__input_active);};
+      repeatingNumInput.current.classList.remove(styles.cardsHolder__input_active);};
   }, [repeatingForm])
 
   function handleClick() {
@@ -160,8 +158,8 @@ const NumbersTrainPage: FC = () => {
     setIsCorrect(false);
     setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
-    if (repeatingInput) {
-      repeatingInput.classList.remove(styles.cardsHolder__input_active);
+    if (repeatingNumInput.current) {
+      repeatingNumInput.current.classList.remove(styles.cardsHolder__input_active);
     };
     makeAnswer();
   }
@@ -171,8 +169,8 @@ const NumbersTrainPage: FC = () => {
     setIsCorrect(false);
     setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
-    if (repeatingInput) {
-      repeatingInput.classList.remove(styles.cardsHolder__input_active);
+    if (repeatingNumInput.current) {
+      repeatingNumInput.current.classList.remove(styles.cardsHolder__input_active);
     };
     dispatch(setCurrentDeck({
       ruTopic: 'Числа',
@@ -181,17 +179,11 @@ const NumbersTrainPage: FC = () => {
     navigate('/topics/Numbers');
   }
 
-  useEffect(()=> {
-    console.log('deck in NumTPage' + currentDeck);
-    console.log(window.location.href);
-    console.log(window.location.href.substring(window.location.href.length - 7))
-  }, [])
-
   return (
     <>
       <Header />
       <main className={styles.numbersTraining}>
-        <div className={styles.numbersTraining__section}>
+        <section className={styles.numbersTraining__section}>
           <TitleContainer 
             handleClick={handleClick}
           />
@@ -203,6 +195,7 @@ const NumbersTrainPage: FC = () => {
               placeholder="Место для слова" 
               value={repeatingForm.word} 
               id='cardsHolderRepeatingNumInput'
+              ref={repeatingNumInput}
               type="text"
               name="word" 
               onChange={onRepeatChange}
@@ -211,7 +204,16 @@ const NumbersTrainPage: FC = () => {
               autoComplete="off"
               autoCorrect="off" 
               autoCapitalize="off" 
-              spellCheck="false" />
+              spellCheck="false" 
+            />
+            <div className={styles.cardsHolder__advice}>
+            {showNum && currentNum && currentNum !== null &&
+              <p>
+                Если напечатать правильный вариант,
+                он лучше запомнится
+              </p>
+            }
+            </div>
             <div className={styles.cardsHolder__buttonBlock}>
               <TrainButton
                 onClick={showTranslation}
@@ -224,7 +226,7 @@ const NumbersTrainPage: FC = () => {
             </div>
           </div>
           <BackToTopic handleCloseModesClick={handleCloseModesClick} />
-        </div>
+        </section>
       </main>
       <Footer />
     </>

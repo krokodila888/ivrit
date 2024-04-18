@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
-import { useSelector } from 'react-redux';
+import { FC } from 'react';
 import styles from './TitleContainer.module.scss';
 import arrow from '../../images/arrow2.png';
+import { useAppSelector } from '../../services/hooks';
 
 type TProps = {
   handleClick: () => void;
@@ -9,8 +9,8 @@ type TProps = {
 
 const TitleContainer: FC<TProps> = (props: TProps) => {
   const { handleClick } = props;
-  const { currentDeck, currentWord } = useSelector(
-    (state: any) => state.currentDeckReducer
+  const { currentDeck, currentWord } = useAppSelector(
+    (state) => state.currentDeckReducer
   );
 
   return (
@@ -26,7 +26,7 @@ const TitleContainer: FC<TProps> = (props: TProps) => {
           Слова по теме: {currentDeck.ruTopic}
         </h1>
       )}
-      {currentWord && currentWord !== null && (
+      {currentWord && currentWord !== null && currentWord.infinitive !== undefined && (
         <div className={styles.titleContainer__verbBlock}>
           <h1 className={styles.titleContainer__title}>
             Формы глагола

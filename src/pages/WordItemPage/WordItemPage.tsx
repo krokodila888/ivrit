@@ -1,5 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { FC, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -7,15 +6,15 @@ import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TitleContainer from "../../components/TitleContainer/TitleContainer";
 import styles from './WordItemPage.module.scss';
 import { removeCurrentDeck, removeCurrentWord } from '../../services/actions/currentDeck';
-import { TWord, TTopic, TNumWord } from '../../utils/types';
+import { useAppDispatch } from '../../services/hooks';
+import { useAppSelector } from '../../services/hooks';
 
 const WordItemPage: FC = () => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [cardsAreVisible, setCardsAreVisible] = useState<boolean>(false);
-  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
-  const { currentWord } = useSelector((state: any) => state.currentDeckReducer);
+  const { currentDeck, currentWord } = useAppSelector((state) => state.currentDeckReducer);
 
   function handleClick() {
     dispatch(removeCurrentDeck());
@@ -24,15 +23,12 @@ const WordItemPage: FC = () => {
   }
 
   function handleBackClick() {
-    //console.log(document.referrer);
     setCardsAreVisible(true);
     dispatch(removeCurrentWord());
-    navigate(`/topics/${currentDeck.enTopic}`);
+    if (currentDeck) {
+      navigate(`/topics/${currentDeck.enTopic}`);
+    }
   }
-
-  /*React.useEffect(()=> {
-    console.log(currentWord);
-  }, [])*/
 
   return (
     <>
@@ -43,6 +39,8 @@ const WordItemPage: FC = () => {
             handleClick={handleClick}
           />
           <div className={styles.wordItem__formsContainer}>
+          {currentWord && currentWord.present !== undefined &&
+          <>
             <div className={styles.wordItem__formContainer}>
               <p className={styles.wordItem__word}>
                 הו {currentWord.present[0].vocalization} 
@@ -87,6 +85,8 @@ const WordItemPage: FC = () => {
                 (они (ж) {currentWord.present[3].translation})
               </p>
             </div>
+          </>
+          }
           </div>
           <BackToTopic handleCloseModesClick={handleBackClick} />
         </section>

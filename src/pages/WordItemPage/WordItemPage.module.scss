@@ -5,10 +5,9 @@
   min-height: calc(100vh - 262px);
   
   &__content {
+    @include column;
     justify-items: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
     padding: 30px 70px 20px;
     max-width: 1040px;
     min-height: 300px;
@@ -25,20 +24,18 @@
   }
 
   &__titleContainer1 {
+    @include column;
     justify-content: space-between;
     position: relative;
-    display: flex;
-    flex-direction: column;
     max-width: 1040px;
     flex-wrap: wrap;
     margin-bottom: 40px;
   }
   
   &__titleContainer {
+    @include row;
     justify-content: space-between;
     position: relative;
-    display: flex;
-    flex-direction: row;
     max-width: 1040px;
     flex-wrap: wrap;
     
@@ -54,12 +51,9 @@
   }
 
   &__title {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(28px, 30px, 400);
     margin: 0;
     padding-bottom: 26px;
-    font-weight: 400;
-    font-size: 28px;
     color: $color-font-darkgrey;
 
     @media (max-width: 630px) {
@@ -68,12 +62,9 @@
   }
 
   &__word {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(30px, 30px, 700);
     margin: 0;
     padding-bottom: 20px;
-    font-weight: 700;
-    font-size: 30px;
     color: $color-font-darkgrey;
 
     @media (max-width: 490px) {
@@ -88,12 +79,9 @@
   }
 
   &__transcription {
-    font-family: $font-sans;
-    line-height: 28px;
+    @include font(24px, 28px, 400);
     margin: 4px 0;
     padding: 4px 0;
-    font-weight: 400;
-    font-size: 24px;
     color: $color-font-grey;
     background-color: $color-background;
     border-radius: 10px;
@@ -108,12 +96,9 @@
   }
 
   &__title1 {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(34px, 1, 700);
     margin: 0;
     padding-bottom: 28px;
-    font-weight: 700;
-    font-size: 34px;
     color: $color-font-darkgrey;
     padding-left: 20px;
 
@@ -123,17 +108,13 @@
   }
 
   &__text {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(20px, 30px, 400);
     margin: 0;
-    font-weight: 400;
-    font-size: 20px;
     color: $color-font-grey;
   }
 
   &__titleTextContainer {
-    display: flex;
-    flex-direction: row;
+    @include row;
     box-sizing: border-box;
   
     @media (max-width: 630px) {
@@ -143,10 +124,9 @@
   }
 
   &__formsContainer {
+    @include row;
     justify-content: space-between;
     position: relative;
-    display: flex;
-    flex-direction: row;
     max-width: 1040px;
     flex-wrap: wrap;
     padding-bottom: 30px;
@@ -159,6 +139,7 @@
   }
 
   &__formContainer {
+    @include column;
     background-color: $color-background-card;
     border-radius: 20px;
     justify-content: center;
@@ -168,8 +149,6 @@
     flex-wrap: wrap;
     padding: 20px;
     margin: 5px;
-    display: flex;
-    flex-direction: column;
     max-width: 240px;
     width: fit-content;
     overflow: hidden;

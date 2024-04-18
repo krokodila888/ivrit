@@ -1,13 +1,11 @@
 @import "../../../styles/variables";
 
 .bigTopicButton {
+  @include font(20px, 32px, 400);
   display: block;
   width: 240px;
   min-height: 36px;
   height: fit-content;
-  line-height: 32px;
-  font-size: 20px;
-  font-family: sans-serif;
   text-decoration: none;
   color: $color-font-base;
   background-color: $color-button-topic;
@@ -22,11 +20,11 @@
   margin: 10px 20px 0;
 
   &__mainText {
+    @include font(28px, 28px, 400);
     margin: 0;
     min-height: 32px;
-    font-size: 28px;
-    line-height: 28px;
     padding-top: 20px;
+    font-weight: 500;
   }
 
   &__text {

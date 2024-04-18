@@ -12,10 +12,9 @@
   }
 
   &__section {
+    @include column;
     justify-items: center;
     position: relative;
-    display: flex;
-    flex-direction: column;
     padding: 30px 70px 20px;
     min-height: 300px;
     margin-right: auto;
@@ -33,11 +32,10 @@
   }
 
   &__words {
+    @include row;
     padding: 60px 0 70px;
     justify-content: space-between;
     position: relative;
-    display: flex;
-    flex-direction: row;
     max-width: 1040px;
     width: 100%;
     flex-wrap: wrap;
@@ -49,8 +47,7 @@
   }
 
   &__buttonContainer {
-    display: flex;
-    flex-direction: row;
+    @include row;
     width: 100%;
     align-self: center;
     margin-bottom: 20px;

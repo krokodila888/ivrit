@@ -1,22 +1,22 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC } from "react";
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import BigTopicButton from "../../components/ui/BigTopicButton/BigTopicButton";
 import TopicButton from "../../components/ui/TopicButton/TopicButton";
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import photo from '../../images/photo1.jpg';
 import { topicsForRender, partsOfSpeach } from '../../utils/constants';
 import { setCurrentDeck } from '../../services/actions/currentDeck';
 import styles from './Main.module.scss';
+import { useAppDispatch } from '../../services/hooks';
+import { TTopic } from "../../utils/types";
 
 const Main: FC = () => {
 
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
 
-  function setDeck(item: any) {
+  function setDeck(item: TTopic) {
     dispatch(setCurrentDeck(item));
     navigate(`/topics/${item.enTopic}`);
   };

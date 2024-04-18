@@ -1,5 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
-import { useSelector, useDispatch } from 'react-redux';
+import { FC, useEffect, useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
@@ -13,24 +12,26 @@ import TrainButton from "../../components/ui/TrainButton/TrainButton";
 import styles from './DeckItemPage.module.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
-import { TWord, TTopic } from '../../utils/types';
+import { TWord} from '../../utils/types';
+import { useAppDispatch } from '../../services/hooks';
+import { useAppSelector } from '../../services/hooks';
 
 const DeckItemPage: FC = () => {
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const [words, setWords] = useState<TWord[]>([]);
   const [filteredWords, setFilteredWords] = useState<TWord[]>([]);
   const [wordsAreVisible, setWordsAreVisible] = useState(true);
   const [cardsAreVisible, setCardsAreVisible] = useState(false);
   const [repeatMode, setRepeatMode] = useState(false);
   const [search, setSearch] = useState('');
-  const { currentDeck } = useSelector((state: any) => state.currentDeckReducer);
+  const { currentDeck } = useAppSelector((state) => state.currentDeckReducer);
 
   useEffect(() => {
-    if (search !== '')
-  {setFilteredWords(words.filter((item: TWord) => 
-    {if (!item.ruTopic.includes('Глаголы')) return (
+    if (search !== '') {
+      setFilteredWords(words.filter((item: TWord) => 
+        {if (!item.ruTopic.includes('Глаголы')) return (
         (item.word.toLowerCase().includes(search.toLowerCase()) ) 
         || (item.vocalization.toLowerCase().includes(search.toLowerCase()) )
         || (item.translation.toLowerCase().includes(search.toLowerCase()) )
@@ -72,10 +73,10 @@ const DeckItemPage: FC = () => {
   }, [])
 
   useEffect(()=> {
-    let aaa;
+    let filteredWords;
     if (currentDeck && currentDeck !== null) {
-      aaa = vocabulary.filter(item => item.ruTopic.includes(currentDeck.ruTopic));
-      setWords(aaa);
+      filteredWords = vocabulary.filter(item => item.ruTopic.includes(currentDeck.ruTopic));
+      setWords(filteredWords);
     };
     if (currentDeck && currentDeck !== null && currentDeck.ruTopic === 'Все') {
       setWords(vocabulary);
@@ -141,7 +142,7 @@ const DeckItemPage: FC = () => {
           <SearchingForm setSearch={setSearch} />
           }
           {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords.length !== 0 &&
-            <div className={styles.deckItem__words}>
+          <div className={styles.deckItem__words}>
               {filteredWords.map((item, i) => (
                 <WordCard 
                   key={i} 

@@ -1,8 +1,7 @@
 @import "../../styles/variables";
 
 .header {
-  display: flex;
-  flex-direction: row;
+  @include row;
   background: $color-background-header;
   color: $color-font-white;
   align-items: center;
@@ -11,9 +10,8 @@
   width: 100%;
 
   &__content {
+    @include row;
     width: 1040px;
-    display: flex;
-    flex-direction: row;
     margin: 20px auto;
     align-items: center;
     

@@ -1,11 +1,10 @@
 @import "../../styles/variables";
 
 .cardsHolder {
+  @include column;
   justify-items: center;
   position: relative;
-  display: flex;
-  flex-direction: column;
-  padding: 70px 0 100px;
+  padding: 32px 0 100px;
   max-width: 1140px;
   min-height: 400px;
   margin-right: auto;
@@ -28,11 +27,14 @@
   }
 
   &__form {
-    display: flex;
-    flex-direction: column;
+    @include column;
+    position: relative;
     gap: 20px;
     padding-bottom: 50px;
-    position: relative;
+
+    @media (max-width: 720px) {
+      gap: 12px;
+    }
   }
 
   &__input {
@@ -47,7 +49,6 @@
   font-size: 26px;
 
     @media (max-width: 720px) {
-      max-width: 478px;
       min-width: 478px;
     }
   
@@ -78,8 +79,7 @@
   }
 
   &__buttonBlock {
-    display: flex;
-    flex-direction: row;
+    @include row;
     justify-content: space-between;
 
     @media (max-width: 720px) {
@@ -91,14 +91,14 @@
     
     @media (max-width: 630px) {
       gap: 30px;
-      padding-top: 30px;
+      padding-top: 12px;
     }
     
     @media (max-width: 530px) {
       flex-direction: column;
       width: 85vw;
       gap: 30px;
-      padding-top: 30px;
+      padding-top: 0;
       align-items: center;
     }
 
@@ -110,8 +110,7 @@
   }
 
   &__titleRow {
-    display: flex;
-    flex-direction: row;
+    @include row;
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
@@ -119,41 +118,46 @@
   }
 
   &__title {
-    font-family: var(--font-sans);
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    @include font(24px, 27px, 400);
     margin: 0;
-    padding-bottom: 23px;
+    font-weight: 500;
 
     @media (max-width: 650px) {
-      padding-bottom: 28px;
-      font-size: 18px;
+      font-size: 22px;
       line-height: 22px;
     }
   }
 
   &__hint {
-    font-family: $font-sans;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 27px;
+    @include font(22px, 27px, 400);
     margin: 0;
     padding-bottom: 23px;
     color: $color-font-grey;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 0.5s;
+      @include hovered;
+    }
+  }
+
+  &__answer {
+    @include column;
+    height: 30px;
+    max-width: 600px;
+  }
+
+  &__advice {
+    height: 42px;
+    max-width: 600px;
+
+    & p {
+      margin: 0;
     }
   }
 
   &__arrowContainer {
+    @include column;
     justify-content: flex-end;
     position: relative;
-    display: flex;
-    flex-direction: column;
     flex-wrap: wrap;
     align-items: center;
     width: 200px;
@@ -167,9 +171,7 @@
     height: 80px;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 1s;
+      @include hovered;
     }
   }
 

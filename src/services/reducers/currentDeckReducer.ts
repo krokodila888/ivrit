@@ -4,11 +4,11 @@ import {
   SET_WORD,
   CLEAR_CURRENT_WORD,
 } from '../../utils/constants';
-import { TWord } from '../../utils/types';
+import { TTopic, TWord } from '../../utils/types';
 import type { TCurrentDeckActions } from '../actions/currentDeck';
 
 type TCurrentDeckState = {
-  currentDeck: TWord[] | null;
+  currentDeck: TTopic | null;
   currentWord: TWord | null;
 };
 

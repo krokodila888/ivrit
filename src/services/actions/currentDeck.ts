@@ -8,7 +8,7 @@ import { TWord, TTopic, TNumWord } from '../../utils/types';
 
 export interface ISetCurrentDeck {
   readonly type: typeof SET_DECK;
-  readonly item: any;
+  readonly item: TTopic;
 }
 
 export interface IRemoveCurrentDeck {
@@ -17,7 +17,7 @@ export interface IRemoveCurrentDeck {
 
 export interface ISetCurrentWord {
   readonly type: typeof SET_WORD;
-  readonly item: string;
+  readonly item: TWord;
 }
 
 export interface IRemoveCurrentWord {

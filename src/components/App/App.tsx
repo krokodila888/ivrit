@@ -6,49 +6,50 @@ import DeckItemPage from '../../pages/DeckItemPage/DeckItemPage';
 import WordItemPage from '../../pages/WordItemPage/WordItemPage';
 import NumbersTrainPage from '../../pages/NumbersTrainPage/NumbersTrainPage';
 import './App.scss';
-import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { topics, verbs } from '../../utils/constants';
 import {
   setCurrentDeck,
   setCurrentWord,
 } from '../../services/actions/currentDeck';
+import { useAppDispatch } from '../../services/hooks';
+import { useAppSelector } from '../../services/hooks';
 
 const App: FC = () => {
-  const { currentDeck, currentWord } = useSelector(
-    (state: any) => state.currentDeckReducer
+  const { currentDeck, currentWord } = useAppSelector(
+    (state) => state.currentDeckReducer
   );
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   useEffect(() => {
-    let aa;
-    let aaa;
+    let filteredTopics;
+    let filteredVerbs;
     const adress = window.location.pathname.slice(8);
     const firstPos = adress.indexOf('/');
     if (firstPos !== -1) {
-      aa = topics.filter(
+      filteredTopics = topics.filter(
         (item) => item.enTopic === window.location.pathname.substr(8, firstPos)
       );
-      aaa = verbs.filter(
+      filteredVerbs = verbs.filter(
         (item) =>
           item.enTranslation === window.location.pathname.slice(9 + firstPos)
       );
     } else {
-      aa = topics.filter(
+      filteredTopics = topics.filter(
         (item) => item.enTopic === window.location.pathname.slice(8)
       );
     }
-    if (aa !== undefined && aa) {
-      dispatch(setCurrentDeck(aa[0]));
+    if (filteredTopics !== undefined && filteredTopics) {
+      dispatch(setCurrentDeck(filteredTopics[0]));
     }
-    if (aaa !== undefined && aaa) {
-      dispatch(setCurrentWord(aaa[0]));
+    if (filteredVerbs !== undefined && filteredVerbs) {
+      dispatch(setCurrentWord(filteredVerbs[0]));
     }
-    if (aa && aaa && aa.length !== 0 && aaa.length === 0) {
-      navigate(`/topics/${aa[0].enTopic}`);
+    if (filteredTopics && filteredVerbs && filteredTopics.length !== 0 && filteredVerbs.length === 0) {
+      navigate(`/topics/${filteredTopics[0].enTopic}`);
     }
-    if ((!aa && !aaa) || aa.length === 0) {
+    if ((!filteredTopics && !filteredVerbs) || filteredTopics.length === 0) {
       navigate(`/`);
     }
   }, []);

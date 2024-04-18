@@ -1,10 +1,9 @@
-import React, { FC, useEffect, useState } from 'react';
+import { FC, useEffect, useState, ChangeEvent, useRef } from 'react';
 import styles from './CardsHolder.module.scss';
 import BackToTopic from '../BackToTopic/BackToTopic';
 import TrainButton from '../ui/TrainButton/TrainButton';
-import { useDispatch } from 'react-redux';
 import arrowBack from '../../images/repeat.png';
-import { TWord } from '../../utils/types';
+import { TNumWord, TWord } from '../../utils/types';
 
 type TProps = {
   handleCloseModesClick: () => void;
@@ -12,18 +11,18 @@ type TProps = {
 };
 
 const CardsHolder: FC<TProps> = (props: TProps) => {
+
   const { words, handleCloseModesClick } = props;
 
-  const dispatch = useDispatch();
-  const [repeatMode, setRepeatMode] = useState(true);
-  const [showWord, setShowWord] = useState(false);
-  const [isCorrect, setIsCorrect] = useState(false);
+  const [repeatMode, setRepeatMode] = useState<boolean>(true);
+  const [showWord, setShowWord] = useState<boolean>(false);
+  const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [currentWord, setCurrentWord] = useState<TWord | null>(null);
   const [repeatingForm, setMeaning] = useState({ word: '' });
   const [repeatedWords, setRepeatedWords] = useState<TWord[]>([]);
   const [wordsToRepeat, setWordsToRepeat] = useState<TWord[]>([]);
-  const [hintIsVisible, setHintIsVisible] = useState(false);
-  const repeatingInput = document.getElementById('cardsHolderRepeatingInput');
+  const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
+  const wordsRepeatingInput = useRef<any>(null);
 
   function startRepeating() {
     setRepeatMode(true);
@@ -37,14 +36,14 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
 
   useEffect(() => {
     if (words && words.length !== 0) {
-      let aaa = words;
-      aaa.forEach(
+      let sorted = words;
+      sorted.forEach(
         (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
       );
-      aaa.sort(function (a: any, b: any) {
+      sorted.sort(function (a: any, b: any) {
         return a.number - b.number;
       });
-      setWordsToRepeat(aaa);
+      setWordsToRepeat(sorted);
     }
   }, [words]);
 
@@ -66,7 +65,7 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
     setShowWord(true);
   }
 
-  const onRepeatChange = (e: any) => {
+  const onRepeatChange = (e: ChangeEvent<HTMLInputElement>) => {
     setMeaning({ ...repeatingForm, [e.target.name]: e.target.value });
   };
 
@@ -100,21 +99,17 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
               {setText(currentWord)}
             </p>
           </div>
-          {showWord && (
+          <div className={styles.cardsHolder__answer}>
+            {showWord && 
             <>
               <p className={styles.cardsHolder__title}>
                 {currentWord.word}
               </p>
               {currentWord &&
                 currentWord !== null &&
-                currentWord.word !== 'Правда все.' && (
-                  <p>
-                    Рекомендуется напечатать правильный вариант все равно: так
-                    он лучше запомнится
-                  </p>
-                )}
-            </>
-          )}
+                currentWord.word !== 'Правда все.'}
+            </>}
+          </div>
         </>
       );
     }
@@ -122,21 +117,21 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
 
   useEffect(() => {
     if (
-      repeatingInput &&
+      wordsRepeatingInput.current &&
       currentWord &&
       currentWord.word === repeatingForm.word
     ) {
       setIsCorrect(true);
-      repeatingInput.classList.add(styles.cardsHolder__input_active);
+      wordsRepeatingInput.current.classList.add(styles.cardsHolder__input_active);
     }
     if (
-      repeatingInput &&
+      wordsRepeatingInput.current &&
       currentWord &&
       currentWord.word !== repeatingForm.word &&
       isCorrect
     ) {
       setIsCorrect(false);
-      repeatingInput.classList.remove(styles.cardsHolder__input_active);
+      wordsRepeatingInput.current.classList.remove(styles.cardsHolder__input_active);
     }
   }, [repeatingForm]);
 
@@ -147,8 +142,8 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
       setIsCorrect(false);
       setHintIsVisible(false);
       setMeaning({ ...repeatingForm, word: '' });
-      if (repeatingInput) {
-        repeatingInput.classList.remove(styles.cardsHolder__input_active);
+      if (wordsRepeatingInput.current) {
+        wordsRepeatingInput.current.classList.remove(styles.cardsHolder__input_active);
       }
       if (wordsToRepeat.length > 1) {
         setCurrentWord(wordsToRepeat[1]);
@@ -174,13 +169,16 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
       >
         {repeatMode && (
           <div className={styles.cardsHolder__form}>
-            <div>{word()}</div>
+            <div>
+              {word()}
+            </div>
             <input
               placeholder="Место для слова"
               value={repeatingForm.word}
               id="cardsHolderRepeatingInput"
               type="text"
               name="word"
+              ref={wordsRepeatingInput}
               onChange={onRepeatChange}
               required
               className={styles.cardsHolder__input}
@@ -189,6 +187,14 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
               autoCapitalize="off"
               spellCheck="false"
             />
+            <div className={styles.cardsHolder__advice}>
+              {showWord && 
+              <p>
+                Если напечатать правильный вариант,
+                он лучше запомнится
+              </p>
+              }
+            </div>
             <div className={styles.cardsHolder__buttonBlock}>
               <TrainButton 
                 onClick={showTranslation} 

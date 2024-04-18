@@ -1,21 +1,17 @@
 @import "../../styles/variables";
 
 .backToTopic {
+  @include column;
   justify-content: flex-end;
   position: relative;
-  display: flex;
-  flex-direction: column;
   flex-wrap: wrap;
   align-items: center;
   width: 200px;
   align-self: center;
 
   &__text {
-    font-family: $font-sans;
-    line-height: 30px;
+    @include font(20px, 1.5, 400);
     margin: 0;
-    font-weight: 1.3;
-    font-size: 20px;
     color: $color-font-darkgrey; 
 
     &:hover {

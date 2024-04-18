@@ -1,11 +1,10 @@
 @import "../../styles/variables";
 
 .footer {
-  display: flex;
-  flex-direction: column;
+  @include column;
+  min-height: 162px;
   align-items: center;
   justify-content: space-between;
-  padding: 50px 48px 24px;
   margin: 0 auto;
   background-color: $color-background-footer;
   border-top: 1px solid $color-footer-border;
@@ -17,8 +16,7 @@
   }
 
   &__wrap {
-    display: flex;
-    flex-direction: row;
+    @include row;
     justify-content: space-between;
     max-width: 1040px;
     list-style: none;
@@ -26,6 +24,7 @@
     flex-wrap: wrap;
     gap: 200px;
     padding: 0;
+    padding: 40px 0px 24px;
 
     @media (max-width: 1030px) {
       gap: 100px;
@@ -45,9 +44,7 @@
   }
 
   &__link {
-    line-height: 38px;
-    font-size: 36px;
-    font-weight: 400;
+    @include font(36px, 38px, 400);
     margin: 0;
     min-width: 220px;
 

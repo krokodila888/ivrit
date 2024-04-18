@@ -4,6 +4,7 @@ import telegram from '../../images/tlg.png';
 import github from '../../images/github.png';
 
 const Footer: FC = () => {
+  
   return (
     <footer className={styles.footer}>
       <ul className={styles.footer__wrap}>
