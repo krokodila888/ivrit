@@ -1,5 +1,4 @@
-@import "../../components/App/App";
-@import url(../../vendor/Railroad/stylesheet.css);
+@import "../../styles/variables";
 
 .backToTopic {
   justify-content: flex-end;
@@ -20,9 +19,7 @@
     color: $color-font-darkgrey; 
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 1s;
+      @include hovered;
     }
     
     @media (max-width: 740px) {
@@ -39,9 +36,7 @@
     height: 40px;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 1s;
+      @include hovered;
     }
 
     @media (max-width: 740px) {

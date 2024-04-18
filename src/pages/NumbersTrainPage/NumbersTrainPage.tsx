@@ -5,8 +5,8 @@ import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
 import TitleContainer from "../../components/TitleContainer/TitleContainer";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
-import TrainButton from "../../ui/TrainButton/TrainButton";
-import './NumbersTrainPage.scss';
+import TrainButton from "../../components/ui/TrainButton/TrainButton";
+import styles from './NumbersTrainPage.module.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck, setCurrentDeck } from '../../services/actions/currentDeck';
 import { TNumWord } from '../../utils/types';
@@ -109,17 +109,19 @@ const NumbersTrainPage: FC = () => {
     if (currentNum && currentNum !== null) {
     return (
     <>
-      <div className="cardsHolder__title-raw">
-        <p className="cardsHolder__title">
+      <div className={styles.cardsHolder__titleRow}>
+        <p className={styles.cardsHolder__title}>
           {currentNum.num}
         </p>
-        <p className="cardsHolder__hint" onClick={showHint}>
+        <p 
+          className={styles.cardsHolder__hint} 
+          onClick={showHint}>
           {setText()}
         </p>
       </div>
       {showNum && 
       <>
-        <p className="cardsHolder__title">
+        <p className={styles.cardsHolder__title}>
           {currentNum.meaning}
         </p>
         {currentNum && currentNum !== null &&
@@ -142,10 +144,10 @@ const NumbersTrainPage: FC = () => {
   useEffect(()=> {
     if (repeatingInput && currentNum && (currentNum.meaning === repeatingForm.word)) 
     {setIsCorrect(true);
-    repeatingInput.classList.add('cardsHolder__input_active');};
+    repeatingInput.classList.add(styles.cardsHolder__input_active);};
     if (repeatingInput && currentNum && (currentNum.meaning !== repeatingForm.word) && isCorrect) {
       setIsCorrect(false);
-      repeatingInput.classList.remove('cardsHolder__input_active');};
+      repeatingInput.classList.remove(styles.cardsHolder__input_active);};
   }, [repeatingForm])
 
   function handleClick() {
@@ -159,7 +161,7 @@ const NumbersTrainPage: FC = () => {
     setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
     if (repeatingInput) {
-      repeatingInput.classList.remove('cardsHolder__input_active');
+      repeatingInput.classList.remove(styles.cardsHolder__input_active);
     };
     makeAnswer();
   }
@@ -170,7 +172,7 @@ const NumbersTrainPage: FC = () => {
     setHintIsVisible(false);
     setMeaning({ ...repeatingForm, word: '' });
     if (repeatingInput) {
-      repeatingInput.classList.remove('cardsHolder__input_active');
+      repeatingInput.classList.remove(styles.cardsHolder__input_active);
     };
     dispatch(setCurrentDeck({
       ruTopic: 'Числа',
@@ -188,12 +190,12 @@ const NumbersTrainPage: FC = () => {
   return (
     <>
       <Header />
-      <main className="numbersTraining__content">
-        <div className="numbersTraining__section">
+      <main className={styles.numbersTraining}>
+        <div className={styles.numbersTraining__section}>
           <TitleContainer 
             handleClick={handleClick}
           />
-          <div className='cardsHolder__form'>
+          <div className={styles.cardsHolder__form}>
             <div>
               {word()}
             </div>
@@ -205,12 +207,12 @@ const NumbersTrainPage: FC = () => {
               name="word" 
               onChange={onRepeatChange}
               required
-              className='cardsHolder__input'
+              className={styles.cardsHolder__input}
               autoComplete="off"
               autoCorrect="off" 
               autoCapitalize="off" 
               spellCheck="false" />
-            <div className='cardsHolder__button-block'>
+            <div className={styles.cardsHolder__buttonBlock}>
               <TrainButton
                 onClick={showTranslation}
                 text="Показать ответ"

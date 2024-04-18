@@ -1,0 +1,223 @@
+@import "../../styles/variables";
+
+.main {
+  background-color: $color-background;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 262px);
+}
+
+.aboutMe {
+  justify-items: center;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 0 70px 20px;
+  min-width: 1020px;
+  min-height: 300px;
+  margin-right: auto;
+  margin-left: auto;
+
+  @media (max-width: 1160px) {
+    min-width: 200px;
+  }
+
+  @media (max-width: 450px) {
+    padding: 0 20px 20px;
+  }
+
+  &__title {
+    font-family: $font-sans;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    margin: 0;
+    padding-bottom: 23px;
+
+    @media (max-width: 650px) {
+      padding-bottom: 28px;
+      font-size: 18px;
+      line-height: 22px;
+    }
+  }
+
+  &__statusText {
+    font-family: $font-sans;
+    line-height: 30px;
+    margin: 0;
+    padding-bottom: 26px;
+    font-weight: 400;
+    font-size: 28px;
+    align-self: center;
+
+    @media (max-width: 1050px) {
+      max-width: 420px;
+      position: absolute;
+      top: 80px;
+      left: 70px;
+    }
+
+    @media (max-width: 770px) {
+      max-width: 220px;
+      top: 60px;
+    }
+
+    @media (max-width: 560px) {
+      position: static;
+      max-width: 400px;
+      font-size: 24px;
+    }
+
+    @media (max-width: 450px) {
+      left: 50px;
+    }
+  }
+
+  &__titleText {
+    font-family: $font-sans;
+    line-height: 30px;
+    margin: 0;
+    padding-bottom: 26px;
+    font-weight: 400;
+    font-size: 28px;
+    align-self: center;
+  }
+
+  &__text {
+    font-family: $font-sans;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    margin: 0;
+    padding-bottom: 20px;
+
+    @media (max-width: 620px) {
+      font-size: 18px;
+      line-height: 24px;
+      padding-right: 0;
+    }
+
+    @media (max-width: 450px) {
+      padding-right: 0;
+      font-size: 16px;
+      line-height: 22px;
+    }
+  }
+
+  &__column {
+    display: flex;
+    flex-direction: column;
+    max-width: 770px;
+    justify-content: space-between;
+
+    @media (max-width: 560px) {
+      align-items: center;
+    }
+  }
+
+  &__column1 {
+    @media (max-width: 1050px) {
+      padding-top: 160px;
+      padding-bottom: 0;
+    }
+
+    @media (max-width: 560px) {
+      padding-top: 30px;
+    }
+  }
+
+  &__textBlock {
+    display: flex;
+    flex-direction: row;
+    padding-top: 66px;
+    justify-content: space-between;
+    gap: 20px;
+
+    @media (max-width: 1050px) {
+      flex-direction: column-reverse;
+      padding-top: 60px;
+    }
+  }
+
+  &__photo {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: right bottom;
+
+    @media (max-width: 1050px) {
+      position: absolute;
+      top: 40px;
+      right: 90px;
+      width: 150px;
+      height: 150px;
+    }
+
+    @media (max-width: 560px) {
+      position: static;
+      right: 90px;
+      width: 210px;
+      height: 210px;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $color-font-grey;
+    font-family: $font-sans;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 26px;
+    padding-top: 30px;
+    margin-bottom: 30px;
+
+    &:hover {
+      @include hovered;
+    }
+
+    @media (max-width: 650px) {
+      padding-top: 40px;
+    }
+  }
+}
+
+.decks {
+  justify-items: center;
+  align-items: stretch;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 70px 70px;
+  color: $color-font-base;
+  align-self: center;
+
+  @media (max-width: 770px) {
+    padding: 20px 5px 0;
+  }
+
+  @media (max-width: 400px) {
+    padding: 20px 0 0;
+  }
+
+  &__mainContent {
+    justify-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    max-width: 1040px;
+    flex-wrap: wrap;
+    align-self: center;
+  }
+
+  &__contentWrap {
+    justify-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    max-width: 1040px;
+    flex-wrap: wrap;
+    padding-bottom: 40px;
+    gap: 4px;
+  }
+}

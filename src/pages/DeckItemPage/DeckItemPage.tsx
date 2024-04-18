@@ -9,8 +9,8 @@ import TitleContainer from "../../components/TitleContainer/TitleContainer";
 import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
-import TrainButton from "../../ui/TrainButton/TrainButton";
-import './DeckItemPage.scss';
+import TrainButton from "../../components/ui/TrainButton/TrainButton";
+import styles from './DeckItemPage.module.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
 import { TWord, TTopic } from '../../utils/types';
@@ -114,13 +114,13 @@ const DeckItemPage: FC = () => {
   return (
     <> {(!currentDeck || currentDeck === null || currentDeck === undefined) ? <PageNotFound /> : <>
       <Header />
-      <main className="deckItem__content">
-        <section className="deckItem__section">
+      <main className={styles.deckItem}>
+        <section className={styles.deckItem__section}>
           <TitleContainer 
             handleClick={handleClick}
           />
           {wordsAreVisible && !cardsAreVisible &&
-          <div className="decks__button-container">
+          <div className={styles.deckItem__buttonContainer}>
             <TrainButton
               onClick={handleCardsModeClick}
               text="Учить карточки"
@@ -141,7 +141,7 @@ const DeckItemPage: FC = () => {
           <SearchingForm setSearch={setSearch} />
           }
           {wordsAreVisible && currentDeck !== null && words.length !== 0 && filteredWords.length !== 0 &&
-            <div className="deckItem__words">
+            <div className={styles.deckItem__words}>
               {filteredWords.map((item, i) => (
                 <WordCard 
                   key={i} 

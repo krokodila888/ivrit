@@ -45,7 +45,7 @@ const WordCard: FC<TProps> = (props: TProps) => {
       {!backIsVisible && (
         <>
           {cardsAreVisible && 
-          <p className={styles.word}>
+          <p className={(item.translation.length < 12) ? styles.word : styles.word1}>
             {item.translation}
           </p>}
           {!cardsAreVisible && (

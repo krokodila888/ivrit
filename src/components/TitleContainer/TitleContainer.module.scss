@@ -1,4 +1,4 @@
-@import "../../components/App/App";
+@import "../../styles/variables";
 @import url(../../vendor/Railroad/stylesheet.css);
 
 .titleContainer {
@@ -15,7 +15,6 @@
   align-items: center;
   padding-bottom: 15px;
   padding-top: 10px;
-  width: 100%;
 
   @media (max-width: 580px) {
     text-align: center;
@@ -26,7 +25,6 @@
     text-align: center;
     gap: 12px;
     padding: 4px 8px 12px;
-    width: 100%;
   }
 
   &__title {
@@ -99,9 +97,7 @@
     white-space: nowrap;
     
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 1s;
+      @include hovered;
     }
 
     @media (max-width: 740px) {
@@ -118,9 +114,7 @@
     height: 40px;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 1s;
+      @include hovered;
     }
     
     @media (max-width: 740px) {

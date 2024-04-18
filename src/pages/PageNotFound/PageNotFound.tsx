@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { useNavigate } from "react-router-dom";
-import './PageNotFound.scss';
+import styles from './PageNotFound.module.scss';
 import Header from '../../components/Header/Header';
 import arrow from '../../images/arrow2.png';
 
@@ -15,19 +15,23 @@ const PageNotFound: FC = () => {
   return (
     <>
       <Header />
-      <section className="pageNotFound">
-        <h3 className="pageNotFound__title">404</h3>
+      <section className={styles.pageNotFound}>
+        <h3 className={styles.pageNotFound__title}>
+          404
+        </h3>
         <p 
-          className="pageNotFound__text" >
+          className={styles.pageNotFound__text} >
             Тут пока ничего нет.
         </p>
-        <div className="deckItem__arrow-container" onClick={goBack}>
+        <div 
+          className={styles.pageNotFound__arrowContainer} 
+          onClick={goBack}>
           <img 
             src={arrow} 
             alt="Стрелка назад" 
-            className='deckItem__arrow'
+            className={styles.pageNotFound__arrow}
           />
-            <p className="pageNotFound__text">
+            <p className={styles.pageNotFound__text}>
               Вернитесь на главную.
             </p>
         </div>

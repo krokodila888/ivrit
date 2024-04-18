@@ -1,5 +1,4 @@
-@import "../../components/App/App";
-@import url(../../vendor/Railroad/stylesheet.css);
+@import "../../styles/variables";
 
 .header {
   display: flex;
@@ -72,9 +71,7 @@
     margin-left: 30px;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 0.4s;
+      @include hovered;
     }
     
     @media (max-width: 450px) {

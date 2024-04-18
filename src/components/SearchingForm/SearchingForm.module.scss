@@ -1,5 +1,4 @@
-@import "../../components/App/App";
-@import url(../../vendor/Railroad/stylesheet.css);
+@import "../../styles/variables";
 
 .searchForm {
   max-width: 1140x;
@@ -37,7 +36,7 @@
     background: $color-input;
     border-radius: 9px;
     max-width: 900px;
-    width: calc(100vw - 140px);
+    width: calc(100vw - 160px);
     height: 72px;
     z-index: 1;
     grid-column: 1/1;

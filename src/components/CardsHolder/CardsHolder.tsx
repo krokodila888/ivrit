@@ -1,7 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import styles from './CardsHolder.module.scss';
 import BackToTopic from '../BackToTopic/BackToTopic';
-import TrainButton from '../../ui/TrainButton/TrainButton';
+import TrainButton from '../ui/TrainButton/TrainButton';
 import { useDispatch } from 'react-redux';
 import arrowBack from '../../images/repeat.png';
 import { TWord } from '../../utils/types';

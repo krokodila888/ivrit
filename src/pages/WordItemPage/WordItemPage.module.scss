@@ -1,5 +1,4 @@
-@import "../../components/App/App";
-@import url(../../vendor/Railroad/stylesheet.css);
+@import "../../styles/variables";
 
 .wordItem {
   background-color: $color-background;
@@ -21,7 +20,7 @@
     }
 
     @media (max-width: 480px) {
-      padding: 66px 12px 20px;
+      padding: 66px 4px 20px;
     }
   }
 
@@ -160,16 +159,38 @@
   }
 
   &__formContainer {
-    justify-content: space-between;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
     background-color: $color-background-card;
     border-radius: 20px;
+    justify-content: center;
+    border: 0.5px solid $color-border-grey;
+    min-width: 160px;
+    min-height: 80px;
+    flex-wrap: wrap;
     padding: 20px;
+    margin: 5px;
+    display: flex;
+    flex-direction: column;
+    max-width: 240px;
+    width: fit-content;
+    overflow: hidden;
+    gap: 6px;
     align-items: center;
-    margin: 10px;
-    min-width: 170px;
+    text-align: center;
+    
+    @media (max-width: 790px) {
+      max-width: 220px;
+      padding: 20px 12px;
+    }
+  
+    @media (max-width: 490px) {
+      min-width: 120px;
+      padding: 20px 8px;
+    }
+  
+    @media (max-width: 390px) {
+      max-width: 120px;
+      padding: 16px 6px;
+      margin: 3px;
+    }
   }
 }

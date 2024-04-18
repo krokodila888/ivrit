@@ -1,3 +1,5 @@
+@import "../../styles/variables";
+
 .page {
   display: flex;
   flex-direction: column;
@@ -5,11 +7,11 @@
 }
 
 * {
-  /* Typography */
+  /* Typography 
   box-sizing: border-box;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Inter", sans-serif;*/
 
-  /* Colors */
+  /* Colors 
   --color-background: #fff;
   --color-background-header: #a09c9c;
   --color-background-footer: #d2d2d2;
@@ -25,23 +27,5 @@
   --color-font-white: #fff;
   --color-border-grey: #efefef;
   --color-border-input: #e4e3de;
-  --color-background-card: #ebecde;
+  --color-background-card: #ebecde;*/
 }
-
-$font-sans: "Inter", sans-serif;
-$color-background: #fff;
-$color-background-header: #a09c9c;
-$color-background-footer: #d2d2d2;
-$color-footer-border: #808080;
-$color-button-topic: #f8f9e7;
-$color-button-training: #f4f4f4;
-$color-button-hovered: #61fff4;
-$color-input: #f4f4f4;
-$color-input-correct: #d3ffb5;
-$color-font-base: #333;
-$color-font-darkgrey: #434343;
-$color-font-grey: #a0a0a0;
-$color-font-white: #fff;
-$color-border-grey: #efefef;
-$color-border-input: #e4e3de;
-$color-background-card: #ebecde;

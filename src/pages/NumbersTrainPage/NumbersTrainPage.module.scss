@@ -1,31 +1,43 @@
 @import "../../styles/variables";
 
-.cardsHolder {
-  justify-items: center;
-  position: relative;
+.numbersTraining {
+  background-color: $color-background;
+  min-height: calc(100vh - 262px);
+  max-width: 1040px;
   display: flex;
   flex-direction: column;
-  padding: 70px 0 100px;
-  max-width: 1140px;
-  min-height: 400px;
-  margin-right: auto;
-  margin-left: auto;
+  align-items: center;
   
-  @media (max-width: 900px) {
-    padding: 32px 0;
+  @media (max-width: 1080px) {
+    padding: 20px;
   }
 
-  @media (max-width: 820px) {
-    margin: 0;
+  @media (max-width: 680px) {
+    padding: 20px 8px;
   }
+  &__section {
+    justify-items: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    padding: 30px 0 20px;
+    max-width: 1040px;
+    min-height: 300px;
+    margin-right: auto;
+    margin-left: auto;
 
-  @media (max-width: 650px) {
-    padding: 32px 14px;
+    @media (max-width: 680px) {
+      padding: 40px 20px 20px;
+    }
+  
+    @media (max-width: 480px) {
+      padding: 26px 5px 20px;
+    /*align-items: center;*/
+    }
   }
+}
 
-  @media (max-width: 386px) {
-    padding: 20px 10px;
-  }
+.cardsHolder {
 
   &__form {
     display: flex;
@@ -36,26 +48,25 @@
   }
 
   &__input {
-  display: block;
-  height: 80px;
-  min-width: 600px;
-  border-radius: 20px;
-  padding-left: 20px;
-  background-color: $color-input;
-  border: 0.5px solid $color-border-input;
-  box-sizing: border-box;
-  font-size: 26px;
-
-    @media (max-width: 720px) {
-      max-width: 478px;
-      min-width: 478px;
+    display: block;
+    height: 80px;
+    border-radius: 20px;
+    padding-left: 20px;
+    background-color: $color-input;
+    border: 0.5px solid $color-border-input;
+    box-sizing: border-box;
+    font-size: 26px;
+    min-width: 600px;
+    
+    @media (max-width: 680px) {
+      max-width: 85vw;
+      min-width: 85vw;
     }
   
     @media (max-width: 570px) {
       padding-left: 15px;
     }
 
-  
     @media (max-width: 530px) {
       max-width: 85vw;
       min-width: 85vw;
@@ -81,6 +92,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    gap: 12px;
 
     @media (max-width: 720px) {
       button {
@@ -132,7 +144,6 @@
       line-height: 22px;
     }
   }
-
   &__hint {
     font-family: $font-sans;
     font-weight: 400;
@@ -143,9 +154,7 @@
     color: $color-font-grey;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 0.5s;
+      @include hovered;
     }
   }
 
@@ -167,9 +176,7 @@
     height: 80px;
 
     &:hover {
-      opacity: 0.5;
-      cursor: pointer;
-      transition: 1s;
+      @include hovered;
     }
   }
 
@@ -187,4 +194,5 @@
       line-height: 16px;
     }
   }
+
 }

@@ -1,14 +1,14 @@
 import React, { FC, useEffect, useState } from "react";
 import Header from '../../components/Header/Header';
 import Footer from '../../components/Footer/Footer';
-import BigTopicButton from "../../ui/BigTopicButton/BigTopicButton";
-import TopicButton from "../../ui/TopicButton/TopicButton";
+import BigTopicButton from "../../components/ui/BigTopicButton/BigTopicButton";
+import TopicButton from "../../components/ui/TopicButton/TopicButton";
 import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import photo from '../../images/photo1.jpg';
-import { topics, topicsForRender, partsOfSpeach } from '../../utils/constants';
+import { topicsForRender, partsOfSpeach } from '../../utils/constants';
 import { setCurrentDeck } from '../../services/actions/currentDeck';
-import './Main.scss';
+import styles from './Main.module.scss';
 
 const Main: FC = () => {
 
@@ -24,31 +24,36 @@ const Main: FC = () => {
   return (
     <>
       <Header />
-      <main className="main__content">
-        <section className="aboutMe__content" id="AboutMe">
-          <div className='aboutMe__text-block'>
-            <div className='aboutMe__column'>
-              <div className='aboutMe__column1'>
-                <p className="aboutMe__status-text">
+      <main className={styles.main}>
+        <section className={styles.aboutMe} id="AboutMe">
+          <div className={styles.aboutMe__textBlock}>
+            <div className={styles.aboutMe__column}>
+              <div className={styles.aboutMe__column1}>
+                <p className={styles.aboutMe__statusText}>
                   !שלום
                   <br/>
                   Я Женя, и я учу иврит.
                 </p>
-                <p className="aboutMe__text">
+                <p className={styles.aboutMe__text}>
                   А еще я учу JavaScript и хочу, чтобы одно работало на другое (и бонусом - чтобы однажды меня взяли на работу в айти). Будет здорово, если эта штука еще кому-нибудь пригодится.
                 </p>
-                <p className="aboutMe__text">
+                <p className={styles.aboutMe__text}>
                   Пока слов немного и по конкретному учебнику для начинающих. С хорошей вероятностью будет пополняться)
                 </p>
               </div>
             </div>        
-            <div className='aboutMe__column'>
-              <img src={photo} alt="Фото Женечки, ужасно симпатичное" className="aboutMe__photo" />
+            <div className={styles.aboutMe__column}>
+              <img 
+                src={photo} 
+                alt="Фото Женечки, ужасно симпатичное" 
+                className={styles.aboutMe__photo} />
             </div>      
           </div>
         </section>
-        <section className="decks__main-content" id="Main-decks">
-          <div className="decks__content-wrap">
+        <section 
+          className={styles.decks__mainContent} 
+          id="Main-decks">
+          <div className={styles.decks__contentWrap}>
             <BigTopicButton 
               onClick={() => {setDeck({
                 ruTopic: 'Все',
@@ -75,11 +80,11 @@ const Main: FC = () => {
             />
           </div>
         </section>
-        <section className="decks__content" id="Decks">
-          <h2 className="aboutMe__title-text">
+        <section className={styles.decks} id="Decks">
+          <h2 className={styles.aboutMe__titleText}>
             Части речи
           </h2>
-          <div className="decks__content-wrap">
+          <div className={styles.decks__contentWrap}>
             {partsOfSpeach.map((item, i) => (
               <TopicButton 
                 key={i}
@@ -88,10 +93,10 @@ const Main: FC = () => {
               />
             ))}
           </div>
-          <h2 className="aboutMe__title-text">
+          <h2 className={styles.aboutMe__titleText}>
             Темы
           </h2>
-          <div className="decks__content-wrap">
+          <div className={styles.decks__contentWrap}>
             {topicsForRender.map((item, i) => (
               <TopicButton 
                 key={i}
