@@ -22,6 +22,7 @@ export type TWord = {
   infinitive?: TVerbForm;
   present?: Array<TVerbForm>;
   number?: number;
+  icon?: string;
 };
 
 export type TNumWord = {

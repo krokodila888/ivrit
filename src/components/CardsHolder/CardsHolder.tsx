@@ -3,7 +3,7 @@ import styles from './CardsHolder.module.scss';
 import BackToTopic from '../BackToTopic/BackToTopic';
 import TrainButton from '../ui/TrainButton/TrainButton';
 import arrowBack from '../../images/repeat.png';
-import { TNumWord, TWord } from '../../utils/types';
+import { TWord } from '../../utils/types';
 
 type TProps = {
   handleCloseModesClick: () => void;

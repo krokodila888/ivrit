@@ -9,6 +9,7 @@ import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TrainButton from "../../components/ui/TrainButton/TrainButton";
+import TrainsScreen from "../../components/TrainsScreen/TrainsScreen";
 import styles from './DeckItemPage.module.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
@@ -25,6 +26,7 @@ const DeckItemPage: FC = () => {
   const [wordsAreVisible, setWordsAreVisible] = useState(true);
   const [cardsAreVisible, setCardsAreVisible] = useState(false);
   const [repeatMode, setRepeatMode] = useState(false);
+  const [trainMode, setTrainMode] = useState(false);
   const [search, setSearch] = useState('');
   const { currentDeck } = useAppSelector((state) => state.currentDeckReducer);
 
@@ -100,12 +102,18 @@ const DeckItemPage: FC = () => {
   function handleCloseModesClick() {
     setWordsAreVisible(true);
     setCardsAreVisible(false);
+    setTrainMode(false);
     setRepeatMode(false);
   }
 
   function handleRepeatModeClick() {
     setWordsAreVisible(false);
     setRepeatMode(true);
+  }
+
+  function handleTrainModeClick() {
+    setWordsAreVisible(false);
+    setTrainMode(true);
   }
 
   function handleCardsModeClick() {
@@ -130,6 +138,10 @@ const DeckItemPage: FC = () => {
               onClick={handleRepeatModeClick}
               text="Печатать слова"
             />
+            <TrainButton
+              onClick={handleTrainModeClick}
+              text="Угадывать значения"
+            />
             {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
             <TrainButton
               onClick={handleTrainNumbersClick}
@@ -153,6 +165,11 @@ const DeckItemPage: FC = () => {
           }
           {!wordsAreVisible && repeatMode &&
             <CardsHolder 
+              words={words} 
+              handleCloseModesClick={handleCloseModesClick} />
+          }
+          {!wordsAreVisible && trainMode &&
+            <TrainsScreen
               words={words} 
               handleCloseModesClick={handleCloseModesClick} />
           }
