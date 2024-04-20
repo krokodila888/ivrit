@@ -20,6 +20,7 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
   const [showWord, setShowWord] = useState<boolean>(false);
   const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isIncorrect, setIsIncorrect] = useState<boolean>(false);
+  const [answer, setAnswer] = useState<boolean>(false);
   const [yesOrNoMode, setYesOrNoMode] = useState<boolean>(false);
   const [wordOrTranslation, setWordOrTranslation] = useState<boolean>(false);
   const [currentWord, setCurrentWord] = useState<TWord | null>(null);
@@ -29,6 +30,8 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
   const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
   const [otherMeaning, setOtherMeaning] = useState<TWord | null>(null);
   const trainButtonDiv = useRef<any>(null);
+  const trueButton = useRef<any>(null);
+  const falseButton = useRef<any>(null);
 
   function startRepeating() {
     setRepeatMode(true);
@@ -42,30 +45,29 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
 
   useEffect(() => {
     if (currentWord && words && words.length !== 0) {
-      let newMeanings = words;
-      newMeanings.filter((item) => {
-        return item !== currentWord
-      })
-      .forEach(
+      let newMeanings = words.filter((item) => {
+        if (item.word !== currentWord.word) {
+        return item}
+      });
+      newMeanings.forEach(
         (item) => {item.number = Math.floor(Math.random() * 10) + 1
       });
-      console.log(newMeanings);
-      newMeanings.sort(function (a: any, b: any) {
+      const sorted = [...newMeanings as unknown as TWord[]].sort(function (a: any, b: any) {
         return a.number - b.number;
-      })
-      let newMeanings1 = newMeanings.slice(0, 1);
+      });
+      let newMeanings1 = sorted.slice(0, 1);
       newMeanings1.push(currentWord);
-      console.log(newMeanings);
       newMeanings1.sort(function (a: any, b: any) {
         return a.number - b.number;
-      })
-      console.log(newMeanings1);
+      });
       setOtherMeaning(newMeanings1[0])
     }
   }, [currentWord]);
 
   //слова рандомно перемешиваются
   useEffect(() => {
+    trueButton.current.classList.add(styles.cardsHolder__decisionBtn_hovered);
+    falseButton.current.classList.add(styles.cardsHolder__decisionBtn_hovered);
     if (words && words.length !== 0) {
       let sorted = words;
       sorted.forEach(
@@ -98,9 +100,9 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
     setHintIsVisible(true);
   }
 
-  function showTranslation() {
+  /*function showTranslation() {
     setShowWord(true);
-  }
+  }*/
 
   function stopRepeating() {
     setHintIsVisible(false);
@@ -111,12 +113,12 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
     handleCloseModesClick();
   }
 
-  function repeatAgain() {
+  /*function repeatAgain() {
     setShowWord(false);
     setIsCorrect(false);
     setWordsToRepeat(words);
     setHintIsVisible(false);
-  }
+  }*/
 
   function word() {
     if (currentWord && currentWord !== null) {
@@ -130,11 +132,11 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
             {otherMeaning && !isIncorrect &&
             <>
               <p className={styles.cardsHolder__title}>
-              {wordOrTranslation ? otherMeaning.word : otherMeaning.translation}
+                -
               </p>
-              {currentWord &&
-                currentWord !== null &&
-                currentWord.word !== 'Правда все.'}
+              <p className={styles.cardsHolder__title}>
+              {wordOrTranslation ? otherMeaning.word : otherMeaning.translation}{!answer && '?'}
+              </p>
             </>
             }
             {otherMeaning && isIncorrect &&
@@ -142,9 +144,6 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
               <p className={styles.cardsHolder__title}>
               {wordOrTranslation ? currentWord.word : currentWord.translation}
               </p>
-              {currentWord &&
-                currentWord !== null &&
-                currentWord.word !== 'Правда все.'}
             </>
             }
 
@@ -162,38 +161,55 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
   }
 
   function isOk() {
-    console.log('ok');
+    //console.log('ok');
+    setAnswer(true);
     setHintIsVisible(true);
+    trueButton.current.disabled = true;
+    falseButton.current.disabled = true;
+    trueButton.current.classList.remove(styles.cardsHolder__decisionBtn_hovered);
+    falseButton.current.classList.remove(styles.cardsHolder__decisionBtn_hovered);
     if (currentWord?.word === otherMeaning?.word) {
-        console.log('ok!');
-        console.log(currentWord?.word === otherMeaning?.word);
-        console.log(currentWord?.word);
-        console.log(otherMeaning?.word);
-        trainButtonDiv.current.classList.add(styles.cardsHolder__correct)  
+      //console.log('ok!');
+      /*console.log(currentWord?.word === otherMeaning?.word);
+      console.log(currentWord?.word);
+      console.log(otherMeaning?.word);*/
+      trainButtonDiv.current.classList.add(styles.cardsHolder__correct)  
     }
     else {
-        console.log('not!');
-        trainButtonDiv.current.classList.add(styles.cardsHolder__incorrect);
-        setIsIncorrect(true); 
+      //console.log('not!');
+      trainButtonDiv.current.classList.add(styles.cardsHolder__incorrect);
+      setIsIncorrect(true);
+      if (wordsToRepeat !== null && currentWord !== null) {
+        setWordsToRepeat([...wordsToRepeat, currentWord]) 
+      };
     }}
 
   function isNotOk() {
-    console.log('not ok');
+    //console.log('not ok');
+    setAnswer(true);
     setHintIsVisible(true);
+    trueButton.current.disabled = true;
+    falseButton.current.disabled = true;
+    trueButton.current.classList.remove(styles.cardsHolder__decisionBtn_hovered);
+    falseButton.current.classList.remove(styles.cardsHolder__decisionBtn_hovered);
     if (currentWord?.word !== otherMeaning?.word) {
-        console.log('no');
-        console.log(currentWord?.word !== otherMeaning?.word);
-        console.log(currentWord?.word);
-        console.log(otherMeaning?.word);
-        setIsIncorrect(true);
-        trainButtonDiv.current.classList.add(styles.cardsHolder__correct)  
+      //console.log('no');
+      /*console.log(currentWord?.word !== otherMeaning?.word);
+      console.log(currentWord?.word);
+      console.log(otherMeaning?.word);*/
+      setIsIncorrect(true);
+      trainButtonDiv.current.classList.add(styles.cardsHolder__correct);
+    if (wordsToRepeat !== null && currentWord !== null) {
+        setWordsToRepeat([...wordsToRepeat, currentWord]) 
+    };
     }
     else {
-        trainButtonDiv.current.classList.add(styles.cardsHolder__incorrect) 
-        console.log('ok');}
+      trainButtonDiv.current.classList.add(styles.cardsHolder__incorrect) 
+      //console.log('ok');
+    }
   }
 
-  function nextWord1() {
+  function nextWord() {
     if (currentWord) {
       trainButtonDiv.current.classList.remove(styles.cardsHolder__incorrect);
       trainButtonDiv.current.classList.remove(styles.cardsHolder__correct);
@@ -202,20 +218,27 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
       setIsCorrect(false);
       setHintIsVisible(false);
       setIsIncorrect(false);
+      setAnswer(false);
       setMeaning({ ...repeatingForm, word: '' });
+      trueButton.current.disabled = false;
+      falseButton.current.disabled = false;
+      trueButton.current.classList.add(styles.cardsHolder__decisionBtn_hovered);
+      falseButton.current.classList.add(styles.cardsHolder__decisionBtn_hovered);
 
       if (wordsToRepeat.length > 1) {
         setCurrentWord(wordsToRepeat[1]);
         setWordsToRepeat(wordsToRepeat.slice(1));
       } else {
-        setCurrentWord({
-          word: 'Правда все.',
-          translation: 'Вы повторили все!',
-          transcription: 'Вы можете начать с начала',
-          vocalization: '',
-          ruTopic: '',
-          enTopic: '',
-        });
+        if (words && words.length !== 0) {
+            let sorted = words;
+            sorted.forEach(
+              (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
+            );
+            sorted.sort(function (a: any, b: any) {
+              return a.number - b.number;
+            });
+            setWordsToRepeat(sorted);
+          }
       }
     }
   }
@@ -234,6 +257,7 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
             <div className={styles.cardsHolder__chooseButtonBlock}>
               <button
                 onClick={isOk}
+                ref={trueButton}
                 className={styles.cardsHolder__decisionBtn}
               >
                 <img
@@ -244,6 +268,7 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
               </button>
               <button
                 onClick={isNotOk}
+                ref={falseButton}
                 className={styles.cardsHolder__decisionBtn}
               >
                 <img
@@ -257,28 +282,12 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
               className={styles.cardsHolder__buttonBlock}
               ref={trainButtonDiv}>
               <TrainButton 
-                onClick={nextWord1} 
+                onClick={nextWord} 
                 text="Следующая"
               />
             </div>
           </div>
         )}
-        {currentWord &&
-          currentWord !== null &&
-          currentWord.word === 'Правда все.' && (
-            <div 
-              className={styles.cardsHolder__arrowContainer}
-              onClick={repeatAgain}>
-              <img
-                src={arrowBack}
-                alt="Стрелка назад"
-                className={styles.cardsHolder__repeatImg}
-              />
-              <p className={styles.deckItem__text}>
-                Повторять снова
-              </p>
-            </div>
-          )}
         <BackToTopic handleCloseModesClick={stopRepeating} />
       </section>
     </>
