@@ -1,4 +1,4 @@
-import { FC, useEffect, useState, ChangeEvent, useRef } from 'react';
+import { FC, useEffect, useState, ChangeEvent, useRef, SetStateAction } from 'react';
 import styles from './TrainScreen.module.scss';
 import BackToTopic from '../BackToTopic/BackToTopic';
 import TrainButton from '../ui/TrainButton/TrainButton';
@@ -7,35 +7,28 @@ import no from '../../images/no.png';
 import { TWord } from '../../utils/types';
 
 type TProps = {
-  handleCloseModesClick: () => void;
   words: TWord[];
+  wordsToRepeat: TWord[];
+  setWordsToRepeat: React.Dispatch<SetStateAction<TWord[]>>;
+  currentWord: TWord | null;
+  setCurrentWord: React.Dispatch<React.SetStateAction<TWord | null>>;
+  wordOrTranslation: boolean;
+  stopRepeating: () => void;
 };
 
-const TrainsScreen: FC<TProps> = (props: TProps) => {
+const TrainScreen: FC<TProps> = (props: TProps) => {
 
-  const { words, handleCloseModesClick } = props;
+  const { words, wordsToRepeat, setWordsToRepeat, currentWord, setCurrentWord, stopRepeating, wordOrTranslation } = props;
 
   const [repeatMode, setRepeatMode] = useState<boolean>(true);
-  const [showWord, setShowWord] = useState<boolean>(false);
-  const [isCorrect, setIsCorrect] = useState<boolean>(false);
   const [isIncorrect, setIsIncorrect] = useState<boolean>(false);
   const [answer, setAnswer] = useState<boolean>(false);
-  const [yesOrNoMode, setYesOrNoMode] = useState<boolean>(false);
-  const [wordOrTranslation, setWordOrTranslation] = useState<boolean>(false);
-  const [currentWord, setCurrentWord] = useState<TWord | null>(null);
-  const [repeatingForm, setMeaning] = useState({ word: '' });
   const [repeatedWords, setRepeatedWords] = useState<TWord[]>([]);
-  const [wordsToRepeat, setWordsToRepeat] = useState<TWord[]>([]);
   const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
   const [otherMeaning, setOtherMeaning] = useState<TWord | null>(null);
   const trainButtonDiv = useRef<any>(null);
   const trueButton = useRef<any>(null);
   const falseButton = useRef<any>(null);
-
-  function startRepeating() {
-    setRepeatMode(true);
-    setCurrentWord(wordsToRepeat[0]);
-  }
 
   function setText(item: TWord) {
     if (hintIsVisible) return `${item.transcription}`;
@@ -63,49 +56,14 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
     }
   }, [currentWord]);
 
-  //слова рандомно перемешиваются
-  useEffect(() => {
-    trueButton.current.classList.add(styles.cardsHolder__decisionBtn_hovered);
-    falseButton.current.classList.add(styles.cardsHolder__decisionBtn_hovered);
-    if (words && words.length !== 0) {
-      let sorted = words;
-      sorted.forEach(
-        (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
-      );
-      sorted.sort(function (a: any, b: any) {
-        return a.number - b.number;
-      });
-      setWordsToRepeat(sorted);
-    }
-  }, [words]);
-
-  //с каждым новым словом рандомайзер выбирает тип проверки
-  useEffect(() => {
-    if (Math.floor(Math.random() * (3 - 1) + 1) > 1) 
-      setWordOrTranslation(!wordOrTranslation)
-  }, [currentWord])
-
-  useEffect(() => {
-    if (
-      words &&
-      words.length !== 0 &&
-      wordsToRepeat &&
-      wordsToRepeat.length === words.length
-    )
-      startRepeating();
-  }, [wordsToRepeat]);
-
   function showHint() {
     setHintIsVisible(true);
   }
 
-  function stopRepeating() {
+  function stopRepeating1() {
     setHintIsVisible(false);
     setRepeatMode(false);
-    setShowWord(false);
-    setIsCorrect(false);
-    setMeaning({ ...repeatingForm, word: '' });
-    handleCloseModesClick();
+    stopRepeating();
   }
 
   function word() {
@@ -190,12 +148,9 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
       trainButtonDiv.current.classList.remove(styles.trainScreen__incorrect);
       trainButtonDiv.current.classList.remove(styles.trainScreen__correct);
       setRepeatedWords([...repeatedWords, currentWord]);
-      setShowWord(false);
-      setIsCorrect(false);
       setHintIsVisible(false);
       setIsIncorrect(false);
       setAnswer(false);
-      setMeaning({ ...repeatingForm, word: '' });
       trueButton.current.disabled = false;
       falseButton.current.disabled = false;
       trueButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
@@ -264,10 +219,10 @@ const TrainsScreen: FC<TProps> = (props: TProps) => {
             </div>
           </div>
         )}
-        <BackToTopic handleCloseModesClick={stopRepeating} />
+        <BackToTopic handleCloseModesClick={stopRepeating1} />
       </section>
     </>
   );
 };
 
-export default TrainsScreen;
+export default TrainScreen;

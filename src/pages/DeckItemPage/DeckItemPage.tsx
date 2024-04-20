@@ -9,7 +9,8 @@ import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TrainButton from "../../components/ui/TrainButton/TrainButton";
-import TrainsScreen from "../../components/TrainScreen/TrainScreen";
+import TrainScreen from "../../components/TrainScreen/TrainScreen";
+import MixedTrainScreen from "../../components/MixedTrainScreen/MixedTrainScreen";
 import TrainScreenVariations from "../../components/TrainScreenVariations/TrainScreenVariations";
 import styles from './DeckItemPage.module.scss';
 import { vocabulary } from "../../utils/constants";
@@ -148,11 +149,7 @@ const DeckItemPage: FC = () => {
             />
             <TrainButton
               onClick={handleTrainModeClick}
-              text="Верно или нет"
-            />
-            <TrainButton
-              onClick={handleTrainMode2Click}
-              text="Выбор из 4"
+              text="Выбирать сердцем"
             />
             {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
             <TrainButton
@@ -181,15 +178,11 @@ const DeckItemPage: FC = () => {
               handleCloseModesClick={handleCloseModesClick} />
           }
           {!wordsAreVisible && trainMode &&
-            <TrainsScreen
+            <MixedTrainScreen
               words={words} 
               handleCloseModesClick={handleCloseModesClick} />
           }
-          {!wordsAreVisible && trainMode2 &&
-            <TrainScreenVariations
-              words={words} 
-              handleCloseModesClick={handleCloseModesClick} />
-          }
+
           {!repeatMode && cardsAreVisible && 
             <BackToTopic handleCloseModesClick={handleCloseModesClick} />
           }
@@ -203,3 +196,15 @@ const DeckItemPage: FC = () => {
 }  
 
 export default DeckItemPage;
+/*
+          {!wordsAreVisible && trainMode2 &&
+            <TrainScreenVariations
+              words={words} 
+              handleCloseModesClick={handleCloseModesClick} />
+          }
+
+                      <TrainButton
+              onClick={handleTrainMode2Click}
+              text="Выбор из 4"
+            />
+          */
