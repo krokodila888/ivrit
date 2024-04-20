@@ -9,7 +9,7 @@ import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TrainButton from "../../components/ui/TrainButton/TrainButton";
-import TrainsScreen from "../../components/TrainsScreen/TrainsScreen";
+import TrainsScreen from "../../components/TrainScreen/TrainScreen";
 import TrainScreenVariations from "../../components/TrainScreenVariations/TrainScreenVariations";
 import styles from './DeckItemPage.module.scss';
 import { vocabulary } from "../../utils/constants";

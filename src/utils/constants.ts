@@ -1207,7 +1207,7 @@ export const vocabulary: Array<TWord> = [
     enTopic: 'Food',
   },
   {
-    word: 'עודה',
+    word: 'עוגה',
     vocalization: 'עוגה',
     translation: 'Пирог',
     transcription: 'угА',

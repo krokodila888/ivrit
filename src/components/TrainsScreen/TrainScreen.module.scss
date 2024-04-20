@@ -1,6 +1,6 @@
 @import "../../styles/variables";
 
-.cardsHolder {
+.trainScreen {
   @include column;
   justify-items: center;
   position: relative;
@@ -86,48 +86,12 @@
     max-width: 600px;
   }
 
-  &__advice {
-    height: 42px;
-    max-width: 600px;
-
-    & p {
-      margin: 0;
-    }
-  }
-
-  &__arrowContainer {
-    @include column;
-    justify-content: flex-end;
-    position: relative;
-    flex-wrap: wrap;
-    align-items: center;
-    width: 200px;
-    align-content: center;
-    align-self: center;
-    margin-bottom: 20px;
-  }
-
   &__repeatImg {
     width: 90px;
     height: 80px;
 
     &:hover {
       @include hovered;
-    }
-  }
-
-  &__text {
-    
-    @media (max-width: 770px) {
-      font-size: 14px;
-      line-height: 22px;
-      max-width: 364px;
-    }
-    
-    @media (max-width: 650px) {
-      padding-right: 0;
-      font-size: 11px;
-      line-height: 16px;
     }
   }
 
