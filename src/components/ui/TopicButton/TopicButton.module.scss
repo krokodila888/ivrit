@@ -1,7 +1,8 @@
-@import "../../../styles/variables";
+@import '../../../styles/variables';
 
 .topicButton {
   @include font(20px, 32px, 400);
+
   display: block;
   width: 240px;
   min-height: 36px;
@@ -19,7 +20,7 @@
   padding-top: 10px;
   border: 0.5px solid $color-border-grey;
 
-  &:after {
+  &::after {
     position: absolute;
     content: '';
     top: 0;
@@ -32,7 +33,7 @@
     border-radius: 20px;
   }
 
-  &:hover:after {
+  &:hover::after {
     width: 100%;
     cursor: pointer;
   }
@@ -42,11 +43,11 @@
     min-height: 46px;
   }
 
-  @media (max-width: 660px) {
+  @media (width <= 660px) {
     width: 380px;
   }
-  
-  @media  (max-width: 420px) {
+
+  @media (width <= 420px) {
     width: 280px;
   }
 }

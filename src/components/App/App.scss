@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .page {
   display: flex;
@@ -8,8 +8,9 @@
 
 * {
   box-sizing: border-box;
+
   /* Typography 
-  --font-sans: "Inter", sans-serif;*/
+  --font-sans: "Inter", sans-serif; */
 
   /* Colors 
   --color-background: #fff;
@@ -27,5 +28,5 @@
   --color-font-white: #fff;
   --color-border-grey: #efefef;
   --color-border-input: #e4e3de;
-  --color-background-card: #ebecde;*/
+  --color-background-card: #ebecde; */
 }

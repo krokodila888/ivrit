@@ -1,10 +1,9 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import styles from './footer.module.scss';
 import telegram from '../../images/tlg.png';
 import github from '../../images/github.png';
 
 const Footer: FC = () => {
-  
   return (
     <footer className={styles.footer}>
       <ul className={styles.footer__wrap}>
@@ -14,10 +13,7 @@ const Footer: FC = () => {
             className={styles.footer__linkText}
             target="_blank"
           >
-            <img 
-              className={styles.footer__socialIcon} 
-              src={github} 
-            />
+            <img className={styles.footer__socialIcon} src={github} />
             Мой Гитхаб
           </a>
         </li>
@@ -27,10 +23,7 @@ const Footer: FC = () => {
             className={styles.footer__linkText}
             target="_blank"
           >
-            <img 
-              className={styles.footer__socialIcon} 
-              src={telegram} 
-            />
+            <img className={styles.footer__socialIcon} src={telegram} />
             (пишите об ошибках)
           </a>
         </li>

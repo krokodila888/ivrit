@@ -15,8 +15,15 @@ type TProps = {
 };
 
 const TrainScreenVariations: FC<TProps> = (props: TProps) => {
-
-  const { words, wordsToRepeat, setWordsToRepeat, currentWord, setCurrentWord, stopRepeating, wordOrTranslation } = props;
+  const {
+    words,
+    wordsToRepeat,
+    setWordsToRepeat,
+    currentWord,
+    setCurrentWord,
+    stopRepeating,
+    wordOrTranslation,
+  } = props;
 
   const [repeatMode, setRepeatMode] = useState<boolean>(true);
   const [answer, setAnswer] = useState<boolean>(false);
@@ -35,12 +42,16 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
     if (currentWord && words && words.length !== 0) {
       let newMeanings = words.filter((item) => {
         if (item.word !== currentWord.word) {
-        return item}
+          return item;
+        }
       });
-      newMeanings.forEach(
-        (item) => {item.number = Math.floor(Math.random() * 10) + 1
+      newMeanings.forEach((item) => {
+        item.number = Math.floor(Math.random() * 10) + 1;
       });
-      const sorted = [...newMeanings as unknown as TWord[]].sort(function (a: any, b: any) {
+      const sorted = [...(newMeanings as unknown as TWord[])].sort(function (
+        a: any,
+        b: any
+      ) {
         return a.number - b.number;
       });
       let newMeanings1 = sorted.slice(0, 3);
@@ -48,7 +59,7 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
       newMeanings1.sort(function (a: any, b: any) {
         return a.number - b.number;
       });
-      setOtherMeanings(newMeanings1)
+      setOtherMeanings(newMeanings1);
     }
   }, [currentWord]);
 
@@ -73,19 +84,18 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
       return (
         <>
           <div className={styles.wordCard}>
-            <p 
-              className={styles.wordCard__word}>
+            <p className={styles.wordCard__word}>
               {wordOrTranslation ? currentWord.translation : currentWord.word}
             </p>
-            <p 
-              className={styles.wordCard__text}
-              onClick={showHint}>
+            <p className={styles.wordCard__text} onClick={showHint}>
               {!hintIsVisible ? 'Подсказка' : currentWord.transcription}
             </p>
-            <p 
-              className={styles.wordCard__translation}
-              ref={answerWord}>
-              {!answer ? '???' : (wordOrTranslation ? currentWord.word : currentWord.translation)}
+            <p className={styles.wordCard__translation} ref={answerWord}>
+              {!answer
+                ? '???'
+                : wordOrTranslation
+                  ? currentWord.word
+                  : currentWord.translation}
             </p>
           </div>
         </>
@@ -100,130 +110,178 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
     chooseButton2.current.disabled = true;
     chooseButton3.current.disabled = true;
     chooseButton4.current.disabled = true;
-    chooseButton1.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    chooseButton2.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    chooseButton3.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    chooseButton4.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    chooseButton1.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    chooseButton2.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    chooseButton3.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    chooseButton4.current.classList.remove(styles.trainScreenChoises__answer_hovered);
+    chooseButton1.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    chooseButton2.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    chooseButton3.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    chooseButton4.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    chooseButton1.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    chooseButton2.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    chooseButton3.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    chooseButton4.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
     if (currentWord?.word === item?.word) {
       ref.current.classList.add(styles.correctBtn);
       answerWord.current.classList.add(styles.correct);
-    }
-    else {
+    } else {
       //console.log('not!');
       ref.current.classList.add(styles.incorrectBtn);
       answerWord.current.classList.add(styles.incorrect);
       if (wordsToRepeat !== null && currentWord !== null) {
-        setWordsToRepeat([...wordsToRepeat, currentWord]) 
-      };
-    }}
+        setWordsToRepeat([...wordsToRepeat, currentWord]);
+      }
+    }
+  }
 
-    function nextWord() {
-        if (currentWord) {
-          chooseButton1.current.disabled = false;
-          chooseButton2.current.disabled = false;
-          chooseButton3.current.disabled = false;
-          chooseButton4.current.disabled = false;
-          chooseButton1.current.classList.add(styles.trainScreenChoises__answer_hovered);
-          chooseButton2.current.classList.add(styles.trainScreenChoises__answer_hovered);
-          chooseButton3.current.classList.add(styles.trainScreenChoises__answer_hovered);
-          chooseButton4.current.classList.add(styles.trainScreenChoises__answer_hovered);
-          chooseButton1.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-          chooseButton2.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-          chooseButton3.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-          chooseButton4.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-          chooseButton1.current.classList.remove(styles.incorrectBtn);
-          chooseButton1.current.classList.remove(styles.correctBtn);
-          chooseButton2.current.classList.remove(styles.incorrectBtn);
-          chooseButton2.current.classList.remove(styles.correctBtn);
-          chooseButton3.current.classList.remove(styles.incorrectBtn);
-          chooseButton3.current.classList.remove(styles.correctBtn);
-          chooseButton4.current.classList.remove(styles.incorrectBtn);
-          chooseButton4.current.classList.remove(styles.correctBtn);
-          answerWord.current.classList.remove(styles.incorrect);
-          answerWord.current.classList.remove(styles.correct);
-          setRepeatedWords([...repeatedWords, currentWord]);
-          setHintIsVisible(false);
-          setAnswer(false);
-    
-          if (wordsToRepeat.length > 1) {
-            setCurrentWord(wordsToRepeat[1]);
-            setWordsToRepeat(wordsToRepeat.slice(1));
-          } else {
-            if (words && words.length !== 0) {
-              let sorted = words;
-              sorted.forEach(
-                (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
-              );
-              sorted.sort(function (a: any, b: any) {
-                return a.number - b.number;
-              });
-              setWordsToRepeat(sorted);
-            }
-          }
+  function nextWord() {
+    if (currentWord) {
+      chooseButton1.current.disabled = false;
+      chooseButton2.current.disabled = false;
+      chooseButton3.current.disabled = false;
+      chooseButton4.current.disabled = false;
+      chooseButton1.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      chooseButton2.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      chooseButton3.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      chooseButton4.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      chooseButton1.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      chooseButton2.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      chooseButton3.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      chooseButton4.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      chooseButton1.current.classList.remove(styles.incorrectBtn);
+      chooseButton1.current.classList.remove(styles.correctBtn);
+      chooseButton2.current.classList.remove(styles.incorrectBtn);
+      chooseButton2.current.classList.remove(styles.correctBtn);
+      chooseButton3.current.classList.remove(styles.incorrectBtn);
+      chooseButton3.current.classList.remove(styles.correctBtn);
+      chooseButton4.current.classList.remove(styles.incorrectBtn);
+      chooseButton4.current.classList.remove(styles.correctBtn);
+      answerWord.current.classList.remove(styles.incorrect);
+      answerWord.current.classList.remove(styles.correct);
+      setRepeatedWords([...repeatedWords, currentWord]);
+      setHintIsVisible(false);
+      setAnswer(false);
+
+      if (wordsToRepeat.length > 1) {
+        setCurrentWord(wordsToRepeat[1]);
+        setWordsToRepeat(wordsToRepeat.slice(1));
+      } else {
+        if (words && words.length !== 0) {
+          let sorted = words;
+          sorted.forEach(
+            (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
+          );
+          sorted.sort(function (a: any, b: any) {
+            return a.number - b.number;
+          });
+          setWordsToRepeat(sorted);
         }
       }
+    }
+  }
 
   return (
     <>
-      <section 
-        className={styles.trainScreenChoises} 
-        id="cardsHolder"
-      >
-        {repeatMode && otherMeanings &&
+      <section className={styles.trainScreenChoises} id="cardsHolder">
+        {repeatMode && otherMeanings && (
           <div className={styles.trainScreenChoises__form}>
             {word()}
-            <div 
-              className={styles.trainScreenChoises__chooseButtonBlock} >
+            <div className={styles.trainScreenChoises__chooseButtonBlock}>
               <button
-                onClick={() => {handleItemClick(otherMeanings[0], chooseButton1)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[0], chooseButton1);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={chooseButton1}>
-                 {wordOrTranslation ? otherMeanings[0].word : otherMeanings[0].translation}   
+                type="button"
+                ref={chooseButton1}
+              >
+                {wordOrTranslation
+                  ? otherMeanings[0].word
+                  : otherMeanings[0].translation}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[1], chooseButton2)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[1], chooseButton2);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={chooseButton2}>
-                 {wordOrTranslation ? otherMeanings[1].word : otherMeanings[1].translation}   
+                type="button"
+                ref={chooseButton2}
+              >
+                {wordOrTranslation
+                  ? otherMeanings[1].word
+                  : otherMeanings[1].translation}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[2], chooseButton3)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[2], chooseButton3);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={chooseButton3}>
-                 {wordOrTranslation ? otherMeanings[2].word : otherMeanings[2].translation}   
+                type="button"
+                ref={chooseButton3}
+              >
+                {wordOrTranslation
+                  ? otherMeanings[2].word
+                  : otherMeanings[2].translation}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[3], chooseButton4)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[3], chooseButton4);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={chooseButton4}>
-                 {wordOrTranslation ? otherMeanings[3].word : otherMeanings[3].translation}   
+                type="button"
+                ref={chooseButton4}
+              >
+                {wordOrTranslation
+                  ? otherMeanings[3].word
+                  : otherMeanings[3].translation}
               </button>
-
             </div>
-            <div 
+            <div
               className={styles.trainScreenChoises__buttonBlock}
-              ref={trainButtonDiv}>
+              ref={trainButtonDiv}
+            >
               <TrainButton
                 onClick={showAnswer}
                 text="Показать ответ"
                 disabled={answer}
               />
-              <TrainButton 
-                onClick={nextWord} 
+              <TrainButton
+                onClick={nextWord}
                 text="Следующая"
                 disabled={false}
               />
             </div>
           </div>
-        }
+        )}
         <BackToTopic handleCloseModesClick={stopRepeating1} />
       </section>
     </>

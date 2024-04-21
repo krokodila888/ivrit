@@ -7,12 +7,13 @@
   max-width: 1040px;
   width: 100%;
 
-  @media (max-width: 1040px) {
+  @media (width <= 1040px) {
     max-width:  100vw;
   }
 
   &__section {
     @include column;
+
     justify-items: center;
     position: relative;
     padding: 30px 70px 20px;
@@ -20,19 +21,20 @@
     margin-right: auto;
     margin-left: auto;
     
-    @media (max-width: 760px) {
+    @media (width <= 760px) {
       padding: 40px 20px 20px;
       align-items: inherit;
       max-width: 97%;
     }
     
-    @media (max-width: 480px) {
+    @media (width <= 480px) {
       padding: 26px 5px 20px;
     }
   }
 
   &__words {
     @include row;
+
     padding: 60px 0 70px;
     justify-content: space-between;
     position: relative;
@@ -41,13 +43,14 @@
     flex-wrap: wrap;
     align-self: center;
     
-    @media (max-width: 580px) {
+    @media (width <= 580px) {
       justify-content: center;
     }
   }
 
   &__buttonContainer {
     @include row;
+
     width: 100%;
     align-self: center;
     margin-bottom: 20px;
@@ -55,11 +58,11 @@
     flex-wrap: wrap;
     gap: 12px;
     
-    @media (max-width: 990px) {
+    @media (width <= 990px) {
       justify-content: center;
     }
     
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       flex-direction: column;
       max-width: 280px;
       gap: 20px;
@@ -69,7 +72,7 @@
     & button {
       width: 30%;
 
-      @media (max-width: 990px) {
+      @media (width <= 990px) {
         width: 240px;
       }
     }

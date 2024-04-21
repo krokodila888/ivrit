@@ -10,17 +10,13 @@ const BackToTopic: FC<TProps> = (props: TProps) => {
   const { handleCloseModesClick } = props;
 
   return (
-    <div
-      className={styles.backToTopic}
-      onClick={handleCloseModesClick}
-    >
-      <img 
-        src={arrow} 
-        alt="Стрелка назад" 
-        className={styles.backToTopic__arrow} />
-      <p className={styles.backToTopic__text}>
-        Назад к теме
-      </p>
+    <div className={styles.backToTopic} onClick={handleCloseModesClick}>
+      <img
+        src={arrow}
+        alt="Стрелка назад"
+        className={styles.backToTopic__arrow}
+      />
+      <p className={styles.backToTopic__text}>Назад к теме</p>
     </div>
   );
 };

@@ -1,4 +1,4 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .trainScreenChoises {
   @include column;
@@ -11,12 +11,12 @@
   margin-left: auto;
   padding: 32px 0;
   min-width: 300px;
-  
-  @media (max-width: 900px) {
+
+  @media (width <= 900px) {
     padding: 32px 0;
   }
 
-  @media (max-width: 386px) {
+  @media (width <= 386px) {
     padding: 20px 0;
     min-width: calc(100vw - 60px);
   }
@@ -35,10 +35,10 @@
 
     width: 100%;
     gap: 20px;
-    justify-content: space-around;;
+    justify-content: space-around;
     flex-wrap: wrap;
 
-    @media (max-width: 470px) {
+    @media (width <= 470px) {
       justify-content: space-evenly;
     }
   }
@@ -56,10 +56,11 @@
 
     &:hover {
       @include hovered;
+
       background-color: $color-button-hovered;
     }
 
-    @media (max-width: 650px) {
+    @media (width <= 650px) {
       font-size: 22px;
       line-height: 22px;
     }
@@ -73,13 +74,11 @@
 
   &__buttonBlock {
     @include row;
-    gap: 20px;
-    //justify-content: center;
 
-    
-    @media (max-width: 550px) {
+    gap: 20px;
+
+    @media (width <= 550px) {
       flex-direction: column;
-      width: 85vw;
       align-items: center;
       width: 100%;
       max-width: 100%;
@@ -95,28 +94,27 @@
   border: 0.5px solid $color-border-grey;
   min-width: 160px;
   min-height: 80px;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   padding: 20px;
   margin: 5px;
   display: flex;
-  flex-direction: column;
   max-width: 240px;
   width: fit-content;
   overflow: hidden;
   gap: 6px;
   align-items: center;
-  
-  @media (max-width: 790px) {
+
+  @media (width <= 790px) {
     max-width: 220px;
     padding: 20px 12px;
   }
 
-  @media (max-width: 490px) {
+  @media (width <= 490px) {
     min-width: 120px;
     padding: 20px 8px;
   }
 
-  @media (max-width: 390px) {
+  @media (width <= 390px) {
     max-width: 120px;
     padding: 16px 6px;
     margin: 3px;
@@ -130,13 +128,13 @@
     font-size: 26px;
     color: $color-font-darkgrey;
     text-align: center;
-    
-    @media (max-width: 490px) {
+
+    @media (width <= 490px) {
       line-height: 20px;
       font-size: 18px;
     }
-  
-    @media (max-width: 390px) {
+
+    @media (width <= 390px) {
       font-size: 16px;
     }
   }
@@ -149,7 +147,7 @@
     font-size: 15px;
     color: $color-font-grey;
     text-align: center;
-  
+
     &:hover {
       @include hovered;
     }
@@ -166,8 +164,8 @@
     width: 100%;
     border: 2px solid transparent;
     min-height: 30px;
-  
-    @media (max-width: 390px) {
+
+    @media (width <= 390px) {
       font-size: 14px;
       line-height: 26px;
       margin: 6px 0;
@@ -185,31 +183,30 @@
   border: 2px solid white;
 }
 
-@import "../../styles/variables";
-
 .trainScreen {
   @include column;
+
   justify-items: center;
   position: relative;
-  padding: 32px 0 100px;
   max-width: 1140px;
   min-height: 400px;
   margin-right: auto;
   margin-left: auto;
   padding: 32px 0;
   min-width: 300px;
-  
-  @media (max-width: 900px) {
+
+  @media (width <= 900px) {
     padding: 32px 0;
   }
 
-  @media (max-width: 386px) {
-    padding: 20px 0px;
+  @media (width <= 386px) {
+    padding: 20px 0;
     min-width: calc(100vw - 60px);
   }
 
   &__form {
     @include column;
+
     position: relative;
     gap: 28px;
     padding-bottom: 50px;
@@ -217,19 +214,20 @@
 
   &__buttonBlock {
     @include row;
+
     justify-content: center;
 
     button {
       width: 100%;
     }
-    
-    @media (max-width: 530px) {
+
+    @media (width <= 530px) {
       flex-direction: column;
       width: 85vw;
       align-items: center;
     }
 
-    @media (max-width: 530px) {
+    @media (width <= 530px) {
       width: 100%;
       max-width: 100%;
       min-width: 250px;
@@ -238,6 +236,7 @@
 
   &__titleRow {
     @include row;
+
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
@@ -247,10 +246,11 @@
 
   &__title {
     @include font(24px, 27px, 400);
+
     margin: 0;
     font-weight: 500;
 
-    @media (max-width: 650px) {
+    @media (width <= 650px) {
       font-size: 22px;
       line-height: 22px;
     }
@@ -258,6 +258,7 @@
 
   &__hint {
     @include font(22px, 27px, 400);
+
     margin: 0;
     padding-bottom: 23px;
     color: $color-font-grey;
@@ -269,6 +270,7 @@
 
   &__answer {
     @include column;
+
     height: 30px;
     max-width: 600px;
   }
@@ -295,12 +297,13 @@
 
   &__incorrect {
     button {
-      background-color: rgb(243, 100, 75);
+      background-color: rgb(243 100 75);
     }
   }
 
   &__chooseButtonBlock {
     @include row;
+
     gap: 20px;
     justify-content: space-between;
   }
@@ -309,7 +312,7 @@
     background-color: $color-background-card;
     border-radius: 20px;
     border: 1px solid $color-border-grey;
-    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 10px 2px rgb(0 0 0 / 40%);
   }
 
   &__decisionBtn_hovered:hover {

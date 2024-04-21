@@ -6,6 +6,7 @@
   
   &__content {
     @include column;
+
     justify-items: center;
     position: relative;
     padding: 30px 70px 20px;
@@ -14,17 +15,18 @@
     margin-right: auto;
     margin-left: auto;
   
-    @media (max-width: 680px) {
+    @media (width <= 680px) {
       padding: 66px 20px 20px;
     }
 
-    @media (max-width: 480px) {
+    @media (width <= 480px) {
       padding: 66px 4px 20px;
     }
   }
 
   &__titleContainer1 {
     @include column;
+
     justify-content: space-between;
     position: relative;
     max-width: 1040px;
@@ -34,52 +36,56 @@
   
   &__titleContainer {
     @include row;
+
     justify-content: space-between;
     position: relative;
     max-width: 1040px;
     flex-wrap: wrap;
     
-    @media (max-width: 780px) {
+    @media (width <= 780px) {
       justify-content: center;
       align-items: center;
       flex-direction: column-reverse;
     }
 
-    @media (max-width: 680px) {
+    @media (width <= 680px) {
       align-items: center;
     }
   }
 
   &__title {
     @include font(28px, 30px, 400);
+
     margin: 0;
     padding-bottom: 26px;
     color: $color-font-darkgrey;
 
-    @media (max-width: 630px) {
+    @media (width <= 630px) {
       text-align: center;
     }
   }
 
   &__word {
     @include font(30px, 30px, 700);
+
     margin: 0;
     padding-bottom: 20px;
     color: $color-font-darkgrey;
 
-    @media (max-width: 490px) {
+    @media (width <= 490px) {
       line-height: 20px;
       font-size: 18px;
       padding-bottom: 10px;
     }
     
-    @media (max-width: 390px) {
+    @media (width <= 390px) {
       font-size: 16px;
     }
   }
 
   &__transcription {
     @include font(24px, 28px, 400);
+
     margin: 4px 0;
     padding: 4px 0;
     color: $color-font-grey;
@@ -88,7 +94,7 @@
     width: 100%;
     text-align: center;
   
-    @media (max-width: 390px) {
+    @media (width <= 390px) {
       font-size: 14px;
       line-height: 26px;
       margin: 6px 0;
@@ -97,27 +103,30 @@
 
   &__title1 {
     @include font(34px, 1, 700);
+
     margin: 0;
     padding-bottom: 28px;
     color: $color-font-darkgrey;
     padding-left: 20px;
 
-    @media (max-width: 630px) {
+    @media (width <= 630px) {
       padding-left: 0;
     }
   }
 
   &__text {
     @include font(20px, 30px, 400);
+
     margin: 0;
     color: $color-font-grey;
   }
 
   &__titleTextContainer {
     @include row;
+
     box-sizing: border-box;
   
-    @media (max-width: 630px) {
+    @media (width <= 630px) {
       flex-direction: column;
       align-items: center;
     }
@@ -125,6 +134,7 @@
 
   &__formsContainer {
     @include row;
+
     justify-content: space-between;
     position: relative;
     max-width: 1040px;
@@ -132,7 +142,7 @@
     padding-bottom: 30px;
     padding-top: 20px;
  
-    @media (max-width: 630px) {
+    @media (width <= 630px) {
       align-items: center;
       justify-content: center;
     }
@@ -140,6 +150,7 @@
 
   &__formContainer {
     @include column;
+
     background-color: $color-background-card;
     border-radius: 20px;
     justify-content: center;
@@ -156,17 +167,17 @@
     align-items: center;
     text-align: center;
     
-    @media (max-width: 790px) {
+    @media (width <= 790px) {
       max-width: 220px;
       padding: 20px 12px;
     }
   
-    @media (max-width: 490px) {
+    @media (width <= 490px) {
       min-width: 120px;
       padding: 20px 8px;
     }
   
-    @media (max-width: 390px) {
+    @media (width <= 390px) {
       max-width: 120px;
       padding: 16px 6px;
       margin: 3px;

@@ -46,7 +46,12 @@ const App: FC = () => {
     if (filteredVerbs !== undefined && filteredVerbs) {
       dispatch(setCurrentWord(filteredVerbs[0]));
     }
-    if (filteredTopics && filteredVerbs && filteredTopics.length !== 0 && filteredVerbs.length === 0) {
+    if (
+      filteredTopics &&
+      filteredVerbs &&
+      filteredTopics.length !== 0 &&
+      filteredVerbs.length === 0
+    ) {
       navigate(`/topics/${filteredTopics[0].enTopic}`);
     }
     if ((!filteredTopics && !filteredVerbs) || filteredTopics.length === 0) {

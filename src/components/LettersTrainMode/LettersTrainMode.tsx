@@ -16,8 +16,14 @@ type TProps = {
 };
 
 const LettersTrainMode: FC<TProps> = (props: TProps) => {
-
-  const { words, wordsToRepeat, setWordsToRepeat, currentWord, setCurrentWord, stopRepeating } = props;
+  const {
+    words,
+    wordsToRepeat,
+    setWordsToRepeat,
+    currentWord,
+    setCurrentWord,
+    stopRepeating,
+  } = props;
 
   const [repeatMode, setRepeatMode] = useState(true);
   const [answer, setAnswer] = useState(false);
@@ -32,42 +38,45 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
   const letterButton1 = useRef<any>(null);
   const letterButton2 = useRef<any>(null);
   const letterButton3 = useRef<any>(null);
-  const letterButton4 = useRef<any>(null);  
+  const letterButton4 = useRef<any>(null);
   const letterButton5 = useRef<any>(null);
   const letterButton6 = useRef<any>(null);
 
   //тут выставляются неправильные значения
   useEffect(() => {
-    if (currentWord ) {
-      setCurrentLetter({letter: currentWord.word[count]})
+    if (currentWord) {
+      setCurrentLetter({ letter: currentWord.word[count] });
     }
   }, [currentWord, count]);
-
 
   useEffect(() => {
     if (currentWord && currentLetter) {
       let newMeanings = alefbet.filter((item) => {
         if (item.letter !== currentLetter?.letter) {
-        return item}
+          return item;
+        }
       });
-      newMeanings.forEach(
-        (item) => {item.number = Math.floor(Math.random() * 10) + 1
+      newMeanings.forEach((item) => {
+        item.number = Math.floor(Math.random() * 10) + 1;
       });
-      const sorted = [...newMeanings as unknown as TLetter[]].sort(function (a: any, b: any) {
+      const sorted = [...(newMeanings as unknown as TLetter[])].sort(function (
+        a: any,
+        b: any
+      ) {
         return b.number - a.number;
       });
       let newMeanings1 = sorted.slice(0, 5);
       let aa = currentLetter;
       aa.number = Math.floor(Math.random() * (10 - 1) + 1);
       newMeanings1.push(aa);
-      newMeanings1.forEach(
-        (item) => {item.number = Math.floor(Math.random() * 10) + 1
+      newMeanings1.forEach((item) => {
+        item.number = Math.floor(Math.random() * 10) + 1;
       });
       //еще один рандомайзер для равнмерного распределения ответов
       newMeanings1.sort(function (a: any, b: any) {
         return b.number - a.number;
       });
-      setOtherMeanings(newMeanings1)
+      setOtherMeanings(newMeanings1);
     }
   }, [currentWord, currentLetter]);
 
@@ -84,21 +93,45 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
     letterButton4.current.disabled = true;
     letterButton5.current.disabled = true;
     letterButton6.current.disabled = true;
-    letterButton1.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    letterButton2.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    letterButton3.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    letterButton4.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    letterButton5.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    letterButton6.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-    letterButton1.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    letterButton2.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    letterButton3.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    letterButton4.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    letterButton5.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    letterButton6.current.classList.remove(styles.trainScreenChoises__answer_hovered);
+    letterButton1.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    letterButton2.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    letterButton3.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    letterButton4.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    letterButton5.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    letterButton6.current.classList.add(
+      styles.trainScreenChoises__disabledAnswer
+    );
+    letterButton1.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    letterButton2.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    letterButton3.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    letterButton4.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    letterButton5.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
+    letterButton6.current.classList.remove(
+      styles.trainScreenChoises__answer_hovered
+    );
     if (wordsToRepeat !== null && currentWord !== null) {
-      setWordsToRepeat([...wordsToRepeat, currentWord]) 
-    };
+      setWordsToRepeat([...wordsToRepeat, currentWord]);
+    }
   }
 
   function stopRepeating1() {
@@ -116,19 +149,12 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
       return (
         <>
           <div className={styles.wordCard}>
-            <p 
-              className={styles.wordCard__word}>
-              {currentWord.translation}
-            </p>
-            <p 
-              className={styles.wordCard__text}
-              onClick={showHint}>
+            <p className={styles.wordCard__word}>{currentWord.translation}</p>
+            <p className={styles.wordCard__text} onClick={showHint}>
               {!hintIsVisible ? 'Подсказка' : currentWord.transcription}
             </p>
-            <p 
-              className={styles.wordCard__translation}
-              ref={answerWord}>
-              {!answer ? (guessed === '' ? '???' : guessed) : (currentWord.word)}
+            <p className={styles.wordCard__translation} ref={answerWord}>
+              {!answer ? (guessed === '' ? '???' : guessed) : currentWord.word}
             </p>
           </div>
         </>
@@ -140,9 +166,11 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
     if (currentLetter?.letter !== item?.letter) {
       ref.current.classList.add(styles.incorrectBtn);
       ref.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-    } 
-    else {
-      if (currentWord?.word.length !== undefined && count < (currentWord?.word.length - 1)) {
+    } else {
+      if (
+        currentWord?.word.length !== undefined &&
+        count < currentWord?.word.length - 1
+      ) {
         setGuessed(guessed + item.letter);
         setCount(count + 1);
         letterButton1.current.classList.remove(styles.incorrectBtn);
@@ -151,14 +179,29 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
         letterButton4.current.classList.remove(styles.incorrectBtn);
         letterButton5.current.classList.remove(styles.incorrectBtn);
         letterButton6.current.classList.remove(styles.incorrectBtn);
-        letterButton1.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton2.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton3.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton4.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton5.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton6.current.classList.add(styles.trainScreenChoises__answer_hovered);
+        letterButton1.current.classList.add(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton2.current.classList.add(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton3.current.classList.add(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton4.current.classList.add(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton5.current.classList.add(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton6.current.classList.add(
+          styles.trainScreenChoises__answer_hovered
+        );
       }
-      if (currentWord?.word.length !== undefined && count === (currentWord?.word.length - 1)){
+      if (
+        currentWord?.word.length !== undefined &&
+        count === currentWord?.word.length - 1
+      ) {
         setHintIsVisible(true);
         setAnswer(true);
         ref.current.classList.add(styles.correctBtn);
@@ -169,153 +212,214 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
         letterButton4.current.disabled = true;
         letterButton5.current.disabled = true;
         letterButton6.current.disabled = true;
-        letterButton1.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-        letterButton2.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-        letterButton3.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-        letterButton4.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-        letterButton5.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-        letterButton6.current.classList.add(styles.trainScreenChoises__disabledAnswer);
-        letterButton1.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-        letterButton2.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-        letterButton3.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-        letterButton4.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-        letterButton5.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-        letterButton6.current.classList.remove(styles.trainScreenChoises__answer_hovered);
-
+        letterButton1.current.classList.add(
+          styles.trainScreenChoises__disabledAnswer
+        );
+        letterButton2.current.classList.add(
+          styles.trainScreenChoises__disabledAnswer
+        );
+        letterButton3.current.classList.add(
+          styles.trainScreenChoises__disabledAnswer
+        );
+        letterButton4.current.classList.add(
+          styles.trainScreenChoises__disabledAnswer
+        );
+        letterButton5.current.classList.add(
+          styles.trainScreenChoises__disabledAnswer
+        );
+        letterButton6.current.classList.add(
+          styles.trainScreenChoises__disabledAnswer
+        );
+        letterButton1.current.classList.remove(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton2.current.classList.remove(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton3.current.classList.remove(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton4.current.classList.remove(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton5.current.classList.remove(
+          styles.trainScreenChoises__answer_hovered
+        );
+        letterButton6.current.classList.remove(
+          styles.trainScreenChoises__answer_hovered
+        );
       }
     }
   }
 
-    function nextWord() {
-      if (currentWord) {
-        letterButton1.current.disabled = false;
-        letterButton2.current.disabled = false;
-        letterButton3.current.disabled = false;
-        letterButton4.current.disabled = false;
-        letterButton5.current.disabled = false;
-        letterButton6.current.disabled = false;
-        letterButton1.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton2.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton3.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton4.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton5.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton6.current.classList.add(styles.trainScreenChoises__answer_hovered);
-        letterButton1.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-        letterButton2.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-        letterButton3.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-        letterButton4.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-        letterButton5.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-        letterButton6.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
-        letterButton1.current.classList.remove(styles.incorrectBtn);
-        letterButton1.current.classList.remove(styles.correctBtn);
-        letterButton2.current.classList.remove(styles.incorrectBtn);
-        letterButton2.current.classList.remove(styles.correctBtn);
-        letterButton3.current.classList.remove(styles.incorrectBtn);
-        letterButton3.current.classList.remove(styles.correctBtn);
-        letterButton4.current.classList.remove(styles.incorrectBtn);
-        letterButton4.current.classList.remove(styles.correctBtn);
-        letterButton5.current.classList.remove(styles.incorrectBtn);
-        letterButton5.current.classList.remove(styles.correctBtn);
-        letterButton6.current.classList.remove(styles.incorrectBtn);
-        letterButton6.current.classList.remove(styles.correctBtn);
-        answerWord.current.classList.remove(styles.incorrect);
-        answerWord.current.classList.remove(styles.correct);
-        setRepeatedWords([...repeatedWords, currentWord]);
-        setHintIsVisible(false);
-        setAnswer(false);
-        setCurrentLetter(null);
-        setGuessed('');
-        setCount(0);
-    
-        if (wordsToRepeat.length > 1) {
-          setCurrentWord(wordsToRepeat[1]);
-          setWordsToRepeat(wordsToRepeat.slice(1));
-        } else {
-          if (words && words.length !== 0) {
-            let sorted = words;
-            sorted.forEach(
-              (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
-            );
-            sorted.sort(function (a: any, b: any) {
-              return a.number - b.number;
-            });
-            setWordsToRepeat(sorted);
-          }
+  function nextWord() {
+    if (currentWord) {
+      letterButton1.current.disabled = false;
+      letterButton2.current.disabled = false;
+      letterButton3.current.disabled = false;
+      letterButton4.current.disabled = false;
+      letterButton5.current.disabled = false;
+      letterButton6.current.disabled = false;
+      letterButton1.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      letterButton2.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      letterButton3.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      letterButton4.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      letterButton5.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      letterButton6.current.classList.add(
+        styles.trainScreenChoises__answer_hovered
+      );
+      letterButton1.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      letterButton2.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      letterButton3.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      letterButton4.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      letterButton5.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      letterButton6.current.classList.remove(
+        styles.trainScreenChoises__disabledAnswer
+      );
+      letterButton1.current.classList.remove(styles.incorrectBtn);
+      letterButton1.current.classList.remove(styles.correctBtn);
+      letterButton2.current.classList.remove(styles.incorrectBtn);
+      letterButton2.current.classList.remove(styles.correctBtn);
+      letterButton3.current.classList.remove(styles.incorrectBtn);
+      letterButton3.current.classList.remove(styles.correctBtn);
+      letterButton4.current.classList.remove(styles.incorrectBtn);
+      letterButton4.current.classList.remove(styles.correctBtn);
+      letterButton5.current.classList.remove(styles.incorrectBtn);
+      letterButton5.current.classList.remove(styles.correctBtn);
+      letterButton6.current.classList.remove(styles.incorrectBtn);
+      letterButton6.current.classList.remove(styles.correctBtn);
+      answerWord.current.classList.remove(styles.incorrect);
+      answerWord.current.classList.remove(styles.correct);
+      setRepeatedWords([...repeatedWords, currentWord]);
+      setHintIsVisible(false);
+      setAnswer(false);
+      setCurrentLetter(null);
+      setGuessed('');
+      setCount(0);
+
+      if (wordsToRepeat.length > 1) {
+        setCurrentWord(wordsToRepeat[1]);
+        setWordsToRepeat(wordsToRepeat.slice(1));
+      } else {
+        if (words && words.length !== 0) {
+          let sorted = words;
+          sorted.forEach(
+            (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
+          );
+          sorted.sort(function (a: any, b: any) {
+            return a.number - b.number;
+          });
+          setWordsToRepeat(sorted);
         }
       }
     }
+  }
 
   return (
     <>
-      <section 
-        className={styles.trainScreenChoises} 
-        id="cardsHolder"
-      >
-        {repeatMode && otherMeanings &&
+      <section className={styles.trainScreenChoises} id="cardsHolder">
+        {repeatMode && otherMeanings && (
           <div className={styles.trainScreenChoises__form}>
             {word()}
-            <div 
-              className={styles.trainScreenChoises__letterButtonBlock} >
+            <div className={styles.trainScreenChoises__letterButtonBlock}>
               <button
-                onClick={() => {handleItemClick(otherMeanings[0], letterButton1)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[0], letterButton1);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={letterButton1}>
-                 {otherMeanings[0].letter}   
+                type="button"
+                ref={letterButton1}
+              >
+                {otherMeanings[0].letter}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[1], letterButton2)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[1], letterButton2);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={letterButton2}>
-                 {otherMeanings[1].letter}   
+                type="button"
+                ref={letterButton2}
+              >
+                {otherMeanings[1].letter}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[2], letterButton3)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[2], letterButton3);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={letterButton3}>
-                 {otherMeanings[2].letter}   
+                type="button"
+                ref={letterButton3}
+              >
+                {otherMeanings[2].letter}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[3], letterButton4)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[3], letterButton4);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={letterButton4}>
-                 {otherMeanings[3].letter}   
+                type="button"
+                ref={letterButton4}
+              >
+                {otherMeanings[3].letter}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[4], letterButton5)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[4], letterButton5);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={letterButton5}>
-                 {otherMeanings[4].letter}   
+                type="button"
+                ref={letterButton5}
+              >
+                {otherMeanings[4].letter}
               </button>
               <button
-                onClick={() => {handleItemClick(otherMeanings[5], letterButton6)}}
+                onClick={() => {
+                  handleItemClick(otherMeanings[5], letterButton6);
+                }}
                 className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
-                type='button'
-                ref={letterButton6}>
-                 {otherMeanings[5].letter}   
+                type="button"
+                ref={letterButton6}
+              >
+                {otherMeanings[5].letter}
               </button>
-
             </div>
-            <div 
+            <div
               className={styles.trainScreenChoises__buttonBlock}
-              ref={trainButtonDiv}>
+              ref={trainButtonDiv}
+            >
               <TrainButton
                 onClick={showAnswer}
                 text="Показать ответ"
                 disabled={answer}
               />
-              <TrainButton 
-                onClick={nextWord} 
+              <TrainButton
+                onClick={nextWord}
                 text="Следующая"
                 disabled={false}
               />
             </div>
           </div>
-        }
+        )}
         <BackToTopic handleCloseModesClick={stopRepeating1} />
       </section>
     </>

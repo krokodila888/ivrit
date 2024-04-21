@@ -1,7 +1,8 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .backToTopic {
   @include column;
+
   justify-content: flex-end;
   position: relative;
   flex-wrap: wrap;
@@ -11,18 +12,19 @@
 
   &__text {
     @include font(20px, 1.5, 400);
+
     margin: 0;
-    color: $color-font-darkgrey; 
+    color: $color-font-darkgrey;
 
     &:hover {
       @include hovered;
     }
-    
-    @media (max-width: 740px) {
+
+    @media (width <= 740px) {
       font-size: 16px;
     }
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       font-size: 12px;
     }
   }
@@ -35,7 +37,7 @@
       @include hovered;
     }
 
-    @media (max-width: 740px) {
+    @media (width <= 740px) {
       width: 50px;
       height: 25px;
     }

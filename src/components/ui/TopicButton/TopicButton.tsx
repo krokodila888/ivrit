@@ -10,13 +10,8 @@ const TopicButton: FC<TProps> = (props: TProps) => {
   const { onClick, text } = props;
 
   return (
-    <button 
-      className={styles.topicButton} 
-      onClick={onClick} 
-      type="button">
-      <p className={styles.topicButton__itemText}>
-        {text}
-      </p>
+    <button className={styles.topicButton} onClick={onClick} type="button">
+      <p className={styles.topicButton__itemText}>{text}</p>
     </button>
   );
 };

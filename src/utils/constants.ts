@@ -1,4 +1,4 @@
-import { TLetter, TTopic, TWord, } from './types';
+import { TLetter, TTopic, TWord } from './types';
 
 export const REMOVE_CARD: 'REMOVE_CARD' = 'REMOVE_CARD';
 export const ADD_CARD: 'ADD_CARD' = 'ADD_CARD';
@@ -5631,93 +5631,93 @@ export const verbs = [
 
 export const alefbet: TLetter[] = [
   {
-    letter: "ק"
+    letter: 'ק',
   },
   {
-    letter: "ר"
+    letter: 'ר',
   },
   {
-    letter: "א"
+    letter: 'א',
   },
   {
-    letter: "א"
+    letter: 'א',
   },
   {
-    letter: "ט"
+    letter: 'ט',
   },
   {
-    letter: "ו"
+    letter: 'ו',
   },
   {
-    letter: "ן"
+    letter: 'ן',
   },
   {
-    letter: "ם"
+    letter: 'ם',
   },
   {
-    letter: "פ"
+    letter: 'פ',
   },
   {
-    letter: "ש"
+    letter: 'ש',
   },
   {
-    letter: "ד"
+    letter: 'ד',
   },
   {
-    letter: "ג"
+    letter: 'ג',
   },
   {
-    letter: "כ"
+    letter: 'כ',
   },
   {
-    letter: "ע"
+    letter: 'ע',
   },
   {
-    letter: "י"
+    letter: 'י',
   },
   {
-    letter: "ח"
+    letter: 'ח',
   },
   {
-    letter: "ל"
+    letter: 'ל',
   },
   {
-    letter: "ך"
+    letter: 'ך',
   },
   {
-    letter: "ף"
+    letter: 'ף',
   },
   {
-    letter: "ז"
+    letter: 'ז',
   },
   {
-    letter: "ס"
+    letter: 'ס',
   },
   {
-    letter: "ב"
+    letter: 'ב',
   },
   {
-    letter: "ה"
+    letter: 'ה',
   },
   {
-    letter: "נ"
+    letter: 'נ',
   },
   {
-    letter: "מ"
+    letter: 'מ',
   },
   {
-    letter: "י"
+    letter: 'י',
   },
   {
-    letter: "צ"
+    letter: 'צ',
   },
   {
-    letter: "ת"
+    letter: 'ת',
   },
   {
-    letter: "ץ"
+    letter: 'ץ',
   },
   {
-    letter: "ץ"
-  }
-]
+    letter: 'ץ',
+  },
+];

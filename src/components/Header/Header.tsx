@@ -26,7 +26,10 @@ const Header: FC = () => {
           src={icon}
           alt="Иконка"
           className={
-            ((currentDeck !== null && currentDeck !== undefined) || window.location.pathname === '/numbers') ? styles.header__iconHover : styles.header__icon
+            (currentDeck !== null && currentDeck !== undefined) ||
+            window.location.pathname === '/numbers'
+              ? styles.header__iconHover
+              : styles.header__icon
           }
           onClick={handleClick}
         />

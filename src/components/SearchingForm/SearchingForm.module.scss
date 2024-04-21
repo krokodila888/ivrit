@@ -1,19 +1,19 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .searchForm {
-  max-width: 1140x;
+  max-width: 1140px;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr;
   margin: 0;
   align-items: baseline;
-  
-  @media (max-width: 770px) {
+
+  @media (width <= 770px) {
     grid-template-columns: auto;
     padding-bottom: 30px;
   }
-  
-  @media (max-width: 500px) {
+
+  @media (width <= 500px) {
     grid-template-columns: auto;
     grid-template-rows: 72px 0;
     padding-bottom: 0;
@@ -23,7 +23,6 @@
     grid-column: 1/1;
     grid-row: 1/1;
     flex-direction: row;
-    justify-content: stretch;
     position: relative;
     display: grid;
     grid-template-columns: 1 auto;
@@ -47,12 +46,12 @@
     &:focus-visible {
       outline: #e6e6e6 auto 0;
     }
-    
-    @media (max-width: 760px) {
+
+    @media (width <= 760px) {
       width: calc(100vw - 60px);
     }
-    
-    @media (max-width: 530px) {
+
+    @media (width <= 530px) {
       padding: 0 0 0 19px;
     }
   }
@@ -64,11 +63,10 @@
     margin-left: 20px;
     grid-row: 1 / 1;
     grid-column: 1 / 1;
-    align-self: center;
-    justify-self: flex-end;
+    place-self: center flex-end;
     margin-right: 20px;
-    
-    @media (max-width: 530px) {
+
+    @media (width <= 530px) {
       display: none;
     }
   }

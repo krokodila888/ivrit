@@ -45,28 +45,28 @@ const WordCard: FC<TProps> = (props: TProps) => {
     <div className={styles.wordCard}>
       {!backIsVisible && (
         <>
-          {cardsAreVisible && 
-          <p className={(item.translation.length < 12) ? styles.word : styles.word1}>
-            {item.translation}
-          </p>}
+          {cardsAreVisible && (
+            <p
+              className={
+                item.translation.length < 12 ? styles.word : styles.word1
+              }
+            >
+              {item.translation}
+            </p>
+          )}
           {!cardsAreVisible && (
             <>
-              <p className={styles.word}>
-                {item.vocalization}
-              </p>
-              <p className={styles.translation}>
-                {item.translation}
-              </p>
-              <p className={styles.translation}>
-                {item.transcription}
-              </p>
+              <p className={styles.word}>{item.vocalization}</p>
+              <p className={styles.translation}>{item.translation}</p>
+              <p className={styles.translation}>{item.transcription}</p>
             </>
           )}
           {cardsAreVisible && (
             <>
-              <p 
-                className={styles.translation1 && styles.translation2} 
-                onClick={handleClick}>
+              <p
+                className={styles.translation1 && styles.translation2}
+                onClick={handleClick}
+              >
                 {setText()}
               </p>
               <img
@@ -81,12 +81,8 @@ const WordCard: FC<TProps> = (props: TProps) => {
       )}
       {backIsVisible && (
         <>
-          <p className={styles.word}>
-            {item.vocalization}
-          </p>
-          <p className={styles.translation1}>
-            {item.transcription}
-          </p>
+          <p className={styles.word}>{item.vocalization}</p>
+          <p className={styles.translation1}>{item.transcription}</p>
           <img
             src={around}
             alt="Стрелка переворота"
@@ -96,9 +92,7 @@ const WordCard: FC<TProps> = (props: TProps) => {
         </>
       )}
       {item && item.ruTopic.includes('Глаголы') && (
-        <p 
-          className={styles.text}
-          onClick={setVerb}>
+        <p className={styles.text} onClick={setVerb}>
           cмотреть формы
         </p>
       )}

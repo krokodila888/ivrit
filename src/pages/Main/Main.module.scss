@@ -2,12 +2,14 @@
 
 .main {
   @include column;
+
   background-color: $color-background;
   min-height: calc(100vh - 262px);
 }
 
 .aboutMe {
   @include column;
+
   justify-items: center;
   position: relative;
   padding: 0 70px 20px;
@@ -16,20 +18,21 @@
   margin-right: auto;
   margin-left: auto;
 
-  @media (max-width: 1160px) {
+  @media (width <= 1160px) {
     min-width: 200px;
   }
 
-  @media (max-width: 450px) {
+  @media (width <= 450px) {
     padding: 0 20px 20px;
   }
 
   &__title {
     @include font(22px, 27px, 400);
+
     margin: 0;
     padding-bottom: 23px;
 
-    @media (max-width: 650px) {
+    @media (width <= 650px) {
       padding-bottom: 28px;
       font-size: 18px;
       line-height: 22px;
@@ -38,35 +41,37 @@
 
   &__statusText {
     @include font(28px, 30px, 400);
+
     margin: 0;
     padding-bottom: 26px;
     align-self: center;
 
-    @media (max-width: 1050px) {
+    @media (width <= 1050px) {
       max-width: 420px;
       position: absolute;
       top: 80px;
       left: 70px;
     }
 
-    @media (max-width: 770px) {
+    @media (width <= 770px) {
       max-width: 220px;
       top: 60px;
     }
 
-    @media (max-width: 560px) {
+    @media (width <= 560px) {
       position: static;
       max-width: 400px;
       font-size: 24px;
     }
 
-    @media (max-width: 450px) {
+    @media (width <= 450px) {
       left: 50px;
     }
   }
 
   &__titleText {
     @include font(28px, 30px, 400);
+
     margin: 0;
     padding-bottom: 26px;
     align-self: center;
@@ -74,17 +79,18 @@
 
   &__text {
     @include font(18px, 26px, 500);
+
     font-family: $font-sans;
     margin: 0;
     padding-bottom: 20px;
 
-    @media (max-width: 620px) {
+    @media (width <= 620px) {
       font-size: 18px;
       line-height: 24px;
       padding-right: 0;
     }
 
-    @media (max-width: 450px) {
+    @media (width <= 450px) {
       padding-right: 0;
       font-size: 16px;
       line-height: 22px;
@@ -93,32 +99,34 @@
 
   &__column {
     @include column;
+
     max-width: 770px;
     justify-content: space-between;
 
-    @media (max-width: 560px) {
+    @media (width <= 560px) {
       align-items: center;
     }
   }
 
   &__column1 {
-    @media (max-width: 1050px) {
+    @media (width <= 1050px) {
       padding-top: 160px;
       padding-bottom: 0;
     }
 
-    @media (max-width: 560px) {
+    @media (width <= 560px) {
       padding-top: 30px;
     }
   }
 
   &__textBlock {
     @include row;
+
     padding-top: 66px;
     justify-content: space-between;
     gap: 20px;
 
-    @media (max-width: 1050px) {
+    @media (width <= 1050px) {
       flex-direction: column-reverse;
       padding-top: 60px;
     }
@@ -131,7 +139,7 @@
     object-fit: cover;
     object-position: right bottom;
 
-    @media (max-width: 1050px) {
+    @media (width <= 1050px) {
       position: absolute;
       top: 40px;
       right: 90px;
@@ -139,7 +147,7 @@
       height: 150px;
     }
 
-    @media (max-width: 560px) {
+    @media (width <= 560px) {
       position: static;
       right: 90px;
       width: 210px;
@@ -149,6 +157,7 @@
 
   &__link {
     @include font(18px, 26px, 500);
+
     text-decoration: none;
     color: $color-font-grey;
     padding-top: 30px;
@@ -158,7 +167,7 @@
       @include hovered;
     }
 
-    @media (max-width: 650px) {
+    @media (width <= 650px) {
       padding-top: 40px;
     }
   }
@@ -166,23 +175,24 @@
 
 .decks {
   @include column;
-  justify-items: center;
-  align-items: stretch;
+
+  place-items: stretch center;
   position: relative;
   padding: 30px 70px 70px;
   color: $color-font-base;
   align-self: center;
 
-  @media (max-width: 770px) {
+  @media (width <= 770px) {
     padding: 20px 5px 0;
   }
 
-  @media (max-width: 400px) {
+  @media (width <= 400px) {
     padding: 20px 0 0;
   }
 
   &__mainContent {
     @include column;
+
     justify-items: center;
     position: relative;
     max-width: 1040px;
@@ -192,6 +202,7 @@
 
   &__contentWrap {
     @include row;
+
     justify-items: center;
     position: relative;
     max-width: 1040px;

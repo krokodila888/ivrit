@@ -11,7 +11,6 @@ type TProps = {
 };
 
 const MixedTrainScreen: FC<TProps> = (props: TProps) => {
-
   const { words, handleCloseModesClick } = props;
 
   const [repeatMode, setRepeatMode] = useState(true);
@@ -43,9 +42,9 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
   useEffect(() => {
     if (Math.floor(Math.random() * (3 - 1) + 1) > 1) {
       setWordOrTranslation(!wordOrTranslation);
-    };
+    }
     setTrainScreen(Math.floor(Math.random() * (4 - 1) + 1));
-  }, [currentWord])
+  }, [currentWord]);
 
   useEffect(() => {
     if (
@@ -55,9 +54,7 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
       wordsToRepeat.length === words.length
     )
       startRepeating();
-
   }, [wordsToRepeat]);
-
 
   function stopRepeating() {
     handleCloseModesClick();
@@ -65,42 +62,39 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
 
   return (
     <>
-      <section 
-        className={styles.trainScreenChoises} 
-        id="cardsHolder"
-      >
-        {repeatMode && trainScreen === 1 && 
-        <TrainScreenVariations
-          words={words}
-          wordsToRepeat={wordsToRepeat}
-          setWordsToRepeat={setWordsToRepeat}
-          currentWord={currentWord}
-          setCurrentWord={setCurrentWord}
-          stopRepeating={stopRepeating}
-          wordOrTranslation={wordOrTranslation} 
-        />
-        }
-        {repeatMode && trainScreen === 2 && 
-        <TrainScreen
-          words={words}
-          wordsToRepeat={wordsToRepeat}
-          setWordsToRepeat={setWordsToRepeat}
-          currentWord={currentWord}
-          setCurrentWord={setCurrentWord}
-          stopRepeating={stopRepeating}
-          wordOrTranslation={wordOrTranslation} 
-        />
-        }
-        {repeatMode && trainScreen === 3 && 
-        <LettersTrainMode
-          words={words}
-          wordsToRepeat={wordsToRepeat}
-          setWordsToRepeat={setWordsToRepeat}
-          currentWord={currentWord}
-          setCurrentWord={setCurrentWord}
-          stopRepeating={stopRepeating} 
-        />
-        }
+      <section className={styles.trainScreenChoises} id="cardsHolder">
+        {repeatMode && trainScreen === 1 && (
+          <TrainScreenVariations
+            words={words}
+            wordsToRepeat={wordsToRepeat}
+            setWordsToRepeat={setWordsToRepeat}
+            currentWord={currentWord}
+            setCurrentWord={setCurrentWord}
+            stopRepeating={stopRepeating}
+            wordOrTranslation={wordOrTranslation}
+          />
+        )}
+        {repeatMode && trainScreen === 2 && (
+          <TrainScreen
+            words={words}
+            wordsToRepeat={wordsToRepeat}
+            setWordsToRepeat={setWordsToRepeat}
+            currentWord={currentWord}
+            setCurrentWord={setCurrentWord}
+            stopRepeating={stopRepeating}
+            wordOrTranslation={wordOrTranslation}
+          />
+        )}
+        {repeatMode && trainScreen === 3 && (
+          <LettersTrainMode
+            words={words}
+            wordsToRepeat={wordsToRepeat}
+            setWordsToRepeat={setWordsToRepeat}
+            currentWord={currentWord}
+            setCurrentWord={setCurrentWord}
+            stopRepeating={stopRepeating}
+          />
+        )}
       </section>
     </>
   );

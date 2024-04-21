@@ -1,28 +1,29 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .trainScreen {
   @include column;
+
   justify-items: center;
   position: relative;
-  padding: 32px 0 100px;
   max-width: 1140px;
   min-height: 400px;
   margin-right: auto;
   margin-left: auto;
   padding: 32px 0;
   min-width: 300px;
-  
-  @media (max-width: 900px) {
+
+  @media (width <= 900px) {
     padding: 32px 0;
   }
 
-  @media (max-width: 386px) {
-    padding: 20px 0px;
+  @media (width <= 386px) {
+    padding: 20px 0;
     min-width: calc(100vw - 60px);
   }
 
   &__form {
     @include column;
+
     position: relative;
     gap: 28px;
     padding-bottom: 50px;
@@ -30,19 +31,20 @@
 
   &__buttonBlock {
     @include row;
+
     justify-content: center;
 
     button {
       width: 100%;
     }
-    
-    @media (max-width: 530px) {
+
+    @media (width <= 530px) {
       flex-direction: column;
       width: 85vw;
       align-items: center;
     }
 
-    @media (max-width: 530px) {
+    @media (width <= 530px) {
       width: 100%;
       max-width: 100%;
       min-width: 250px;
@@ -51,6 +53,7 @@
 
   &__titleRow {
     @include row;
+
     justify-content: space-between;
     width: 100%;
     flex-wrap: wrap;
@@ -60,10 +63,11 @@
 
   &__title {
     @include font(24px, 27px, 400);
+
     margin: 0;
     font-weight: 500;
 
-    @media (max-width: 650px) {
+    @media (width <= 650px) {
       font-size: 22px;
       line-height: 22px;
     }
@@ -71,6 +75,7 @@
 
   &__hint {
     @include font(22px, 27px, 400);
+
     margin: 0;
     padding-bottom: 23px;
     color: $color-font-grey;
@@ -82,6 +87,7 @@
 
   &__answer {
     @include column;
+
     height: 30px;
     max-width: 600px;
   }
@@ -108,12 +114,13 @@
 
   &__incorrect {
     button {
-      background-color: rgb(243, 100, 75);
+      background-color: rgb(243 100 75);
     }
   }
 
   &__chooseButtonBlock {
     @include row;
+
     gap: 20px;
     justify-content: space-between;
   }
@@ -121,7 +128,7 @@
   &__decisionBtn {
     border-radius: 20px;
     border: 1px solid $color-border-grey;
-    box-shadow: 1px 1px 10px 2px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 10px 2px rgb(0 0 0 / 40%);
   }
 
   &__decisionBtn_hovered:hover {

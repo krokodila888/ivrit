@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import App from './components/App/App';
 import { compose } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
-import { store } from "./services/store";
+import { store } from './services/store';
 
 declare global {
   interface Window {

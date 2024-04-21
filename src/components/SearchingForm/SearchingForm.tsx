@@ -7,7 +7,6 @@ type TProps = {
 };
 
 const SearchingForm: FC<TProps> = (props: TProps) => {
-  
   const { setSearch } = props;
 
   return (
@@ -22,10 +21,7 @@ const SearchingForm: FC<TProps> = (props: TProps) => {
           required
           onChange={(e) => setSearch(e.target.value)}
         />
-        <img 
-          className={styles.searchForm__img} 
-          src={magnifier} 
-          alt="Лупа" />
+        <img className={styles.searchForm__img} src={magnifier} alt="Лупа" />
       </div>
     </form>
   );

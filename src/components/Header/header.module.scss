@@ -1,7 +1,8 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .header {
   @include row;
+
   background: $color-background-header;
   color: $color-font-white;
   align-items: center;
@@ -11,24 +12,25 @@
 
   &__content {
     @include row;
+
     width: 1040px;
     margin: 20px auto;
     align-items: center;
-    
-    @media (max-width: 1180px) {
+
+    @media (width <= 1180px) {
       width: calc(100vw - 70px);
       margin-left: 70px;
       margin-top: 0;
       margin-bottom: 0;
-    }  
-    
-    @media  (max-width: 770px) {
+    }
+
+    @media (width <= 770px) {
       width: calc(100vw - 102px);
       margin-left: 50px;
       margin-right: 50px;
     }
 
-    @media (max-width: 450px) {
+    @media (width <= 450px) {
       width: calc(100vw - 52px);
       margin-left: 20px;
       margin-right: 20px;
@@ -40,15 +42,15 @@
     font-size: 28px;
     margin: 0;
 
-    @media (max-width: 770px) {
+    @media (width <= 770px) {
       font-size: 22px;
     }
 
-    @media (max-width: 450px) {
+    @media (width <= 450px) {
       font-size: 18px;
     }
 
-    @media  (max-width: 380px) {
+    @media (width <= 380px) {
       font-size: 16px;
     }
   }
@@ -57,8 +59,8 @@
     width: 60px;
     height: 60px;
     margin-left: 30px;
-    
-    @media (max-width: 450px) {
+
+    @media (width <= 450px) {
       margin-left: 15px;
     }
   }
@@ -71,8 +73,8 @@
     &:hover {
       @include hovered;
     }
-    
-    @media (max-width: 450px) {
+
+    @media (width <= 450px) {
       margin-left: 15px;
     }
   }

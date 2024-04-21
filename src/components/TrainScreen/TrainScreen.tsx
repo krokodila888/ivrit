@@ -1,4 +1,11 @@
-import { FC, useEffect, useState, ChangeEvent, useRef, SetStateAction } from 'react';
+import {
+  FC,
+  useEffect,
+  useState,
+  ChangeEvent,
+  useRef,
+  SetStateAction,
+} from 'react';
 import styles from './TrainScreen.module.scss';
 import BackToTopic from '../BackToTopic/BackToTopic';
 import TrainButton from '../ui/TrainButton/TrainButton';
@@ -17,8 +24,15 @@ type TProps = {
 };
 
 const TrainScreen: FC<TProps> = (props: TProps) => {
-
-  const { words, wordsToRepeat, setWordsToRepeat, currentWord, setCurrentWord, stopRepeating, wordOrTranslation } = props;
+  const {
+    words,
+    wordsToRepeat,
+    setWordsToRepeat,
+    currentWord,
+    setCurrentWord,
+    stopRepeating,
+    wordOrTranslation,
+  } = props;
 
   const [repeatMode, setRepeatMode] = useState<boolean>(true);
   const [isIncorrect, setIsIncorrect] = useState<boolean>(false);
@@ -39,12 +53,16 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
     if (currentWord && words && words.length !== 0) {
       let newMeanings = words.filter((item) => {
         if (item.word !== currentWord.word) {
-        return item}
+          return item;
+        }
       });
-      newMeanings.forEach(
-        (item) => {item.number = Math.floor(Math.random() * 10) + 1
+      newMeanings.forEach((item) => {
+        item.number = Math.floor(Math.random() * 10) + 1;
       });
-      const sorted = [...newMeanings as unknown as TWord[]].sort(function (a: any, b: any) {
+      const sorted = [...(newMeanings as unknown as TWord[])].sort(function (
+        a: any,
+        b: any
+      ) {
         return a.number - b.number;
       });
       let newMeanings1 = sorted.slice(0, 1);
@@ -52,7 +70,7 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
       newMeanings1.sort(function (a: any, b: any) {
         return a.number - b.number;
       });
-      setOtherMeaning(newMeanings1[0])
+      setOtherMeaning(newMeanings1[0]);
     }
   }, [currentWord]);
 
@@ -70,34 +88,33 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
     if (currentWord && currentWord !== null) {
       return (
         <>
-          <div 
-            className={styles.trainScreen__titleRow}>
+          <div className={styles.trainScreen__titleRow}>
             <p className={styles.trainScreen__title}>
               {wordOrTranslation ? currentWord.translation : currentWord.word}
             </p>
-            <p className={styles.trainScreen__title}>
-              -
-            </p>
-            {otherMeaning && !isIncorrect &&
-            <>
-              <p className={styles.trainScreen__title}>
-              {wordOrTranslation ? otherMeaning.word : otherMeaning.translation}{!answer && '?'}
-              </p>
-            </>
-            }
-            {otherMeaning && isIncorrect &&
-            <>
-              <p className={styles.trainScreen__title}>
-              {wordOrTranslation ? currentWord.word : currentWord.translation}
-              </p>
-            </>
-            }
-
+            <p className={styles.trainScreen__title}>-</p>
+            {otherMeaning && !isIncorrect && (
+              <>
+                <p className={styles.trainScreen__title}>
+                  {wordOrTranslation
+                    ? otherMeaning.word
+                    : otherMeaning.translation}
+                  {!answer && '?'}
+                </p>
+              </>
+            )}
+            {otherMeaning && isIncorrect && (
+              <>
+                <p className={styles.trainScreen__title}>
+                  {wordOrTranslation
+                    ? currentWord.word
+                    : currentWord.translation}
+                </p>
+              </>
+            )}
           </div>
           <div className={styles.trainScreen__answer}>
-            <p 
-              className={styles.trainScreen__hint} 
-              onClick={showHint}>
+            <p className={styles.trainScreen__hint} onClick={showHint}>
               {setText(currentWord)}
             </p>
           </div>
@@ -111,18 +128,21 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
     setHintIsVisible(true);
     trueButton.current.disabled = true;
     falseButton.current.disabled = true;
-    trueButton.current.classList.remove(styles.trainScreen__decisionBtn_hovered);
-    falseButton.current.classList.remove(styles.trainScreen__decisionBtn_hovered);
+    trueButton.current.classList.remove(
+      styles.trainScreen__decisionBtn_hovered
+    );
+    falseButton.current.classList.remove(
+      styles.trainScreen__decisionBtn_hovered
+    );
     if (currentWord?.word === otherMeaning?.word) {
-      trainButtonDiv.current.classList.add(styles.trainScreen__correct)  
-    }
-    else {
+      trainButtonDiv.current.classList.add(styles.trainScreen__correct);
+    } else {
       trainButtonDiv.current.classList.add(styles.trainScreen__incorrect);
       setIsIncorrect(true);
       if (wordsToRepeat !== null && currentWord !== null) {
-        setWordsToRepeat([...wordsToRepeat, currentWord]) 
+        setWordsToRepeat([...wordsToRepeat, currentWord]);
       }
-    };
+    }
   }
 
   function isNotOk() {
@@ -130,18 +150,21 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
     setHintIsVisible(true);
     trueButton.current.disabled = true;
     falseButton.current.disabled = true;
-    trueButton.current.classList.remove(styles.trainScreen__decisionBtn_hovered);
-    falseButton.current.classList.remove(styles.trainScreen__decisionBtn_hovered);
+    trueButton.current.classList.remove(
+      styles.trainScreen__decisionBtn_hovered
+    );
+    falseButton.current.classList.remove(
+      styles.trainScreen__decisionBtn_hovered
+    );
     if (currentWord?.word !== otherMeaning?.word) {
       setIsIncorrect(true);
       trainButtonDiv.current.classList.add(styles.trainScreen__correct);
-    }
-    else {
+    } else {
       trainButtonDiv.current.classList.add(styles.trainScreen__incorrect);
       if (wordsToRepeat !== null && currentWord !== null) {
-        setWordsToRepeat([...wordsToRepeat, currentWord]) 
-      };
-    };
+        setWordsToRepeat([...wordsToRepeat, currentWord]);
+      }
+    }
   }
 
   function nextWord() {
@@ -149,7 +172,9 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
       trainButtonDiv.current.classList.remove(styles.trainScreen__incorrect);
       trainButtonDiv.current.classList.remove(styles.trainScreen__correct);
       trueButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
-      falseButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
+      falseButton.current.classList.add(
+        styles.trainScreen__decisionBtn_hovered
+      );
       setRepeatedWords([...repeatedWords, currentWord]);
       setHintIsVisible(false);
       setIsIncorrect(false);
@@ -157,36 +182,30 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
       trueButton.current.disabled = false;
       falseButton.current.disabled = false;
 
-
       if (wordsToRepeat.length > 1) {
         setCurrentWord(wordsToRepeat[1]);
         setWordsToRepeat(wordsToRepeat.slice(1));
       } else {
         if (words && words.length !== 0) {
-            let sorted = words;
-            sorted.forEach(
-              (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
-            );
-            sorted.sort(function (a: any, b: any) {
-              return a.number - b.number;
-            });
-            setWordsToRepeat(sorted);
-          }
+          let sorted = words;
+          sorted.forEach(
+            (item: TWord) => (item.number = Math.floor(Math.random() * 10) + 1)
+          );
+          sorted.sort(function (a: any, b: any) {
+            return a.number - b.number;
+          });
+          setWordsToRepeat(sorted);
+        }
       }
     }
   }
 
   return (
     <>
-      <section 
-        className={styles.trainScreen} 
-        id="cardsHolder"
-      >
+      <section className={styles.trainScreen} id="cardsHolder">
         {repeatMode && (
           <div className={styles.trainScreen__form}>
-            <div>
-              {word()}
-            </div>
+            <div>{word()}</div>
             <div className={styles.trainScreen__chooseButtonBlock}>
               <button
                 onClick={isOk}
@@ -211,11 +230,12 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
                 />
               </button>
             </div>
-            <div 
+            <div
               className={styles.trainScreen__buttonBlock}
-              ref={trainButtonDiv}>
-              <TrainButton 
-                onClick={nextWord} 
+              ref={trainButtonDiv}
+            >
+              <TrainButton
+                onClick={nextWord}
                 text="Следующая"
                 disabled={false}
               />

@@ -1,8 +1,9 @@
-@import "../../styles/variables";
-@import url(../../vendor/Railroad/stylesheet.css);
+@import '../../styles/variables';
+@import '../../vendor/Railroad/stylesheet.css';
 
 .titleContainer {
   @include row;
+
   justify-content: space-between;
   max-width: 900px;
   position: sticky;
@@ -16,17 +17,17 @@
   padding-top: 10px;
   width: calc(100vw - 160px);
 
-  @media (max-width: 760px) {
+  @media (width <= 760px) {
     width: calc(100vw - 60px);
   }
 
-  @media (max-width: 580px) {
+  @media (width <= 580px) {
     width: calc(100vw - 70px);
     text-align: center;
     gap: 20px;
   }
 
-  @media (max-width: 420px) {
+  @media (width <= 420px) {
     text-align: center;
     gap: 12px;
     padding: 4px 8px 12px;
@@ -34,20 +35,21 @@
 
   &__title {
     @include font(28px, 1.4, 400);
+
     margin: 0;
     color: $color-font-darkgrey;
     text-align: start;
 
-    @media (max-width: 740px) {
+    @media (width <= 740px) {
       font-size: 20px;
       font-weight: 600;
     }
 
-    @media (max-width: 420px) {
+    @media (width <= 420px) {
       font-size: 18px;
     }
 
-    @media  (max-width: 340px) {
+    @media (width <= 340px) {
       font-size: 16px;
       font-weight: 600;
     }
@@ -61,21 +63,22 @@
 
   &__transcription {
     @include font(28px, 1.4, 400);
+
     margin: 0;
     text-align: start;
     color: $color-font-grey;
     padding-left: 12px;
-    
-    @media (max-width: 740px) {
+
+    @media (width <= 740px) {
       font-size: 20px;
     }
 
-    @media (max-width: 420px) {
+    @media (width <= 420px) {
       text-align: center;
       font-size: 18px;
     }
 
-    @media  (max-width: 340px) {
+    @media (width <= 340px) {
       font-size: 16px;
     }
   }
@@ -88,19 +91,20 @@
 
   &__text {
     @include font(20px, 1.2, 400);
+
     margin: 0;
     color: $color-font-darkgrey;
     white-space: nowrap;
-    
+
     &:hover {
       @include hovered;
     }
 
-    @media (max-width: 740px) {
+    @media (width <= 740px) {
       font-size: 16px;
     }
 
-    @media (max-width: 640px) {
+    @media (width <= 640px) {
       font-size: 12px;
     }
   }
@@ -112,8 +116,8 @@
     &:hover {
       @include hovered;
     }
-    
-    @media (max-width: 740px) {
+
+    @media (width <= 740px) {
       width: 50px;
       height: 25px;
     }

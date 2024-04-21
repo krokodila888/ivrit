@@ -44,7 +44,14 @@
     "lintfix": "stylelint src/**/**/*.{scss,css} --fix",
     "checkAll": "npm run check && npm run lint",
     "fixAll": "npm run format && npm run lintfix",
-    "sass": "sass --watch ./src/**/**/*.{scss}"
+    "sass": "sass --watch ./src/**/**/*.{scss}",
+    "husky": {
+      "hooks": {
+        "pre-commit": "prettier --write . && git add -A .",
+        "pre-push": "npm run other command",
+        "...": "..."
+      }
+    }
   },
   "eslintConfig": {
     "extends": [
@@ -72,6 +79,7 @@
     "@types/react": "^18.2.74",
     "@types/react-dom": "^18.2.24",
     "@types/react-router-dom": "^5.3.3",
+    "husky": "^9.0.11",
     "sass": "^1.75.0",
     "sass-loader": "^14.2.1",
     "stylelint-config-standard-scss": "^13.1.0",

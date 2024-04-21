@@ -31,8 +31,7 @@ export type TNumWord = {
   meaning: string;
 };
 
-export 
-type TLetter = {
-  letter: string,
-  number?: number
-}
+export type TLetter = {
+  letter: string;
+  number?: number;
+};

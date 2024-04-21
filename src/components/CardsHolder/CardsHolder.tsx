@@ -11,7 +11,6 @@ type TProps = {
 };
 
 const CardsHolder: FC<TProps> = (props: TProps) => {
-
   const { words, handleCloseModesClick } = props;
 
   const [repeatMode, setRepeatMode] = useState<boolean>(true);
@@ -93,22 +92,19 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
             <p className={styles.cardsHolder__title}>
               {currentWord.translation}
             </p>
-            <p 
-              className={styles.cardsHolder__hint} 
-              onClick={showHint}>
+            <p className={styles.cardsHolder__hint} onClick={showHint}>
               {setText(currentWord)}
             </p>
           </div>
           <div className={styles.cardsHolder__answer}>
-            {showWord && 
-            <>
-              <p className={styles.cardsHolder__title}>
-                {currentWord.word}
-              </p>
-              {currentWord &&
-                currentWord !== null &&
-                currentWord.word !== 'Правда все.'}
-            </>}
+            {showWord && (
+              <>
+                <p className={styles.cardsHolder__title}>{currentWord.word}</p>
+                {currentWord &&
+                  currentWord !== null &&
+                  currentWord.word !== 'Правда все.'}
+              </>
+            )}
           </div>
         </>
       );
@@ -122,7 +118,9 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
       currentWord.word === repeatingForm.word
     ) {
       setIsCorrect(true);
-      wordsRepeatingInput.current.classList.add(styles.cardsHolder__input_active);
+      wordsRepeatingInput.current.classList.add(
+        styles.cardsHolder__input_active
+      );
     }
     if (
       wordsRepeatingInput.current &&
@@ -131,7 +129,9 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
       isCorrect
     ) {
       setIsCorrect(false);
-      wordsRepeatingInput.current.classList.remove(styles.cardsHolder__input_active);
+      wordsRepeatingInput.current.classList.remove(
+        styles.cardsHolder__input_active
+      );
     }
   }, [repeatingForm]);
 
@@ -143,7 +143,9 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
       setHintIsVisible(false);
       setMeaning({ ...repeatingForm, word: '' });
       if (wordsRepeatingInput.current) {
-        wordsRepeatingInput.current.classList.remove(styles.cardsHolder__input_active);
+        wordsRepeatingInput.current.classList.remove(
+          styles.cardsHolder__input_active
+        );
       }
       if (wordsToRepeat.length > 1) {
         setCurrentWord(wordsToRepeat[1]);
@@ -163,15 +165,10 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
 
   return (
     <>
-      <section 
-        className={styles.cardsHolder} 
-        id="cardsHolder"
-      >
+      <section className={styles.cardsHolder} id="cardsHolder">
         {repeatMode && (
           <div className={styles.cardsHolder__form}>
-            <div>
-              {word()}
-            </div>
+            <div>{word()}</div>
             <input
               placeholder="Место для слова"
               value={repeatingForm.word}
@@ -188,21 +185,18 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
               spellCheck="false"
             />
             <div className={styles.cardsHolder__advice}>
-              {showWord && 
-              <p>
-                Если напечатать правильный вариант,
-                он лучше запомнится
-              </p>
-              }
+              {showWord && (
+                <p>Если напечатать правильный вариант, он лучше запомнится</p>
+              )}
             </div>
             <div className={styles.cardsHolder__buttonBlock}>
-              <TrainButton 
-                onClick={showTranslation} 
+              <TrainButton
+                onClick={showTranslation}
                 text="Показать слово"
                 disabled={false}
               />
-              <TrainButton 
-                onClick={nextWord1} 
+              <TrainButton
+                onClick={nextWord1}
                 text="Следующая"
                 disabled={false}
               />
@@ -212,17 +206,16 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
         {currentWord &&
           currentWord !== null &&
           currentWord.word === 'Правда все.' && (
-            <div 
+            <div
               className={styles.cardsHolder__arrowContainer}
-              onClick={repeatAgain}>
+              onClick={repeatAgain}
+            >
               <img
                 src={arrowBack}
                 alt="Стрелка назад"
                 className={styles.cardsHolder__repeatImg}
               />
-              <p className={styles.deckItem__text}>
-                Повторять снова
-              </p>
+              <p className={styles.deckItem__text}>Повторять снова</p>
             </div>
           )}
         <BackToTopic handleCloseModesClick={stopRepeating} />

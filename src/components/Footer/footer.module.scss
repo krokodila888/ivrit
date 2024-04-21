@@ -1,7 +1,8 @@
-@import "../../styles/variables";
+@import '../../styles/variables';
 
 .footer {
   @include column;
+
   min-height: 162px;
   align-items: center;
   justify-content: space-between;
@@ -11,12 +12,13 @@
   box-sizing: border-box;
   width: 100%;
 
-  @media  (max-width: 600px) {
+  @media (width <= 600px) {
     padding: 30px 14px;
   }
 
   &__wrap {
     @include row;
+
     justify-content: space-between;
     max-width: 1040px;
     list-style: none;
@@ -24,39 +26,22 @@
     flex-wrap: wrap;
     gap: 200px;
     padding: 0;
-    padding: 40px 0px 24px;
+    padding: 40px 0 24px;
 
-    @media (max-width: 1030px) {
+    @media (width <= 1030px) {
       gap: 100px;
     }
 
-    @media (max-width: 780px) {
+    @media (width <= 780px) {
       gap: 50px;
     }
-    
-    @media (max-width: 550px) {
+
+    @media (width <= 550px) {
       gap: 20px;
     }
-    
-    @media (max-width: 460px) {
+
+    @media (width <= 460px) {
       flex-direction: column;
-    }
-  }
-
-  &__link {
-    @include font(36px, 38px, 400);
-    margin: 0;
-    min-width: 220px;
-
-    &:hover .footer__linkText {
-      transform: scale(1.05);
-      overflow: hidden;
-      opacity: 0.5;
-    }
-
-    @media (max-width: 960px) {
-      line-height: 36px;
-      font-size: 22px;
     }
   }
 
@@ -70,19 +55,37 @@
     transition: transform 0.5s ease-in-out;
     align-items: center;
 
-    @media  (max-width: 960px) {
+    @media (width <= 960px) {
       font-size: 22px;
       line-height: 26px;
     }
 
-    @media (max-width: 710px) {
+    @media (width <= 710px) {
       display: flex;
       flex-direction: column;
     }
 
-    @media  (max-width: 510px) {
+    @media (width <= 510px) {
       display: flex;
       flex-direction: row;
+    }
+  }
+
+  &__link {
+    @include font(36px, 38px, 400);
+
+    margin: 0;
+    min-width: 220px;
+
+    &:hover .footer__linkText {
+      transform: scale(1.05);
+      overflow: hidden;
+      opacity: 0.5;
+    }
+
+    @media (width <= 960px) {
+      line-height: 36px;
+      font-size: 22px;
     }
   }
 
@@ -93,11 +96,11 @@
     align-self: center;
     box-sizing: content-box;
 
-    @media (max-width: 710px) {
+    @media (width <= 710px) {
       padding-right: 0;
     }
 
-    @media (max-width: 510px) {
+    @media (width <= 510px) {
       padding-right: 10px;
     }
   }
