@@ -45,13 +45,14 @@
     "checkAll": "npm run check && npm run lint",
     "fixAll": "npm run format && npm run lintfix",
     "sass": "sass --watch ./src/**/**/*.{scss}",
-    "husky": {
-      "hooks": {
-        "pre-commit": "prettier --write . && git add -A .",
-        "pre-push": "npm run other command",
-        "...": "..."
-      }
-    }
+    "prepare": "husky install",
+    "check1": "npm run lintfix && npm run lint && npm run format",
+    "commit": "npm run check && cz"
+  },
+  "lint-staged": {
+    "src/**/**/*.{css,scss}": "npm run lintfix",
+    "src/**/**/*.{js,jsx,ts,tsx}": "npm run lint",
+    "*.{js,jsx,ts,tsx,json,css,scss,md}": "npm run format"
   },
   "eslintConfig": {
     "extends": [
