@@ -138,12 +138,8 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
 
   function handleItemClick(item: TLetter, ref: React.MutableRefObject<any>) {
     if (currentLetter?.letter !== item?.letter) {
-      /*console.log(ref);
-      console.log(item);
-      console.log(ref.current);
-      console.log(letterButton1);
-      console.log(ref.current.classList);*/
       ref.current.classList.add(styles.incorrectBtn);
+      ref.current.classList.remove(styles.trainScreenChoises__answer_hovered);
     } 
     else {
       if (currentWord?.word.length !== undefined && count < (currentWord?.word.length - 1)) {
@@ -155,6 +151,12 @@ const LettersTrainMode: FC<TProps> = (props: TProps) => {
         letterButton4.current.classList.remove(styles.incorrectBtn);
         letterButton5.current.classList.remove(styles.incorrectBtn);
         letterButton6.current.classList.remove(styles.incorrectBtn);
+        letterButton1.current.classList.add(styles.trainScreenChoises__answer_hovered);
+        letterButton2.current.classList.add(styles.trainScreenChoises__answer_hovered);
+        letterButton3.current.classList.add(styles.trainScreenChoises__answer_hovered);
+        letterButton4.current.classList.add(styles.trainScreenChoises__answer_hovered);
+        letterButton5.current.classList.add(styles.trainScreenChoises__answer_hovered);
+        letterButton6.current.classList.add(styles.trainScreenChoises__answer_hovered);
       }
       if (currentWord?.word.length !== undefined && count === (currentWord?.word.length - 1)){
         setHintIsVisible(true);
