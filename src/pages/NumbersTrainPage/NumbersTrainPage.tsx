@@ -218,10 +218,12 @@ const NumbersTrainPage: FC = () => {
               <TrainButton
                 onClick={showTranslation}
                 text="Показать ответ"
+                disabled={false}
               />
               <TrainButton
                 onClick={nextWord1}
                 text="Следующее число"
+                disabled={false}
               />
             </div>
           </div>

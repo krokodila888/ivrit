@@ -9,9 +9,7 @@ import WordCard from '../../components/WordCard/WordCard';
 import SearchingForm from "../../components/SearchingForm/SearchingForm";
 import BackToTopic from "../../components/BackToTopic/BackToTopic";
 import TrainButton from "../../components/ui/TrainButton/TrainButton";
-import TrainScreen from "../../components/TrainScreen/TrainScreen";
 import MixedTrainScreen from "../../components/MixedTrainScreen/MixedTrainScreen";
-import TrainScreenVariations from "../../components/TrainScreenVariations/TrainScreenVariations";
 import styles from './DeckItemPage.module.scss';
 import { vocabulary } from "../../utils/constants";
 import { removeCurrentDeck } from '../../services/actions/currentDeck';
@@ -29,7 +27,6 @@ const DeckItemPage: FC = () => {
   const [cardsAreVisible, setCardsAreVisible] = useState(false);
   const [repeatMode, setRepeatMode] = useState(false);
   const [trainMode, setTrainMode] = useState(false);
-  const[trainMode2, setTrainMode2] = useState(false);
   const [search, setSearch] = useState('');
   const { currentDeck } = useAppSelector((state) => state.currentDeckReducer);
 
@@ -106,7 +103,6 @@ const DeckItemPage: FC = () => {
     setWordsAreVisible(true);
     setCardsAreVisible(false);
     setTrainMode(false);
-    setTrainMode2(false);
     setRepeatMode(false);
   }
 
@@ -118,11 +114,6 @@ const DeckItemPage: FC = () => {
   function handleTrainModeClick() {
     setWordsAreVisible(false);
     setTrainMode(true);
-  }
-
-  function handleTrainMode2Click() {
-    setWordsAreVisible(false);
-    setTrainMode2(true);
   }
 
   function handleCardsModeClick() {
@@ -142,19 +133,23 @@ const DeckItemPage: FC = () => {
             <TrainButton
               onClick={handleCardsModeClick}
               text="Учить карточки"
+              disabled={false}
             />
             <TrainButton
               onClick={handleRepeatModeClick}
               text="Печатать слова"
+              disabled={false}
             />
             <TrainButton
               onClick={handleTrainModeClick}
               text="Выбирать сердцем"
+              disabled={false}
             />
             {wordsAreVisible && !cardsAreVisible && !repeatMode && currentDeck.ruTopic === 'Числа' &&
             <TrainButton
               onClick={handleTrainNumbersClick}
               text="Тренировать числа"
+              disabled={false}
             />
             }
           </div>
@@ -196,15 +191,3 @@ const DeckItemPage: FC = () => {
 }  
 
 export default DeckItemPage;
-/*
-          {!wordsAreVisible && trainMode2 &&
-            <TrainScreenVariations
-              words={words} 
-              handleCloseModesClick={handleCloseModesClick} />
-          }
-
-                      <TrainButton
-              onClick={handleTrainMode2Click}
-              text="Выбор из 4"
-            />
-          */

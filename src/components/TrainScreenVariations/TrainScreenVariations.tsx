@@ -20,10 +20,7 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
 
   const [repeatMode, setRepeatMode] = useState<boolean>(true);
   const [answer, setAnswer] = useState<boolean>(false);
-  //const [wordOrTranslation, setWordOrTranslation] = useState<boolean>(false);
-  //const [currentWord, setCurrentWord] = useState<TWord | null>(null);
   const [repeatedWords, setRepeatedWords] = useState<TWord[]>([]);
-  //const [wordsToRepeat, setWordsToRepeat] = useState<TWord[]>([]);
   const [hintIsVisible, setHintIsVisible] = useState<boolean>(false);
   const [otherMeanings, setOtherMeanings] = useState<TWord[] | null>(null);
   const trainButtonDiv = useRef<any>(null);
@@ -96,24 +93,28 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
     }
   }
 
-  function handleItemCkick(item: TWord, ref: React.MutableRefObject<any>) {
+  function handleItemClick(item: TWord, ref: React.MutableRefObject<any>) {
     setHintIsVisible(true);
     setAnswer(true);
     chooseButton1.current.disabled = true;
     chooseButton2.current.disabled = true;
     chooseButton3.current.disabled = true;
     chooseButton4.current.disabled = true;
-    chooseButton1.current.classList.add(styles.trainScreenChoises__noHover);
-    chooseButton2.current.classList.add(styles.trainScreenChoises__noHover);
-    chooseButton3.current.classList.add(styles.trainScreenChoises__noHover);
-    chooseButton4.current.classList.add(styles.trainScreenChoises__noHover);
+    chooseButton1.current.classList.add(styles.trainScreenChoises__disabledAnswer);
+    chooseButton2.current.classList.add(styles.trainScreenChoises__disabledAnswer);
+    chooseButton3.current.classList.add(styles.trainScreenChoises__disabledAnswer);
+    chooseButton4.current.classList.add(styles.trainScreenChoises__disabledAnswer);
+    chooseButton1.current.classList.remove(styles.trainScreenChoises__answer_hovered);
+    chooseButton2.current.classList.remove(styles.trainScreenChoises__answer_hovered);
+    chooseButton3.current.classList.remove(styles.trainScreenChoises__answer_hovered);
+    chooseButton4.current.classList.remove(styles.trainScreenChoises__answer_hovered);
     if (currentWord?.word === item?.word) {
-      ref.current.classList.add(styles.correct);
+      ref.current.classList.add(styles.correctBtn);
       answerWord.current.classList.add(styles.correct);
     }
     else {
       //console.log('not!');
-      ref.current.classList.add(styles.incorrect);
+      ref.current.classList.add(styles.incorrectBtn);
       answerWord.current.classList.add(styles.incorrect);
       if (wordsToRepeat !== null && currentWord !== null) {
         setWordsToRepeat([...wordsToRepeat, currentWord]) 
@@ -126,18 +127,22 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
           chooseButton2.current.disabled = false;
           chooseButton3.current.disabled = false;
           chooseButton4.current.disabled = false;
-          chooseButton1.current.classList.remove(styles.trainScreenChoises__noHover);
-          chooseButton2.current.classList.remove(styles.trainScreenChoises__noHover);
-          chooseButton3.current.classList.remove(styles.trainScreenChoises__noHover);
-          chooseButton4.current.classList.remove(styles.trainScreenChoises__noHover);
-          chooseButton1.current.classList.remove(styles.incorrect);
-          chooseButton1.current.classList.remove(styles.correct);
-          chooseButton2.current.classList.remove(styles.incorrect);
-          chooseButton2.current.classList.remove(styles.correct);
-          chooseButton3.current.classList.remove(styles.incorrect);
-          chooseButton3.current.classList.remove(styles.correct);
-          chooseButton4.current.classList.remove(styles.incorrect);
-          chooseButton4.current.classList.remove(styles.correct);
+          chooseButton1.current.classList.add(styles.trainScreenChoises__answer_hovered);
+          chooseButton2.current.classList.add(styles.trainScreenChoises__answer_hovered);
+          chooseButton3.current.classList.add(styles.trainScreenChoises__answer_hovered);
+          chooseButton4.current.classList.add(styles.trainScreenChoises__answer_hovered);
+          chooseButton1.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
+          chooseButton2.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
+          chooseButton3.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
+          chooseButton4.current.classList.remove(styles.trainScreenChoises__disabledAnswer);
+          chooseButton1.current.classList.remove(styles.incorrectBtn);
+          chooseButton1.current.classList.remove(styles.correctBtn);
+          chooseButton2.current.classList.remove(styles.incorrectBtn);
+          chooseButton2.current.classList.remove(styles.correctBtn);
+          chooseButton3.current.classList.remove(styles.incorrectBtn);
+          chooseButton3.current.classList.remove(styles.correctBtn);
+          chooseButton4.current.classList.remove(styles.incorrectBtn);
+          chooseButton4.current.classList.remove(styles.correctBtn);
           answerWord.current.classList.remove(styles.incorrect);
           answerWord.current.classList.remove(styles.correct);
           setRepeatedWords([...repeatedWords, currentWord]);
@@ -174,29 +179,29 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
             <div 
               className={styles.trainScreenChoises__chooseButtonBlock} >
               <button
-                onClick={() => {handleItemCkick(otherMeanings[0], chooseButton1)}}
-                className={styles.trainScreenChoises__answer}
+                onClick={() => {handleItemClick(otherMeanings[0], chooseButton1)}}
+                className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
                 type='button'
                 ref={chooseButton1}>
                  {wordOrTranslation ? otherMeanings[0].word : otherMeanings[0].translation}   
               </button>
               <button
-                onClick={() => {handleItemCkick(otherMeanings[1], chooseButton2)}}
-                className={styles.trainScreenChoises__answer}
+                onClick={() => {handleItemClick(otherMeanings[1], chooseButton2)}}
+                className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
                 type='button'
                 ref={chooseButton2}>
                  {wordOrTranslation ? otherMeanings[1].word : otherMeanings[1].translation}   
               </button>
               <button
-                onClick={() => {handleItemCkick(otherMeanings[2], chooseButton3)}}
-                className={styles.trainScreenChoises__answer}
+                onClick={() => {handleItemClick(otherMeanings[2], chooseButton3)}}
+                className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
                 type='button'
                 ref={chooseButton3}>
                  {wordOrTranslation ? otherMeanings[2].word : otherMeanings[2].translation}   
               </button>
               <button
-                onClick={() => {handleItemCkick(otherMeanings[3], chooseButton4)}}
-                className={styles.trainScreenChoises__answer}
+                onClick={() => {handleItemClick(otherMeanings[3], chooseButton4)}}
+                className={`${styles.trainScreenChoises__answer} ${styles.trainScreenChoises__answer_hovered}`}
                 type='button'
                 ref={chooseButton4}>
                  {wordOrTranslation ? otherMeanings[3].word : otherMeanings[3].translation}   
@@ -206,16 +211,16 @@ const TrainScreenVariations: FC<TProps> = (props: TProps) => {
             <div 
               className={styles.trainScreenChoises__buttonBlock}
               ref={trainButtonDiv}>
-              <TrainButton 
-                onClick={nextWord} 
-                text="Следующая"
-              />
-              {!answer &&
               <TrainButton
                 onClick={showAnswer}
                 text="Показать ответ"
+                disabled={answer}
               />
-              }
+              <TrainButton 
+                onClick={nextWord} 
+                text="Следующая"
+                disabled={false}
+              />
             </div>
           </div>
         }

@@ -1,4 +1,4 @@
-import { TTopic, TWord } from './types';
+import { TLetter, TTopic, TWord, } from './types';
 
 export const REMOVE_CARD: 'REMOVE_CARD' = 'REMOVE_CARD';
 export const ADD_CARD: 'ADD_CARD' = 'ADD_CARD';
@@ -5628,3 +5628,96 @@ export const verbs = [
     enTopic: ['Verbs'],
   },
 ];
+
+export const alefbet: TLetter[] = [
+  {
+    letter: "ק"
+  },
+  {
+    letter: "ר"
+  },
+  {
+    letter: "א"
+  },
+  {
+    letter: "א"
+  },
+  {
+    letter: "ט"
+  },
+  {
+    letter: "ו"
+  },
+  {
+    letter: "ן"
+  },
+  {
+    letter: "ם"
+  },
+  {
+    letter: "פ"
+  },
+  {
+    letter: "ש"
+  },
+  {
+    letter: "ד"
+  },
+  {
+    letter: "ג"
+  },
+  {
+    letter: "כ"
+  },
+  {
+    letter: "ע"
+  },
+  {
+    letter: "י"
+  },
+  {
+    letter: "ח"
+  },
+  {
+    letter: "ל"
+  },
+  {
+    letter: "ך"
+  },
+  {
+    letter: "ף"
+  },
+  {
+    letter: "ז"
+  },
+  {
+    letter: "ס"
+  },
+  {
+    letter: "ב"
+  },
+  {
+    letter: "ה"
+  },
+  {
+    letter: "נ"
+  },
+  {
+    letter: "מ"
+  },
+  {
+    letter: "י"
+  },
+  {
+    letter: "צ"
+  },
+  {
+    letter: "ת"
+  },
+  {
+    letter: "ץ"
+  },
+  {
+    letter: "ץ"
+  }
+]

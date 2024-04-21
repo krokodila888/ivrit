@@ -198,11 +198,13 @@ const CardsHolder: FC<TProps> = (props: TProps) => {
             <div className={styles.cardsHolder__buttonBlock}>
               <TrainButton 
                 onClick={showTranslation} 
-                text="Показать слово" 
+                text="Показать слово"
+                disabled={false}
               />
               <TrainButton 
                 onClick={nextWord1} 
-                text="Следующая" 
+                text="Следующая"
+                disabled={false}
               />
             </div>
           </div>

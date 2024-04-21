@@ -38,3 +38,25 @@
     cursor: pointer;
   }
 }
+
+.trainButton__disabled {
+  @include font(20px, 32px, 400);
+  display: block;
+  min-width: 240px;
+  min-height: 36px;
+  height: fit-content;
+  text-decoration: none;
+  color: $color-font-base;
+  background-color: $color-button-training;
+  letter-spacing: 2px;
+  text-align: center;
+  position: relative;
+  transition: all 0.35s;
+  border-radius: 20px;
+  justify-content: center;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 0.5px solid $color-border-grey;
+  flex-grow: 1;
+  opacity: 0.5;
+}

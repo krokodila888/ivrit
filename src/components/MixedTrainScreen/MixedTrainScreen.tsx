@@ -1,9 +1,8 @@
 import { FC, useEffect, useState, useRef } from 'react';
 import styles from './MixedTrainScreen.module.scss';
-import BackToTopic from '../BackToTopic/BackToTopic';
-import TrainButton from '../ui/TrainButton/TrainButton';
 import TrainScreenVariations from '../TrainScreenVariations/TrainScreenVariations';
 import TrainScreen from '../TrainScreen/TrainScreen';
+import LettersTrainMode from '../LettersTrainMode/LettersTrainMode';
 import { TWord } from '../../utils/types';
 
 type TProps = {
@@ -15,9 +14,9 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
 
   const { words, handleCloseModesClick } = props;
 
-  const [repeatMode, setRepeatMode] = useState<boolean>(true);
-  const [trainScreen, setTrainScreen] = useState<boolean>(false);
-  const [wordOrTranslation, setWordOrTranslation] = useState<boolean>(false);
+  const [repeatMode, setRepeatMode] = useState(true);
+  const [trainScreen, setTrainScreen] = useState<number>(1);
+  const [wordOrTranslation, setWordOrTranslation] = useState(false);
   const [currentWord, setCurrentWord] = useState<TWord | null>(null);
   const [wordsToRepeat, setWordsToRepeat] = useState<TWord[]>([]);
 
@@ -42,15 +41,10 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
 
   //с каждым новым словом рандомайзер выбирает тип проверки
   useEffect(() => {
-    console.log('shange!');
-    let aa = Math.floor(Math.random() * (3 - 1) + 1);
-    console.log(aa);
-    console.log(aa > 1)
-    if (Math.floor(Math.random() * (3 - 1) + 1) > 1) 
-      setWordOrTranslation(!wordOrTranslation);
     if (Math.floor(Math.random() * (3 - 1) + 1) > 1) {
-      setTrainScreen(!trainScreen);
-    }
+      setWordOrTranslation(!wordOrTranslation);
+    };
+    setTrainScreen(Math.floor(Math.random() * (4 - 1) + 1));
   }, [currentWord])
 
   useEffect(() => {
@@ -75,7 +69,18 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
         className={styles.trainScreenChoises} 
         id="cardsHolder"
       >
-        {repeatMode && trainScreen && 
+        {repeatMode && trainScreen === 1 && 
+        <TrainScreenVariations
+          words={words}
+          wordsToRepeat={wordsToRepeat}
+          setWordsToRepeat={setWordsToRepeat}
+          currentWord={currentWord}
+          setCurrentWord={setCurrentWord}
+          stopRepeating={stopRepeating}
+          wordOrTranslation={wordOrTranslation} 
+        />
+        }
+        {repeatMode && trainScreen === 2 && 
         <TrainScreen
           words={words}
           wordsToRepeat={wordsToRepeat}
@@ -83,17 +88,18 @@ const MixedTrainScreen: FC<TProps> = (props: TProps) => {
           currentWord={currentWord}
           setCurrentWord={setCurrentWord}
           stopRepeating={stopRepeating}
-          wordOrTranslation={wordOrTranslation} />
+          wordOrTranslation={wordOrTranslation} 
+        />
         }
-        {repeatMode && !trainScreen && 
-          <TrainScreenVariations
+        {repeatMode && trainScreen === 3 && 
+        <LettersTrainMode
           words={words}
           wordsToRepeat={wordsToRepeat}
           setWordsToRepeat={setWordsToRepeat}
           currentWord={currentWord}
           setCurrentWord={setCurrentWord}
-          stopRepeating={stopRepeating}
-          wordOrTranslation={wordOrTranslation} />
+          stopRepeating={stopRepeating} 
+        />
         }
       </section>
     </>

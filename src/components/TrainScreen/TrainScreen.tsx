@@ -75,11 +75,11 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
             <p className={styles.trainScreen__title}>
               {wordOrTranslation ? currentWord.translation : currentWord.word}
             </p>
+            <p className={styles.trainScreen__title}>
+              -
+            </p>
             {otherMeaning && !isIncorrect &&
             <>
-              <p className={styles.trainScreen__title}>
-                -
-              </p>
               <p className={styles.trainScreen__title}>
               {wordOrTranslation ? otherMeaning.word : otherMeaning.translation}{!answer && '?'}
               </p>
@@ -121,8 +121,9 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
       setIsIncorrect(true);
       if (wordsToRepeat !== null && currentWord !== null) {
         setWordsToRepeat([...wordsToRepeat, currentWord]) 
-      };
-    }}
+      }
+    };
+  }
 
   function isNotOk() {
     setAnswer(true);
@@ -134,27 +135,28 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
     if (currentWord?.word !== otherMeaning?.word) {
       setIsIncorrect(true);
       trainButtonDiv.current.classList.add(styles.trainScreen__correct);
-    if (wordsToRepeat !== null && currentWord !== null) {
-        setWordsToRepeat([...wordsToRepeat, currentWord]) 
-    };
     }
     else {
-      trainButtonDiv.current.classList.add(styles.trainScreen__incorrect) 
-    }
+      trainButtonDiv.current.classList.add(styles.trainScreen__incorrect);
+      if (wordsToRepeat !== null && currentWord !== null) {
+        setWordsToRepeat([...wordsToRepeat, currentWord]) 
+      };
+    };
   }
 
   function nextWord() {
     if (currentWord) {
       trainButtonDiv.current.classList.remove(styles.trainScreen__incorrect);
       trainButtonDiv.current.classList.remove(styles.trainScreen__correct);
+      trueButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
+      falseButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
       setRepeatedWords([...repeatedWords, currentWord]);
       setHintIsVisible(false);
       setIsIncorrect(false);
       setAnswer(false);
       trueButton.current.disabled = false;
       falseButton.current.disabled = false;
-      trueButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
-      falseButton.current.classList.add(styles.trainScreen__decisionBtn_hovered);
+
 
       if (wordsToRepeat.length > 1) {
         setCurrentWord(wordsToRepeat[1]);
@@ -189,7 +191,7 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
               <button
                 onClick={isOk}
                 ref={trueButton}
-                className={styles.trainScreen__decisionBtn}
+                className={`${styles.trainScreen__decisionBtn} ${styles.trainScreen__decisionBtn_hovered}`}
               >
                 <img
                   src={yes}
@@ -200,7 +202,7 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
               <button
                 onClick={isNotOk}
                 ref={falseButton}
-                className={styles.trainScreen__decisionBtn}
+                className={`${styles.trainScreen__decisionBtn} ${styles.trainScreen__decisionBtn_hovered}`}
               >
                 <img
                   src={no}
@@ -215,6 +217,7 @@ const TrainScreen: FC<TProps> = (props: TProps) => {
               <TrainButton 
                 onClick={nextWord} 
                 text="Следующая"
+                disabled={false}
               />
             </div>
           </div>
